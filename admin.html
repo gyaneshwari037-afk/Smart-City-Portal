@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | SmartCity</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f4f8fd;
+            color: #17213d;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: white;
+            min-height: 78px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e3eaf3;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .admin-label {
+            background: #edf4ff;
+            color: #2864e8;
+            padding: 9px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* MAIN */
+
+        .admin-container {
+            width: 88%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 50px 0 80px;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header span {
+            color: #2864e8;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .page-header h1 {
+            font-size: 38px;
+            margin: 8px 0;
+        }
+
+        .page-header p {
+            color: #647590;
+        }
+
+        /* SUMMARY */
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card {
+            background: white;
+            border: 1px solid #e1e8f1;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 7px 22px rgba(40, 70, 110, 0.06);
+        }
+
+        .summary-icon {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .summary-card h2 {
+            font-size: 30px;
+        }
+
+        .summary-card p {
+            color: #687994;
+            font-size: 14px;
+        }
+
+        /* TABLE */
+
+        .complaints-box {
+            background: white;
+            border: 1px solid #e1e8f1;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 7px 22px rgba(40, 70, 110, 0.06);
+        }
+
+        .complaints-box h2 {
+            margin-bottom: 20px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        th {
+            background: #f4f7fb;
+            text-align: left;
+            padding: 15px;
+            font-size: 13px;
+            color: #52637d;
+        }
+
+        td {
+            padding: 16px 15px;
+            border-bottom: 1px solid #edf1f6;
+            font-size: 14px;
+            vertical-align: top;
+        }
+
+        .complaint-id {
+            color: #2864e8;
+            font-weight: 700;
+        }
+
+        .priority {
+            font-weight: 600;
+        }
+
+        .status-select {
+            padding: 8px 10px;
+            border: 1px solid #d5dfec;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 45px 20px;
+            color: #71809a;
+        }
+
+        .empty-message div {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .admin-container {
+                width: 92%;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🏙️ SmartCity
+        </div>
+
+        <div class="admin-label">
+            👨‍💼 Admin Dashboard
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="admin-container">
+
+        <section class="page-header">
+
+            <span>SMART CITY ADMINISTRATION</span>
+
+            <h1>Complaint Management</h1>
+
+            <p>
+                View and manage complaints submitted by citizens.
+            </p>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    📋
+                </div>
+
+                <h2 id="totalComplaints">
+                    0
+                </h2>
+
+                <p>Total Complaints</p>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    ⏳
+                </div>
+
+                <h2 id="pendingComplaints">
+                    0
+                </h2>
+
+                <p>Pending</p>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    🔄
+                </div>
+
+                <h2 id="progressComplaints">
+                    0
+                </h2>
+
+                <p>In Progress</p>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    ✅
+                </div>
+
+                <h2 id="resolvedComplaints">
+                    0
+                </h2>
+
+                <p>Resolved</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPLAINT TABLE -->
+
+        <section class="complaints-box">
+
+            <h2>All Citizen Complaints</h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Complaint ID</th>
+
+                            <th>Citizen</th>
+
+                            <th>Category</th>
+
+                            <th>Location</th>
+
+                            <th>Priority</th>
+
+                            <th>Status</th>
+
+                            <th>Submitted</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="complaintsTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function loadComplaints() {
+
+            const complaints =
+                JSON.parse(
+                    localStorage.getItem("smartCityComplaints")
+                ) || [];
+
+
+            // Summary counts
+
+            let pending = 0;
+            let progress = 0;
+            let resolved = 0;
+
+
+            complaints.forEach(function (complaint) {
+
+                if (complaint.status === "Pending") {
+                    pending++;
+                }
+
+                if (complaint.status === "In Progress") {
+                    progress++;
+                }
+
+                if (complaint.status === "Resolved") {
+                    resolved++;
+                }
+
+            });
+
+
+            document.getElementById("totalComplaints").textContent =
+                complaints.length;
+
+            document.getElementById("pendingComplaints").textContent =
+                pending;
+
+            document.getElementById("progressComplaints").textContent =
+                progress;
+
+            document.getElementById("resolvedComplaints").textContent =
+                resolved;
+
+
+            const table =
+                document.getElementById("complaintsTable");
+
+
+            // No complaints
+
+            if (complaints.length === 0) {
+
+                table.innerHTML = `
+                    <tr>
+
+                        <td colspan="7">
+
+                            <div class="empty-message">
+
+                                <div>📭</div>
+
+                                <p>
+                                    No complaints have been submitted yet.
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            // Display complaints
+
+            table.innerHTML = "";
+
+
+            complaints.forEach(function (complaint, index) {
+
+                const row =
+                    document.createElement("tr");
+
+
+                row.innerHTML = `
+
+                    <td>
+                        <span class="complaint-id">
+                            ${complaint.id}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${complaint.name}
+                    </td>
+
+                    <td>
+                        ${complaint.category}
+                    </td>
+
+                    <td>
+                        ${complaint.location}
+                    </td>
+
+                    <td>
+                        <span class="priority">
+                            ${complaint.priority}
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <select
+                            class="status-select"
+                            onchange="updateStatus(${index}, this.value)"
+                        >
+
+                            <option value="Pending"
+                                ${complaint.status === "Pending" ? "selected" : ""}>
+                                Pending
+                            </option>
+
+                            <option value="In Progress"
+                                ${complaint.status === "In Progress" ? "selected" : ""}>
+                                In Progress
+                            </option>
+
+                            <option value="Resolved"
+                                ${complaint.status === "Resolved" ? "selected" : ""}>
+                                Resolved
+                            </option>
+
+                        </select>
+
+                    </td>
+
+                    <td>
+                        ${complaint.date || "N/A"}
+                    </td>
+
+                `;
+
+
+                table.appendChild(row);
+
+            });
+
+        }
+
+
+        // Update complaint status
+
+        function updateStatus(index, newStatus) {
+
+            const complaints =
+                JSON.parse(
+                    localStorage.getItem("smartCityComplaints")
+                ) || [];
+
+
+            if (!complaints[index]) {
+                return;
+            }
+
+
+            complaints[index].status = newStatus;
+
+
+            localStorage.setItem(
+                "smartCityComplaints",
+                JSON.stringify(complaints)
+            );
+
+
+            // Keep latest complaint storage synchronized
+
+            const latestComplaint =
+                JSON.parse(
+                    localStorage.getItem("smartCityComplaint")
+                );
+
+
+            if (
+                latestComplaint &&
+                latestComplaint.id === complaints[index].id
+            ) {
+
+                latestComplaint.status = newStatus;
+
+                localStorage.setItem(
+                    "smartCityComplaint",
+                    JSON.stringify(latestComplaint)
+                );
+
+            }
+
+
+            loadComplaints();
+
+        }
+
+
+        // Load complaints when page opens
+
+        loadComplaints();
+
+    </script>
+
+    <script src="JS/theme.js"></script>
+</body>
+
+</html>

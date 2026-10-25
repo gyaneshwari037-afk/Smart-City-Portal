@@ -1,0 +1,8 @@
+{
+  "name": "smart-city-portal",
+  "version": "1.0.0",
+  "description": "Smart City Portal",
+  "scripts": {
+    "dev": "npx live-server --port=8000"
+  }
+}

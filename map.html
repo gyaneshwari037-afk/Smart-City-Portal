@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City Map</title>
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+    }
+    header {
+        background: #123c69;
+        color: white;
+        padding: 18px 30px;
+        text-align: center;
+    }
+    header h1 {
+        margin: 0;
+    }
+    .filters {
+        padding: 15px;
+        text-align: center;
+        background: white;
+    }
+    .filters button {
+        border: none;
+        padding: 10px 16px;
+        margin: 5px;
+        border-radius: 20px;
+        cursor: pointer;
+        background: #e3eaf2;
+    }
+    .filters button:hover {
+        background: #123c69;
+        color: white;
+    }
+    #map {
+        height: 650px;
+        width: 100%;
+    }
+    .map-search {
+padding: 18px;
+background: #ffffff;
+text-align: center;
+}
+
+.map-search input {
+width: min(60%, 450px);
+padding: 12px 15px;
+border: 1px solid #cbd5e1;
+border-radius: 8px;
+font-size: 15px;
+outline: none;
+}
+
+.map-search input:focus {
+border-color: #123c69;
+box-shadow: 0 0 0 3px rgba(18, 60, 105, 0.12);
+}
+
+.map-search button {
+padding: 12px 16px;
+margin: 5px;
+border: none;
+border-radius: 8px;
+background: #123c69;
+color: white;
+cursor: pointer;
+}
+
+.map-search button:hover {
+background: #20558a;
+}
+
+#mapSearchResults {
+max-width: 650px;
+margin: 10px auto 0;
+text-align: left;
+}
+
+.map-search-result {
+display: block;
+width: 100%;
+padding: 10px;
+margin-top: 5px;
+border: 1px solid #e2e8f0;
+border-radius: 6px;
+background: #f8fafc;
+color: #123c69;
+text-align: left;
+cursor: pointer;
+}
+
+.map-search-result:hover {
+background: #eaf2fb;
+}
+
+@media (max-width: 600px) {
+.map-search input {
+width: 90%;
+box-sizing: border-box;
+}
+}
+.my-location-container {
+padding: 12px 18px;
+background: #ffffff;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+gap: 12px;
+}
+
+#myLocationButton {
+padding: 12px 20px;
+border: none;
+border-radius: 8px;
+background: #123c69;
+color: white;
+font-size: 15px;
+font-weight: bold;
+cursor: pointer;
+}
+
+#myLocationButton:hover {
+background: #20558a;
+}
+
+#myLocationMessage {
+font-size: 14px;
+color: #334155;
+}
+.place-popup {
+min-width: 200px;
+max-width: 280px;
+font-family: Arial, sans-serif;
+line-height: 1.5;
+}
+
+.place-popup h3 {
+margin: 0 0 10px;
+color: #123c69;
+font-size: 17px;
+}
+
+.place-popup p {
+margin: 6px 0;
+overflow-wrap: anywhere;
+}
+
+.place-popup a {
+display: inline-block;
+margin-top: 8px;
+color: #145da0;
+font-weight: bold;
+text-decoration: none;
+}
+
+.place-popup a:hover {
+text-decoration: underline;
+}
+
+
+
+</style>
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>.
+<body>
+<header>
+    <h1>Smart City Map</h1>
+    <p>Find important city services near you</p>
+</header>
+
+<div class="filters">
+    <button onclick="showServices('all')">All</button>
+    <button onclick="showServices('hospital')">Hospitals</button>
+    <button onclick="showServices('police')">Police</button>
+    <button onclick="showServices('fire')">Fire Stations</button>
+    <button onclick="showServices('transport')">Transport</button>
+    <button onclick="showServices('water')">Water</button>
+    <button onclick="showServices('electricity')">Electricity</button>
+    <button onclick="showServices('waste')">Waste</button>
+    <button onclick="showServices('park')">Parks</button>
+    <button onclick="showServices('public')">Education & Public Services</button>
+</div>
+<p id="liveMapStatus" role="status" aria-live="polite" style="margin: 10px 16px; font-size: 0.95rem;">Loading mapped locations from OpenStreetMap…</p>
+<!-- LOCATION SEARCH BAR -->
+
+<div class="map-search">
+    <input
+        type="text"
+        id="mapSearchInput"
+        placeholder="🔎 Search hospitals, parks, transport..."
+        aria-label="Search city locations"
+        autocomplete="off"
+    >
+    <button type="button" id="mapSearchButton">Search</button>
+    <button type="button" id="mapClearButton">Clear</button>
+    <div id="mapSearchResults" role="status"></div>
+</div>
+<div class="my-location-container">
+    <button type="button" id="myLocationButton">
+        📍 My Location
+    </button>
+    <span id="myLocationMessage" role="status"></span>
+</div>
+
+
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    const map = L.map('map').setView([17.6868, 83.2185], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+   const services = [
+{
+    name: "Apollo Hospitals - Ramnagar",
+    type: "hospital",
+    lat: 17.7200,
+    lng: 83.3070,
+    info: "Waltair Main Road, Ram Nagar, Visakhapatnam",
+    rating: "4.5",
+    phone: "+91 891 286 7777",
+    hours: "Open 24 hours",
+    website: "https://www.apollohospitals.com/",
+    services: "Emergency Care, Cardiology, Neurology, Orthopaedics, Diagnostics"
+},
+{
+    name: "Apollo Hospitals Health City - Arilova",
+    type: "hospital",
+    lat: 17.7700,
+    lng: 83.2500,
+    info: "Plot No. 1, Arilova, Chinagadali, Visakhapatnam, Andhra Pradesh 530040",
+    rating: "4.5",
+    phone: "08062972806",
+    hours: "Emergency services available 24 hours",
+    website: "https://www.apollohospitals.com/hospitals/apollo-hospitals-health-city-arilova-vizag",
+    services: "Cardiology, Neurology, Nephrology, Orthopaedics, Gastroenterology, Critical Care and Emergency Medicine"
+},
+{
+name: "CARE Hospitals - Ram Nagar",
+type: "hospital",
+lat: 17.7190,
+lng: 83.3060,
+info: "Waltair Main Road, Ram Nagar, Visakhapatnam"
+},
+{
+name: "CARE Hospitals Health City - Arilova",
+type: "hospital",
+lat: 17.7700,
+lng: 83.2500,
+info: "Health City, Arilova, Visakhapatnam"
+},
+{
+name: "King George Hospital",
+type: "hospital",
+lat: 17.7050,
+lng: 83.3030,
+info: "KGH Down Road, Maharani Peta, Visakhapatnam"
+},
+{
+name: "Indus Hospitals",
+type: "hospital",
+lat: 17.7100,
+lng: 83.3020,
+info: "KGH Down Road, near Jagadamba Junction, Visakhapatnam"
+},
+{
+name: "Medicover Hospital",
+type: "hospital",
+lat: 17.7370,
+lng: 83.3210,
+info: "MVP Colony, Visakhapatnam"
+},
+{
+name: "KIMS Hospitals - Seethammadhara",
+type: "hospital",
+lat: 17.7390,
+lng: 83.3050,
+info: "Gurudwara Road, Seethammadhara, Visakhapatnam"
+},
+{
+name: "2 Town Police Station",
+type: "police",
+lat: 17.7175,
+lng: 83.2995,
+info: "Daba Gardens, Allipuram, Visakhapatnam"
+},
+{
+name: "3 Town Police Station",
+type: "police",
+lat: 17.7215,
+lng: 83.3260,
+info: "Pedda Waltair, Visakhapatnam"
+},
+{
+name: "Dwaraka Nagar Police Station",
+type: "police",
+lat: 17.7290,
+lng: 83.3100,
+info: "Seethammadara, Visakhapatnam"
+},
+{
+name: "Arilova Police Station",
+type: "police",
+lat: 17.7650,
+lng: 83.2520,
+info: "Arilova, Visakhapatnam"
+},
+{
+name: "Gajuwaka Police Station",
+type: "police",
+lat: 17.6865,
+lng: 83.2110,
+info: "Gajuwaka, Visakhapatnam"
+},
+{
+name: "Gopalapatnam Police Station",
+type: "police",
+lat: 17.7410,
+lng: 83.2150,
+info: "Gopalapatnam, Visakhapatnam"
+},
+{
+name: "P.M. Palem Police Station",
+type: "police",
+lat: 17.7990,
+lng: 83.3520,
+info: "Madhurawada, Visakhapatnam"
+},
+{
+name: "MVP Police Station",
+type: "police",
+lat: 17.7280,
+lng: 83.3260,
+info: "MVP Colony, Visakhapatnam"
+},
+
+{
+name: "Suryabagh Fire Station",
+type: "fire",
+lat: 17.7148,
+lng: 83.2975,
+info: "Jagadamba Junction, Visakhapatnam"
+},
+{
+name: "Marripalem Fire Station",
+type: "fire",
+lat: 17.7450,
+lng: 83.2410,
+info: "Kancharapalem, Visakhapatnam"
+},
+{
+name: "Pedagantyada Fire Station",
+type: "fire",
+lat: 17.66802,
+lng: 83.20782,
+info: "Pedagantyada, Gajuwaka, Visakhapatnam"
+},
+{
+name: "Central Fire Station - Vizag Port Authority",
+type: "fire",
+lat: 17.7075,
+lng: 83.3000,
+info: "Port Gymkhana Club Road, Jagadamba Junction, Visakhapatnam"
+},
+{
+name: "Fire Control Room",
+type: "fire",
+lat: 17.7145,
+lng: 83.2970,
+info: "Suryabagh, Daba Gardens, Visakhapatnam"
+},
+{
+name: "Fire Control Room",
+type: "fire",
+lat: 17.7145,
+lng: 83.2970,
+info: "Suryabagh, Daba Gardens, Visakhapatnam"
+},
+
+// ================= WATER SERVICES =================
+{
+name: "Water Supply Service - MVP Colony",
+type: "water",
+lat: 17.7280,
+lng: 83.3260,
+info: "MVP Colony, Visakhapatnam - Sample map location"
+},
+{
+name: "Water Supply Service - Gajuwaka",
+type: "water",
+lat: 17.6865,
+lng: 83.2110,
+info: "Gajuwaka, Visakhapatnam - Sample map location"
+},
+{
+name: "Water Supply Service - Madhurawada",
+type: "water",
+lat: 17.7990,
+lng: 83.3520,
+info: "Madhurawada, Visakhapatnam - Sample map location"
+},
+
+// ================= ELECTRICITY SERVICES =================
+{
+name: "Electricity Service - Seethammadhara",
+type: "electricity",
+lat: 17.7390,
+lng: 83.3050,
+info: "Seethammadhara, Visakhapatnam - Sample map location"
+},
+{
+name: "Electricity Service - Gajuwaka",
+type: "electricity",
+lat: 17.6865,
+lng: 83.2110,
+info: "Gajuwaka, Visakhapatnam - Sample map location"
+},
+{
+name: "Electricity Service - MVP Colony",
+type: "electricity",
+lat: 17.7280,
+lng: 83.3260,
+info: "MVP Colony, Visakhapatnam - Sample map location"
+},
+
+// ================= WASTE MANAGEMENT =================
+{
+name: "Waste Management - Dwaraka Nagar",
+type: "waste",
+lat: 17.7290,
+lng: 83.3100,
+info: "Dwaraka Nagar, Visakhapatnam - Sample map location"
+},
+{
+name: "Waste Collection - Gajuwaka",
+type: "waste",
+lat: 17.6865,
+lng: 83.2110,
+info: "Gajuwaka, Visakhapatnam - Sample map location"
+},
+{
+name: "Waste Management - Madhurawada",
+type: "waste",
+lat: 17.7990,
+lng: 83.3520,
+info: "Madhurawada, Visakhapatnam - Sample map location"
+},
+
+// ================= PARKS =================
+{
+name: "VUDA Park",
+type: "park",
+lat: 17.7145,
+lng: 83.3230,
+info: "Beach Road area, Visakhapatnam - Verify exact location"
+},
+{
+name: "City Central Park",
+type: "park",
+lat: 17.7230,
+lng: 83.3050,
+info: "Central Visakhapatnam - Verify exact location"
+},
+{
+name: "MVP Colony Park",
+type: "park",
+lat: 17.7350,
+lng: 83.3260,
+info: "MVP Colony, Visakhapatnam - Verify exact location"
+}
+
+
+];
+
+    let markers = [];
+    function displayServices(type) {
+        markers.forEach(marker => map.removeLayer(marker));
+        markers = [];
+        services.forEach(service => {
+            if (type === 'all' || service.type === type) {
+                const marker = L.marker([service.lat, service.lng])
+                    .addTo(map)
+                .bindPopup(function () {
+const popup = document.createElement("div");
+popup.className = "place-popup";
+function addText(tag, text) {
+    const element = document.createElement(tag);
+    element.textContent = text;
+    popup.appendChild(element);
+    return element;
+}
+
+addText("h3", service.name);
+addText("p", "Category: " + service.type);
+
+if (service.info) {
+    addText("p", "📍 " + service.info);
+}
+
+if (service.phone) {
+    const phoneLink = document.createElement("a");
+    phoneLink.href = "tel:" + service.phone;
+    phoneLink.textContent = "📞 " + service.phone;
+    popup.appendChild(phoneLink);
+}
+
+if (service.hours) {
+    addText("p", "🕒 " + service.hours);
+}
+
+if (service.rating) {
+    addText("p", "⭐ Rating: " + service.rating);
+}
+
+if (service.services) {
+    addText("p", "Services: " + service.services);
+}
+
+if (service.website) {
+    const websiteLink = document.createElement("a");
+    websiteLink.href = service.website;
+    websiteLink.target = "_blank";
+    websiteLink.rel = "noopener noreferrer";
+    websiteLink.textContent = "🌐 Visit Website";
+    popup.appendChild(websiteLink);
+    popup.appendChild(document.createElement("br"));
+}
+
+const directionsLink = document.createElement("a");
+directionsLink.href =
+    "https://www.google.com/maps/dir/?api=1&destination=" +
+    encodeURIComponent(service.lat + "," + service.lng);
+directionsLink.target = "_blank";
+directionsLink.rel = "noopener noreferrer";
+directionsLink.textContent = "🗺️ Get Directions";
+popup.appendChild(directionsLink);
+
+return popup;
+
+
+})
+    
+
+                markers.push(marker);
+            }
+        });
+    }
+    function showServices(type) {
+        displayServices(type);
+    }
+
+    // ========================================
+// LOAD REAL LOCATIONS FROM OPENSTREETMAP
+// ========================================
+
+let activeServiceType = "all";
+
+// Remember which category the user selected.
+const originalDisplayServices = displayServices;
+
+displayServices = function (type) {
+    activeServiceType = type;
+    originalDisplayServices(type);
+};
+
+async function loadLiveCityServices() {
+    const query = `
+        [out:json][timeout:45];
+        (
+          nwr(around:15000,17.6868,83.2185)["amenity"~"hospital|clinic|doctors|dentist|pharmacy|nursing_home|police|fire_station|ambulance_station|bus_station|bus_stop|taxi|ferry_terminal|parking|bicycle_rental|car_rental|recycling|waste_disposal|waste_transfer_station|recycling_centre|drinking_water|fountain|charging_station|school|college|university|kindergarten|library|post_office|townhall|community_centre|courthouse|public_building|toilets|marketplace"];
+          nwr(around:15000,17.6868,83.2185)["healthcare"~"hospital|clinic|doctor|dentist|pharmacy|centre|laboratory"];
+          nwr(around:15000,17.6868,83.2185)["highway"="bus_stop"];
+          nwr(around:15000,17.6868,83.2185)["public_transport"~"platform|station|stop_position"];
+          nwr(around:15000,17.6868,83.2185)["railway"~"station|halt|tram_stop"];
+          nwr(around:15000,17.6868,83.2185)["leisure"~"park|playground|garden|nature_reserve"];
+          nwr(around:15000,17.6868,83.2185)["man_made"~"water_works|reservoir_covered"];
+          nwr(around:15000,17.6868,83.2185)["office"~"water_utility|energy_supplier"];
+          nwr(around:15000,17.6868,83.2185)["power"~"plant|substation|generator"];
+          nwr(around:15000,17.6868,83.2185)["emergency"="ambulance_station"];
+        );
+        out center tags;
+    `;
+    try {
+        const overpassServers = [
+            "https://overpass-api.de/api/interpreter",
+            "https://overpass.kumi.systems/api/interpreter",
+            "https://overpass.private.coffee/api/interpreter"
+        ];
+
+        let response = null;
+        let lastError = null;
+
+        for (const server of overpassServers) {
+            try {
+                console.log("Trying OpenStreetMap server:", server);
+
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 55000);
+
+                try {
+                    response = await fetch(server, {
+                        method: "POST",
+                        body: new URLSearchParams({ data: query }),
+                        signal: controller.signal
+                    });
+                } finally {
+                    clearTimeout(timeoutId);
+                }
+
+                if (!response.ok) {
+                    throw new Error("Server returned HTTP " + response.status);
+                }
+
+                break;
+            } catch (error) {
+                lastError = error;
+                response = null;
+                console.warn("OpenStreetMap server failed:", server, error.message);
+            }
+        }
+
+        if (!response) {
+            throw new Error(
+                "All OpenStreetMap servers failed. Please try again later. " +
+                (lastError ? lastError.message : "")
+            );
+        }
+        const data = await response.json();
+
+if (!data || !Array.isArray(data.elements)) {
+    throw new Error("The OpenStreetMap server returned an invalid response.");
+}
+
+let addedCount = 0;
+
+        data.elements.forEach(function (place) {
+            const tags = place.tags || {};
+
+            const lat = place.lat ?? place.center?.lat;
+            const lng = place.lon ?? place.center?.lon;
+
+            if (lat == null || lng == null) return;
+
+            let type = "";
+
+            if (
+                ["hospital", "clinic", "doctors", "dentist", "pharmacy", "nursing_home", "ambulance_station"].includes(tags.amenity) ||
+                tags.emergency === "ambulance_station" ||
+                ["hospital", "clinic", "doctor", "dentist", "pharmacy", "centre", "laboratory"].includes(tags.healthcare)
+            ) {
+                type = "hospital";
+            } else if (tags.amenity === "police") {
+                type = "police";
+            } else if (tags.amenity === "fire_station") {
+                type = "fire";
+            } else if (
+                ["bus_station", "bus_stop", "taxi", "ferry_terminal", "parking", "bicycle_rental", "car_rental"].includes(tags.amenity) ||
+                tags.highway === "bus_stop" ||
+                ["platform", "station", "stop_position"].includes(tags.public_transport) ||
+                ["station", "halt", "tram_stop"].includes(tags.railway)
+            ) {
+                type = "transport";
+            } else if (["park", "playground", "garden", "nature_reserve"].includes(tags.leisure)) {
+                type = "park";
+            } else if (
+                ["water_works", "reservoir_covered"].includes(tags.man_made) ||
+                tags.office === "water_utility" ||
+                ["drinking_water", "fountain"].includes(tags.amenity)
+            ) {
+                type = "water";
+            } else if (
+                tags.office === "energy_supplier" ||
+                ["plant", "substation", "generator"].includes(tags.power) ||
+                tags.amenity === "charging_station"
+            ) {
+                type = "electricity";
+            } else if (
+                [
+                    "recycling",
+                    "waste_disposal",
+                    "waste_transfer_station",
+                    "recycling_centre"
+                ].includes(tags.amenity)
+            ) {
+                type = "waste";
+            } else if ([
+                "school", "college", "university", "kindergarten", "library", "post_office",
+                "townhall", "community_centre", "courthouse", "public_building", "toilets", "marketplace"
+            ].includes(tags.amenity)) {
+                type = "public";
+            }
+
+            if (!type) return;
+
+          const name = tags.name || tags["name:en"] || "Unnamed mapped location";
+const normalizedName = name.trim().toLowerCase();
+
+const duplicate = services.some(function (service) {
+    if (service.type !== type) return false;
+
+    const existingName = (service.name || "").trim().toLowerCase();
+
+    // Compare names only when both locations have real names.
+    const hasRealName =
+        normalizedName !== "unnamed mapped location" &&
+        existingName !== "" &&
+        existingName !== "unnamed mapped location";
+
+    const sameName = hasRealName && existingName === normalizedName;
+
+    // Also prevent duplicate markers at almost identical coordinates.
+    const sameLocation =
+        Number.isFinite(Number(service.lat)) &&
+        Number.isFinite(Number(service.lng)) &&
+        Math.abs(Number(service.lat) - Number(lat)) < 0.0001 &&
+        Math.abs(Number(service.lng) - Number(lng)) < 0.0001;
+
+    return sameName || sameLocation;
+
+});
+
+if (duplicate) return;
+            const address = [
+                tags["addr:housenumber"],
+                tags["addr:street"],
+                tags["addr:neighbourhood"] || tags["addr:suburb"],
+                tags["addr:city"] || "Visakhapatnam",
+                tags["addr:postcode"]
+            ].filter(Boolean).join(", ");
+
+            const phone =
+                tags.phone ||
+                tags["contact:phone"] ||
+                tags["contact:mobile"] ||
+                "";
+
+            const website =
+                tags.website ||
+                tags["contact:website"] ||
+                tags.url ||
+                "";
+
+            const email =
+                tags.email ||
+                tags["contact:email"] ||
+                "";
+
+            const operator =
+                tags.operator ||
+                tags.brand ||
+                "";
+
+            const openingHours =
+                tags.opening_hours ||
+                "";
+
+            const transportType = [
+                tags.amenity,
+                tags.highway,
+                tags.public_transport,
+                tags.railway
+            ].filter(Boolean).join(", ");
+
+            const facilityType = [
+                tags.amenity,
+                tags.leisure,
+                tags.office,
+                tags.shop,
+                tags.man_made,
+                tags.power,
+                tags.landuse
+            ].filter(Boolean).join(", ");
+
+            const accessibility = [
+                tags.wheelchair ? "Wheelchair access: " + tags.wheelchair : "",
+                tags.fee ? "Entry fee: " + tags.fee : "",
+                tags.internet_access ? "Internet access: " + tags.internet_access : ""
+            ].filter(Boolean).join(" | ");
+
+            services.push({
+                name: name,
+                type: type,
+                lat: lat,
+                lng: lng,
+
+                info: address || "Address not available in map data",
+
+                rating: "",
+
+                phone: phone,
+
+                email: email,
+
+                hours: openingHours || "Opening hours not listed",
+
+                website: website,
+
+                operator: operator,
+
+                services: [
+                    facilityType,
+                    transportType && type === "transport"
+                        ? "Transport: " + transportType
+                        : "",
+                    tags.description || "",
+                    tags["healthcare:speciality"] || "",
+                    tags["emergency"] || "",
+                    accessibility
+                ].filter(Boolean).join(" | ") ||
+                    "Additional details not available in map data",
+
+                source: "OpenStreetMap"
+            });
+
+            addedCount++;
+            });
+
+        // Refresh the currently selected category.
+        displayServices(activeServiceType);
+
+        const liveMapStatus = document.getElementById("liveMapStatus");
+        if (liveMapStatus) {
+            liveMapStatus.textContent = addedCount > 0
+                ? `Loaded mapped locations from OpenStreetMap. The map now includes live-query results and existing project locations. Some details may be missing if they are not listed in OpenStreetMap.`
+                : `No additional mapped locations were returned this time. Existing project locations are still available; please try again later.`;
+        }
+
+        console.log(
+            "OpenStreetMap locations added:",
+            addedCount
+        );
+
+    } catch (error) {
+        const liveMapStatus = document.getElementById("liveMapStatus");
+        if (liveMapStatus) {
+            liveMapStatus.textContent = "Live place data could not be loaded right now. The base map and existing locations remain available. Please try refreshing later.";
+        }
+        console.warn(
+            "Could not load live map locations:",
+            error.message
+        );
+    }
+    // ========================================
+// SMART CITY MAP LOCATION SEARCH
+// ========================================
+
+const mapSearchInput = document.getElementById("mapSearchInput");
+const mapSearchButton = document.getElementById("mapSearchButton");
+const mapClearButton = document.getElementById("mapClearButton");
+const mapSearchResults = document.getElementById("mapSearchResults");
+
+function searchMapLocations() {
+const query = mapSearchInput.value.trim().toLowerCase();
+
+
+mapSearchResults.replaceChildren();
+
+if (!query) {
+    mapSearchResults.textContent = "Please enter a location or service name.";
+    return;
+}
+
+const matches = services.filter(function (service) {
+    const searchableText = [
+        service.name,
+        service.type,
+        service.info
+    ].join(" ").toLowerCase();
+
+    return searchableText.includes(query);
+});
+
+if (matches.length === 0) {
+    mapSearchResults.textContent =
+        "No matching locations found. Try another name or category.";
+    return;
+}
+
+matches.slice(0, 30).forEach(function (service) {
+    const resultButton = document.createElement("button");
+
+    resultButton.type = "button";
+    resultButton.className = "map-search-result";
+    resultButton.textContent =
+        service.name + " — " + service.type;
+
+    resultButton.addEventListener("click", function () {
+        map.setView([service.lat, service.lng], 16);
+
+        // Open the matching marker's popup when available.
+        const matchingMarker = markers.find(function (marker) {
+            const position = marker.getLatLng();
+
+            return Math.abs(position.lat - Number(service.lat)) < 0.000001 &&
+                Math.abs(position.lng - Number(service.lng)) < 0.000001;
+        });
+
+        if (matchingMarker) {
+            matchingMarker.openPopup();
+        } else {
+            alert(
+                "Location found: " + service.name +
+                "\nThis location is not currently displayed as a map marker."
+            );
+        }
+    });
+
+    mapSearchResults.appendChild(resultButton);
+});
+
+if (matches.length > 30) {
+    const note = document.createElement("p");
+    note.textContent = "Showing the first 30 results. Add a more specific search.";
+    mapSearchResults.appendChild(note);
+}
+
+}
+
+mapSearchButton.addEventListener("click", searchMapLocations);
+
+mapSearchInput.addEventListener("keydown", function (event) {
+if (event.key === "Enter") {
+searchMapLocations();
+}
+});
+
+mapClearButton.addEventListener("click", function () {
+mapSearchInput.value = "";
+mapSearchResults.replaceChildren();
+mapSearchInput.focus();
+});
+
+}
+// ========================================
+// MY CURRENT LOCATION
+// ========================================
+
+const myLocationButton = document.getElementById("myLocationButton");
+const myLocationMessage = document.getElementById("myLocationMessage");
+
+let myLocationMarker = null;
+let myLocationCircle = null;
+
+myLocationButton.addEventListener("click", function () {
+if (!navigator.geolocation) {
+myLocationMessage.textContent =
+"Your browser does not support location access.";
+return;
+}
+myLocationMessage.textContent = "Finding your location...";
+myLocationButton.disabled = true;
+
+navigator.geolocation.getCurrentPosition(
+    function (position) {
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
+        const accuracy = position.coords.accuracy;
+
+        if (myLocationMarker) {
+            map.removeLayer(myLocationMarker);
+        }
+
+        if (myLocationCircle) {
+            map.removeLayer(myLocationCircle);
+        }
+
+        myLocationMarker = L.marker([userLat, userLng])
+            .addTo(map)
+            .bindPopup("<b>📍 You are here!</b>")
+            .openPopup();
+
+        myLocationCircle = L.circle([userLat, userLng], {
+            radius: accuracy,
+            color: "#2563eb",
+            fillOpacity: 0.12
+        }).addTo(map);
+
+        map.setView([userLat, userLng], 15);
+
+        myLocationMessage.textContent =
+            "Location found! Accuracy: approximately " +
+            Math.round(accuracy) + " metres.";
+
+        myLocationButton.disabled = false;
+    },
+
+    function (error) {
+        const messages = {
+            1: "Location permission denied. Allow location access in your browser.",
+            2: "Your location is currently unavailable. Please try again.",
+            3: "Location request timed out. Please try again."
+        };
+
+        myLocationMessage.textContent =
+            messages[error.code] || "Unable to find your location.";
+
+        myLocationButton.disabled = false;
+    },
+
+    {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 0
+    }
+);
+
+
+});
+
+
+loadLiveCityServices();
+  
+  const urlParams = new URLSearchParams(window.location.search);
+const selectedService = urlParams.get("service");
+
+if (selectedService) {
+    displayServices(selectedService);
+} else {
+    displayServices("all");
+}
+</script>
+    <script src="JS/theme.js"></script>
+</body>
+</html>

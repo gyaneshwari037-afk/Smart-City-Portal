@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartCity | Services Portal</title>
+
+<link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body class="page-home">
+<!-- ================= HEADER ================= -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+        <div class="logo-icon">🏙️</div>
+
+        <div>
+            <h2>SmartCity</h2>
+            <span>Services Portal</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="home.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="transport.html">Transport</a>
+        <a href="complaint.html">Complaints</a>
+        <a href="news.html">News & Events</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin Dashboard</a>
+    </nav>
+
+    <button id="themeToggle" class="theme-toggle" type="button"
+        aria-label="Switch to night mode">
+        🌙 Night Mode
+    </button>
+
+    <a href="login.html" class="login-btn">
+        👤 Login
+    </a>
+
+</header>
+
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="welcome-badge">
+            ✨ Welcome to SmartCity
+        </div>
+
+        <h1>
+            Smarter City.<br>
+            <span>Better Living.</span>
+        </h1>
+
+        <!-- SMART CITY SEARCH BAR -->
+
+        <div class="city-search">
+
+            <input
+                type="text"
+                id="citySearchInput"
+                placeholder="🔍 Search hospitals, water, transport..."
+                aria-label="Search city services"
+            >
+
+            <button type="button" id="citySearchButton">
+                Search
+            </button>
+
+            <div id="citySearchResults" class="city-search-results"></div>
+
+        </div>
+
+
+        <div class="hero-buttons">
+
+            <a href="services.html" class="primary-btn">
+                ✨ Explore City Services →
+            </a>
+
+            <a href="map.html" class="map-btn">
+                🗺️ Explore City Map →
+            </a>
+
+            <a href="report.html" class="complaint-btn">
+                📝 Report a Complaint →
+            </a>
+
+        </div>
+
+
+        <p>
+            One digital platform for accessing city services,
+            reporting issues and staying connected with your city.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="emergency.html" class="emergency-btn">
+                🚨 Report an Emergency
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- CITY IMAGE / ILLUSTRATION -->
+
+    <div class="city-image">
+
+        <div class="image-overlay">
+
+            <div class="city-title">
+                <h3>Smart City</h3>
+                <p>Connected • Safe • Sustainable</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CITY AT A GLANCE ================= -->
+
+<section class="glance">
+
+    <div class="section-heading">
+        <span>CITY AT A GLANCE</span>
+        <h2>Our City at a Glance</h2>
+    </div>
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <div class="stat-icon">🚌</div>
+            <div>
+                <h3>24+</h3>
+                <p>Bus Routes</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">💧</div>
+            <div>
+                <h3>100%</h3>
+                <p>Water Supply</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">⚡</div>
+            <div>
+                <h3>Reliable</h3>
+                <p>Electricity</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🚨</div>
+            <div>
+                <h3>24/7</h3>
+                <p>Emergency</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICES + UPDATES ================= -->
+
+<section class="services-section">
+
+    <div class="services-area">
+
+        <div class="section-title">
+
+            <div>
+                <span>EXPLORE CITY SERVICES</span>
+                <h2>Explore City Services</h2>
+            </div>
+
+            <a href="services.html">
+                View All →
+            </a>
+
+        </div>
+
+
+        <div class="service-grid">
+
+            <a href="water.html" class="service-card">
+
+                <div class="service-icon water">💧</div>
+
+                <h3>Water Services</h3>
+
+                <p>
+                    Water supply, billing and leakage reporting.
+                </p>
+
+            </a>
+
+
+            <a href="electricity.html" class="service-card">
+
+                <div class="service-icon electricity">⚡</div>
+
+                <h3>Electricity</h3>
+
+                <p>
+                    Power status, outages and electricity services.
+                </p>
+
+            </a>
+
+
+            <a href="waste.html" class="service-card">
+
+                <div class="service-icon waste">♻️</div>
+
+                <h3>Waste Management</h3>
+
+                <p>
+                    Garbage collection and recycling services.
+                </p>
+
+            </a>
+
+
+            <a href="roads.html" class="service-card">
+
+                <div class="service-icon roads">🛣️</div>
+
+                <h3>Roads & Infrastructure</h3>
+
+                <p>
+                    Report road problems and infrastructure issues.
+                </p>
+
+            </a>
+
+
+            <a href="parks.html" class="service-card">
+
+                <div class="service-icon parks">🌳</div>
+
+                <h3>Parks & Environment</h3>
+
+                <p>
+                    Explore parks and environmental initiatives.
+                </p>
+
+            </a>
+
+
+            <a href="transport.html" class="service-card">
+
+                <div class="service-icon transport">🚌</div>
+
+                <h3>Public Transport</h3>
+
+                <p>
+                    Bus routes, schedules and transport information.
+                </p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= LATEST UPDATES ================= -->
+
+    <aside class="updates">
+
+        <div class="updates-heading">
+
+            <div>
+                <span>LATEST UPDATES</span>
+                <h2>Latest Updates</h2>
+            </div>
+
+            <a href="news.html">View All</a>
+
+        </div>
+
+
+        <div class="update-item">
+
+            <div class="update-icon">🚌</div>
+
+            <div>
+                <h4>New bus route announced</h4>
+                <p>New route available from Monday.</p>
+                <small>Today</small>
+            </div>
+
+        </div>
+
+
+        <div class="update-item">
+
+            <div class="update-icon">💧</div>
+
+            <div>
+                <h4>Water maintenance scheduled</h4>
+                <p>Maintenance work in selected areas.</p>
+                <small>Tomorrow</small>
+            </div>
+
+        </div>
+
+
+        <div class="update-item">
+
+            <div class="update-icon">🌳</div>
+
+            <div>
+                <h4>City cleanliness drive</h4>
+                <p>Join the community cleanliness campaign.</p>
+                <small>2 days ago</small>
+            </div>
+
+        </div>
+
+    </aside>
+
+</section>
+
+
+<!-- ================= CALL TO ACTION ================= -->
+
+<section class="cta">
+
+    <div>
+        <span>SMART CITY SERVICES</span>
+
+        <h2>
+            One Portal.
+            <strong>Many Services.</strong>
+        </h2>
+
+        <p>
+            Access essential city services, report problems,
+            and stay connected with your city.
+        </p>
+    </div>
+
+    <a href="services.html" class="cta-button">
+        Explore All Services →
+    </a>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+
+        <div class="logo-icon">🏙️</div>
+
+        <div>
+            <h2>SmartCity</h2>
+            <p>Smart services for a better connected city.</p>
+        </div>
+
+    </div>
+
+
+    <div class="footer-links">
+        <a href="home.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="transport.html">Transport</a>
+        <a href="complaint.html">Complaints</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+
+    <div class="copyright">
+        © 2026 SmartCity Services Portal
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="JS/Script.js"></script>
+
+    <script src="JS/theme.js"></script>
+</body>
+</html>

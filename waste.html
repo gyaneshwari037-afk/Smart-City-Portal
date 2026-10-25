@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Waste Management | SmartCity</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+        [hidden] {
+            display: none !important;
+        }
+
+        /* Service panels */
+
+        .waste-panel {
+            width: 90%;
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 28px;
+            box-sizing: border-box;
+            background: #ffffff;
+            color: #263238;
+            border-radius: 16px;
+            box-shadow: 0 5px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .waste-panel h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .waste-panel p {
+            line-height: 1.7;
+        }
+
+        .waste-panel label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .waste-panel input,
+        .waste-panel select,
+        .waste-panel textarea {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            font: inherit;
+            background: #ffffff;
+        }
+
+        .waste-panel button,
+        .waste-back-button,
+        .waste-map-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #26834a;
+            color: #ffffff;
+            font: inherit;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .waste-panel button:hover,
+        .waste-back-button:hover,
+        .waste-map-link:hover {
+            background: #176735;
+        }
+
+        #wasteDetails {
+            min-height: 65vh;
+            padding-top: 25px;
+            padding-bottom: 45px;
+        }
+
+        .waste-back-button {
+            margin-left: 4%;
+        }
+
+        .waste-result {
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 8px;
+            background: #eef8ef;
+            overflow-wrap: anywhere;
+            line-height: 1.7;
+        }
+
+        .waste-notice {
+            padding: 12px;
+            border-left: 4px solid #e6aa35;
+            border-radius: 5px;
+            background: #fff8e6;
+        }
+
+        .waste-history-item {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #e1e7eb;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .waste-history-item p {
+            margin-bottom: 0;
+        }
+
+        .waste-guide-item {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 10px;
+            background: #f2f8f2;
+            border-left: 4px solid #26834a;
+        }
+
+        .waste-guide-item h4 {
+            margin: 0 0 8px;
+        }
+
+        .waste-guide-item p {
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .waste-panel {
+                padding: 20px;
+            }
+
+            .waste-back-button {
+                margin-left: 5%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <header class="navbar">
+
+        <div class="logo-area">
+            <div class="logo-icon">🏙️</div>
+
+            <div>
+                <h2>SmartCity</h2>
+                <span>Services Portal</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="index.html#transport">Transport</a>
+            <a href="index.html#complaints">Complaints</a>
+            <a href="index.html#news">News & Events</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <a href="login.html" class="login-btn" id="authNav">
+            Citizen Login
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="services-hero" id="wasteHero">
+
+        <div class="hero-overlay">
+
+            <span class="small-title">WASTE MANAGEMENT</span>
+
+            <h1>
+                Cleaner City.
+                <span>Greener Future.</span>
+            </h1>
+
+            <p>
+                Manage waste responsibly, report garbage problems,
+                discover recycling practices and help make our city
+                cleaner, healthier and more sustainable.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN DASHBOARD ================= -->
+
+    <section class="full-section" id="wasteDashboard">
+
+        <div class="section-heading">
+
+            <span>SMART WASTE MANAGEMENT</span>
+
+            <h2>
+                A Cleaner City
+                <strong>Starts With Us.</strong>
+            </h2>
+
+            <p>
+                Choose a service below to manage waste-related
+                activities through the SmartCity Portal.
+            </p>
+
+        </div>
+
+
+        <div class="detail-grid">
+
+            <!-- 1. COLLECTION SCHEDULE -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🗑️</div>
+
+                <h3>Waste Collection Schedule</h3>
+
+                <p>
+                    View an illustrative waste collection
+                    schedule for your area.
+                </p>
+
+                <button type="button"
+                        onclick="openWasteService('schedule')">
+                    View Schedule →
+                </button>
+
+            </div>
+
+
+            <!-- 2. REPORT GARBAGE -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">📢</div>
+
+                <h3>Report Garbage</h3>
+
+                <p>
+                    Report overflowing bins, roadside garbage
+                    and other waste-related issues.
+                </p>
+
+                <button type="button"
+                        onclick="openWasteService('report')">
+                    Report Now →
+                </button>
+
+            </div>
+
+
+            <!-- 3. RECYCLING GUIDE -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">♻️</div>
+
+                <h3>Recycling Guide</h3>
+
+                <p>
+                    Learn how to separate recyclable,
+                    organic and other waste.
+                </p>
+
+                <button type="button"
+                        onclick="openWasteService('recycling')">
+                    Explore Guide →
+                </button>
+
+            </div>
+
+
+            <!-- 4. NEARBY FACILITIES -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">📍</div>
+
+                <h3>Nearby Waste Facilities</h3>
+
+                <p>
+                    Open the SmartCity map to explore
+                    available waste-related locations.
+                </p>
+
+                <button type="button"
+                        onclick="openWasteService('locations')">
+                    Find Locations →
+                </button>
+
+            </div>
+
+
+            <!-- 5. PICKUP REQUEST -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🚛</div>
+
+                <h3>Request Waste Pickup</h3>
+
+                <p>
+                    Create a demonstration request for
+                    bulky or accumulated waste collection.
+                </p>
+
+                <button type="button"
+                        onclick="openWasteService('pickup')">
+                    Request Pickup →
+                </button>
+
+            </div>
+
+
+            <!-- 6. SUPPORT -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">📞</div>
+
+                <h3>Waste Management Support</h3>
+
+                <p>
+                    Submit a support request and review
+                    previously saved demonstration requests.
+                </p>
+
+                <button type="button"
+                        onclick="openWasteService('support')">
+                    Get Help →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SERVICE DETAILS ================= -->
+
+    <section id="wasteDetails" class="full-section" hidden>
+
+        <button type="button"
+                class="waste-back-button"
+                onclick="backToWasteServices()">
+            ← Back to Waste Services
+        </button>
+
+        <div class="section-heading">
+
+            <span>SMARTCITY WASTE MANAGEMENT</span>
+
+            <h2 id="wasteDetailTitle">Waste Service</h2>
+
+            <p id="wasteDetailDescription"></p>
+
+        </div>
+
+
+        <!-- ================= 1. COLLECTION SCHEDULE ================= -->
+
+        <div id="wasteSchedulePanel" class="waste-panel" hidden>
+
+            <h3>🗑️ Waste Collection Schedule</h3>
+
+            <p class="waste-notice">
+                The schedules below are sample demonstration data.
+                They are not official municipal collection timings.
+            </p>
+
+            <label for="wasteScheduleArea">
+                Select Your Area
+            </label>
+
+            <select id="wasteScheduleArea">
+
+                <option value="">Choose your area</option>
+                <option value="Ramnagar">Ramnagar</option>
+                <option value="Madhurawada">Madhurawada</option>
+                <option value="Gajuwaka">Gajuwaka</option>
+                <option value="Arilova">Arilova</option>
+                <option value="Visakhapatnam">Other Visakhapatnam Areas</option>
+
+            </select>
+
+            <button type="button" onclick="showWasteSchedule()">
+                Check Schedule
+            </button>
+
+            <div id="wasteScheduleResult"
+                 class="waste-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 2. REPORT GARBAGE ================= -->
+
+        <div id="wasteReportPanel" class="waste-panel" hidden>
+
+            <h3>📢 Report a Garbage Problem</h3>
+
+            <p>
+                Use this form to create a demonstration report
+                about a waste-related problem in your area.
+            </p>
+
+            <form id="wasteReportForm">
+
+                <label for="wasteReportName">
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="wasteReportName"
+                    required
+                    maxlength="100"
+                    placeholder="Enter your name">
+
+                <label for="wasteReportArea">
+                    Area
+                </label>
+
+                <input
+                    type="text"
+                    id="wasteReportArea"
+                    required
+                    maxlength="100"
+                    placeholder="Enter your area">
+
+                <label for="wasteReportLocation">
+                    Exact Location or Landmark
+                </label>
+
+                <input
+                    type="text"
+                    id="wasteReportLocation"
+                    required
+                    maxlength="200"
+                    placeholder="Enter the location">
+
+                <label for="wasteReportType">
+                    Type of Problem
+                </label>
+
+                <select id="wasteReportType" required>
+
+                    <option value="">Select problem</option>
+                    <option value="Overflowing garbage bin">
+                        Overflowing garbage bin
+                    </option>
+
+                    <option value="Garbage on the road">
+                        Garbage on the road
+                    </option>
+
+                    <option value="Missed waste collection">
+                        Missed waste collection
+                    </option>
+
+                    <option value="Illegal dumping">
+                        Illegal dumping
+                    </option>
+
+                    <option value="Other waste problem">
+                        Other waste problem
+                    </option>
+
+                </select>
+
+                <label for="wasteReportDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="wasteReportDescription"
+                    rows="4"
+                    required
+                    maxlength="1000"
+                    placeholder="Describe the problem"></textarea>
+
+                <button type="submit">
+                    Submit Demo Report
+                </button>
+
+            </form>
+
+            <div id="wasteReportResult"
+                 class="waste-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 3. RECYCLING GUIDE ================= -->
+
+        <div id="wasteRecyclingPanel" class="waste-panel" hidden>
+
+            <h3>♻️ Waste Segregation and Recycling Guide</h3>
+
+            <p>
+                Separating waste at its source helps improve
+                recycling and responsible disposal.
+            </p>
+
+            <div class="waste-guide-item">
+
+                <h4>🟢 Wet and Organic Waste</h4>
+
+                <p>
+                    Examples: fruit and vegetable scraps,
+                    leftover food and suitable garden waste.
+                    Keep it separate for appropriate organic
+                    waste processing or composting.
+                </p>
+
+            </div>
+
+            <div class="waste-guide-item">
+
+                <h4>🔵 Dry Recyclable Waste</h4>
+
+                <p>
+                    Examples: clean paper, cardboard, glass
+                    containers and accepted plastic packaging.
+                    Keep materials clean and dry where possible.
+                    Follow your local recycling rules.
+                </p>
+
+            </div>
+
+            <div class="waste-guide-item">
+
+                <h4>🔴 Household Hazardous Waste</h4>
+
+                <p>
+                    Examples: batteries, certain chemicals,
+                    paints and fluorescent lamps. Do not mix
+                    these with ordinary household waste.
+                    Use an appropriate authorized collection service.
+                </p>
+
+            </div>
+
+            <div class="waste-guide-item">
+
+                <h4>🟠 Electronic Waste</h4>
+
+                <p>
+                    Examples: old mobile phones, chargers,
+                    computers and electronic accessories.
+                    Use an authorized e-waste collection or
+                    recycling facility.
+                </p>
+
+            </div>
+
+            <div class="waste-guide-item">
+
+                <h4>🌱 Reduce, Reuse and Recycle</h4>
+
+                <p>
+                    Avoid unnecessary single-use items,
+                    reuse suitable products and separate
+                    recyclable materials before disposal.
+                </p>
+
+            </div>
+
+            <p class="waste-notice" style="margin-top: 20px;">
+                Waste categories and collection-bin colours can vary
+                by municipality. Follow your local authority's rules.
+            </p>
+
+        </div>
+
+
+        <!-- ================= 4. NEARBY FACILITIES ================= -->
+
+        <div id="wasteLocationsPanel" class="waste-panel" hidden>
+
+            <h3>📍 Nearby Waste Facilities</h3>
+
+            <p>
+                Open your existing SmartCity map to explore
+                waste and recycling locations included in its data.
+            </p>
+
+            <p class="waste-notice">
+                Map coverage depends on the available map data.
+                Some waste collection centres or recycling facilities
+                may not be listed.
+            </p>
+
+            <a href="map.html?service=waste"
+               class="waste-map-link">
+                Open SmartCity Map →
+            </a>
+
+        </div>
+
+
+        <!-- ================= 5. PICKUP REQUEST ================= -->
+
+        <div id="wastePickupPanel" class="waste-panel" hidden>
+
+            <h3>🚛 Request Waste Pickup</h3>
+
+            <p>
+                Submit a demonstration pickup request for
+                accumulated or bulky household waste.
+            </p>
+
+            <p class="waste-notice">
+                This form saves a demo request in your browser.
+                It does not dispatch a collection vehicle.
+            </p>
+
+            <form id="wastePickupForm">
+
+                <label for="pickupName">
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="pickupName"
+                    required
+                    maxlength="100"
+                    placeholder="Enter your name">
+
+                <label for="pickupArea">
+                    Area
+                </label>
+
+                <input
+                    type="text"
+                    id="pickupArea"
+                    required
+                    maxlength="100"
+                    placeholder="Enter your area">
+
+                <label for="pickupLocation">
+                    Pickup Location
+                </label>
+
+                <input
+                    type="text"
+                    id="pickupLocation"
+                    required
+                    maxlength="200"
+                    placeholder="Enter the pickup location">
+
+                <label for="pickupType">
+                    Type of Waste
+                </label>
+
+                <select id="pickupType" required>
+
+                    <option value="">Select waste type</option>
+                    <option value="Bulky household items">
+                        Bulky household items
+                    </option>
+
+                    <option value="Garden waste">
+                        Garden waste
+                    </option>
+
+                    <option value="Large cardboard collection">
+                        Large cardboard collection
+                    </option>
+
+                    <option value="Other permitted waste">
+                        Other permitted waste
+                    </option>
+
+                </select>
+
+                <label for="pickupDate">
+                    Preferred Pickup Date
+                </label>
+
+                <input
+                    type="date"
+                    id="pickupDate"
+                    required>
+
+                <label for="pickupNotes">
+                    Additional Information
+                </label>
+
+                <textarea
+                    id="pickupNotes"
+                    rows="3"
+                    maxlength="1000"
+                    placeholder="Optional details"></textarea>
+
+                <button type="submit">
+                    Submit Demo Request
+                </button>
+
+            </form>
+
+            <div id="wastePickupResult"
+                 class="waste-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 6. SUPPORT ================= -->
+
+        <div id="wasteSupportPanel" class="waste-panel" hidden>
+
+            <h3>📞 Waste Management Support</h3>
+
+            <p>
+                Create a demonstration support request
+                and review requests previously saved in this browser.
+            </p>
+
+            <form id="wasteSupportForm">
+
+                <label for="wasteSupportName">
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="wasteSupportName"
+                    required
+                    maxlength="100"
+                    placeholder="Enter your name">
+
+                <label for="wasteSupportArea">
+                    Area
+                </label>
+
+                <input
+                    type="text"
+                    id="wasteSupportArea"
+                    required
+                    maxlength="100"
+                    placeholder="Enter your area">
+
+                <label for="wasteSupportIssue">
+                    Describe Your Issue
+                </label>
+
+                <textarea
+                    id="wasteSupportIssue"
+                    rows="4"
+                    required
+                    maxlength="1000"
+                    placeholder="How can we help?"></textarea>
+
+                <button type="submit">
+                    Submit Demo Request
+                </button>
+
+            </form>
+
+            <div id="wasteSupportResult"
+                 class="waste-result"
+                 aria-live="polite"
+                 hidden></div>
+
+            <h3 style="margin-top: 30px;">
+                Previous Demo Requests
+            </h3>
+
+            <div id="wasteSupportHistory"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= AWARENESS SECTION ================= -->
+
+    <section class="full-section" id="wasteAwareness">
+
+        <div class="section-heading">
+
+            <span>BUILD A CLEANER COMMUNITY</span>
+
+            <h2>
+                Reduce Waste.
+                <strong>Protect Our Future.</strong>
+            </h2>
+
+            <p>
+                Small actions make a difference.
+                Separate waste, recycle responsibly,
+                avoid littering and help keep public spaces clean.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="wasteFooter">
+
+        <div class="footer-logo">
+            🏙️ SmartCity
+        </div>
+
+        <p>
+            Smart services for a cleaner and greener city.
+        </p>
+
+        <span>
+            © 2026 Smart City Services Portal
+        </span>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+        "use strict";
+
+
+        /* ================= SERVICE CONFIGURATION ================= */
+
+        const wastePanels = {
+            schedule: "wasteSchedulePanel",
+            report: "wasteReportPanel",
+            recycling: "wasteRecyclingPanel",
+            locations: "wasteLocationsPanel",
+            pickup: "wastePickupPanel",
+            support: "wasteSupportPanel"
+        };
+
+
+        const wasteTitles = {
+            schedule: "🗑️ Waste Collection Schedule",
+            report: "📢 Report Garbage",
+            recycling: "♻️ Recycling Guide",
+            locations: "📍 Nearby Waste Facilities",
+            pickup: "🚛 Request Waste Pickup",
+            support: "📞 Waste Management Support"
+        };
+
+
+        const wasteDescriptions = {
+            schedule: "View the sample collection schedule for your area.",
+            report: "Report garbage accumulation and waste-related problems.",
+            recycling: "Learn how to segregate and recycle waste responsibly.",
+            locations: "Explore waste-related locations on the SmartCity map.",
+            pickup: "Submit a demonstration request for waste pickup.",
+            support: "Submit and review demonstration support requests."
+        };
+
+
+        /* ================= LOCAL STORAGE HELPERS ================= */
+
+        function getWasteStorage(key) {
+            try {
+                const data = JSON.parse(localStorage.getItem(key) || "[]");
+
+                return Array.isArray(data) ? data : [];
+
+            } catch (error) {
+                return [];
+            }
+        }
+
+
+        function saveWasteStorage(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify(data));
+
+                return true;
+
+            } catch (error) {
+                return false;
+            }
+        }
+
+
+        /* ================= OPEN SERVICE ================= */
+
+        function openWasteService(service) {
+
+            const panelId = wastePanels[service];
+
+            if (!panelId) {
+                console.error("Unknown waste service:", service);
+                return;
+            }
+
+            /* Hide the main page */
+
+            document.getElementById("wasteHero").hidden = true;
+            document.getElementById("wasteDashboard").hidden = true;
+            document.getElementById("wasteAwareness").hidden = true;
+            document.getElementById("wasteFooter").hidden = true;
+
+            /* Hide all individual panels */
+
+            Object.values(wastePanels).forEach(function(id) {
+                document.getElementById(id).hidden = true;
+            });
+
+            /* Update service heading */
+
+            document.getElementById("wasteDetailTitle").textContent =
+                wasteTitles[service];
+
+            document.getElementById("wasteDetailDescription").textContent =
+                wasteDescriptions[service];
+
+            /* Show only the selected service */
+
+            document.getElementById("wasteDetails").hidden = false;
+            document.getElementById(panelId).hidden = false;
+
+            /* Load saved support history */
+
+            if (service === "support") {
+                displayWasteSupportHistory();
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+
+        /* ================= BACK TO DASHBOARD ================= */
+
+        function backToWasteServices() {
+
+            document.getElementById("wasteDetails").hidden = true;
+
+            document.getElementById("wasteHero").hidden = false;
+            document.getElementById("wasteDashboard").hidden = false;
+            document.getElementById("wasteAwareness").hidden = false;
+            document.getElementById("wasteFooter").hidden = false;
+
+            Object.values(wastePanels).forEach(function(id) {
+                document.getElementById(id).hidden = true;
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+
+        /* ================= COLLECTION SCHEDULE ================= */
+
+        function showWasteSchedule() {
+
+            const area =
+                document.getElementById("wasteScheduleArea").value;
+
+            const result =
+                document.getElementById("wasteScheduleResult");
+
+            result.hidden = false;
+
+            if (!area) {
+                result.textContent = "Please select your area.";
+                return;
+            }
+
+            /*
+               Sample timings only.
+               Replace them with verified municipal data
+               if an official schedule becomes available.
+            */
+
+            const schedules = {
+                Ramnagar: "Monday, Wednesday and Friday — 7:00 AM",
+                Madhurawada: "Tuesday, Thursday and Saturday — 7:00 AM",
+                Gajuwaka: "Monday, Wednesday and Friday — 8:00 AM",
+                Arilova: "Tuesday, Thursday and Saturday — 8:00 AM",
+                Visakhapatnam: "Please check your local municipal schedule."
+            };
+
+            result.textContent =
+                "Area: " + area + ". Sample Schedule: " +
+                schedules[area] +
+                ". This is illustrative information, not an official timetable.";
+        }
+
+
+        /* ================= REPORT GARBAGE ================= */
+
+        document.getElementById("wasteReportForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const report = {
+                    reference: "WST-" + Date.now().toString().slice(-6),
+
+                    name:
+                        document.getElementById("wasteReportName").value.trim(),
+
+                    area:
+                        document.getElementById("wasteReportArea").value.trim(),
+
+                    location:
+                        document.getElementById("wasteReportLocation").value.trim(),
+
+                    type:
+                        document.getElementById("wasteReportType").value,
+
+                    description:
+                        document.getElementById("wasteReportDescription").value.trim(),
+
+                    status: "Demo Report Submitted",
+
+                    date: new Date().toLocaleString()
+                };
+
+                const reports =
+                    getWasteStorage("smartCityWasteReports");
+
+                reports.push(report);
+
+                const result =
+                    document.getElementById("wasteReportResult");
+
+                result.hidden = false;
+
+                if (!saveWasteStorage("smartCityWasteReports", reports)) {
+
+                    result.textContent =
+                        "Unable to save your demo report in browser storage. Please try again.";
+
+                    return;
+                }
+
+                result.textContent =
+                    "Demo report saved successfully! Reference Number: " +
+                    report.reference +
+                    ". This report has not been sent to the municipal department.";
+
+                this.reset();
+            });
+
+
+        /* ================= REQUEST WASTE PICKUP ================= */
+
+        document.getElementById("wastePickupForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const pickupDate =
+                    document.getElementById("pickupDate").value;
+
+                const selectedDate = new Date(pickupDate + "T00:00:00");
+
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (
+                    !pickupDate ||
+                    Number.isNaN(selectedDate.getTime()) ||
+                    selectedDate < today
+                ) {
+                    const result =
+                        document.getElementById("wastePickupResult");
+
+                    result.hidden = false;
+
+                    result.textContent =
+                        "Please select today or a future date.";
+
+                    return;
+                }
+
+                const request = {
+                    reference: "PICK-" + Date.now().toString().slice(-6),
+
+                    name:
+                        document.getElementById("pickupName").value.trim(),
+
+                    area:
+                        document.getElementById("pickupArea").value.trim(),
+
+                    location:
+                        document.getElementById("pickupLocation").value.trim(),
+
+                    type:
+                        document.getElementById("pickupType").value,
+
+                    pickupDate: pickupDate,
+
+                    notes:
+                        document.getElementById("pickupNotes").value.trim(),
+
+                    status: "Demo Request Saved",
+
+                    date: new Date().toLocaleString()
+                };
+
+                const requests =
+                    getWasteStorage("smartCityWastePickups");
+
+                requests.push(request);
+
+                const result =
+                    document.getElementById("wastePickupResult");
+
+                result.hidden = false;
+
+                if (!saveWasteStorage("smartCityWastePickups", requests)) {
+
+                    result.textContent =
+                        "Unable to save your demo request in browser storage. Please try again.";
+
+                    return;
+                }
+
+                result.textContent =
+                    "Demo pickup request saved! Reference Number: " +
+                    request.reference +
+                    ". Preferred date: " + request.pickupDate +
+                    ". No collection vehicle has been dispatched.";
+
+                this.reset();
+            });
+
+
+        /* ================= WASTE SUPPORT ================= */
+
+        document.getElementById("wasteSupportForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const request = {
+                    reference: "HELP-" + Date.now().toString().slice(-6),
+
+                    name:
+                        document.getElementById("wasteSupportName").value.trim(),
+
+                    area:
+                        document.getElementById("wasteSupportArea").value.trim(),
+
+                    issue:
+                        document.getElementById("wasteSupportIssue").value.trim(),
+
+                    status: "Demo Request Saved",
+
+                    date: new Date().toLocaleString()
+                };
+
+                const requests =
+                    getWasteStorage("smartCityWasteSupport");
+
+                requests.push(request);
+
+                const result =
+                    document.getElementById("wasteSupportResult");
+
+                result.hidden = false;
+
+                if (!saveWasteStorage("smartCityWasteSupport", requests)) {
+
+                    result.textContent =
+                        "Unable to save your demo support request. Please try again.";
+
+                    return;
+                }
+
+                result.textContent =
+                    "Support request saved! Reference Number: " +
+                    request.reference +
+                    ". It has not been sent to a municipal support team.";
+
+                this.reset();
+
+                displayWasteSupportHistory();
+            });
+
+
+        /* ================= DISPLAY SUPPORT HISTORY ================= */
+
+        function displayWasteSupportHistory() {
+
+            const container =
+                document.getElementById("wasteSupportHistory");
+
+            const requests =
+                getWasteStorage("smartCityWasteSupport");
+
+            container.replaceChildren();
+
+            if (requests.length === 0) {
+
+                container.textContent =
+                    "No demo support requests have been submitted yet.";
+
+                return;
+            }
+
+            requests.slice().reverse().forEach(function(request) {
+
+                const item = document.createElement("div");
+                item.className = "waste-history-item";
+
+                const heading = document.createElement("strong");
+                heading.textContent = request.reference;
+
+                const area = document.createElement("p");
+                area.textContent = "Area: " + request.area;
+
+                const issue = document.createElement("p");
+                issue.textContent = "Issue: " + request.issue;
+
+                const date = document.createElement("p");
+                date.textContent = "Submitted: " + request.date;
+
+                const status = document.createElement("p");
+                status.textContent = "Status: " + request.status;
+
+                item.append(
+                    heading,
+                    area,
+                    issue,
+                    date,
+                    status
+                );
+
+                container.appendChild(item);
+            });
+        }
+
+    </script>
+
+
+    <!-- Authentication -->
+
+    <script src="JS/auth.js"></script>
+
+    <script src="JS/theme.js"></script>
+</body>
+
+</html>

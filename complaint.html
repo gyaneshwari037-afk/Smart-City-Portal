@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Complaints | SmartCity Services Portal</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/complaint.css">
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="navbar">
+
+        <div class="logo-area">
+            <div class="logo-icon">🏙️</div>
+
+            <div>
+                <h2>SmartCity</h2>
+                <span>Services Portal</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="transport.html">Transport</a>
+            <a href="complaint.html" class="active">Complaints</a>
+            <a href="news.html">News & Events</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <a href="dashboard.html" class="login-btn">
+            👤dashboard
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="complaints-hero">
+
+        <div class="complaints-hero-content">
+
+            <span class="eyebrow">
+                📝 CITIZEN SERVICE PORTAL
+            </span>
+
+            <h1>
+                Report an Issue.<br>
+                <span>Help Improve Your City.</span>
+            </h1>
+
+            <p>
+                Report problems in your area, register a complaint
+                and track its status through your SmartCity portal.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="complaints-main">
+
+        <div class="complaints-heading">
+
+            <span>COMPLAINT REGISTRATION</span>
+
+            <h2>How Can We Help You?</h2>
+
+            <p>
+                Submit your complaint with the correct details
+                so the issue can be recorded in the portal.
+            </p>
+
+        </div>
+
+
+        <!-- ================= SUCCESS MESSAGE ================= -->
+
+        <div
+            id="successMessage"
+            class="success-message"
+            role="status"
+            aria-live="polite"
+        >
+            <h3>✅ Complaint Submitted Successfully!</h3>
+
+            <p>
+                Your complaint has been saved in this browser.
+                Keep your complaint ID to track its status.
+            </p>
+
+            <p>Your Complaint ID:</p>
+
+            <div id="newComplaintId" class="success-id"></div>
+
+            <br>
+
+            <button
+                type="button"
+                class="primary-action"
+                id="trackNewComplaintButton"
+            >
+                Track This Complaint →
+            </button>
+        </div>
+
+
+        <!-- ================= COMPLAINT FORM ================= -->
+
+        <section class="complaint-card" id="complaintFormSection">
+
+            <h3>📝 Register a Complaint</h3>
+
+            <p class="track-description">
+                Fields marked with * are required.
+            </p>
+
+            <form id="complaintForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="citizenName">Full Name *</label>
+
+                        <input
+                            type="text"
+                            id="citizenName"
+                            name="citizenName"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                            maxlength="100"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Mobile Number *</label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your mobile number"
+                            autocomplete="tel"
+                            pattern="[0-9+\-\s()]{7,20}"
+                            title="Enter a valid mobile or contact number."
+                            required
+                            maxlength="20"
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="category">Complaint Category *</label>
+
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="Water">💧 Water Services</option>
+                            <option value="Electricity">⚡ Electricity</option>
+                            <option value="Waste">♻️ Waste Management</option>
+                            <option value="Roads">🛣️ Roads & Infrastructure</option>
+                            <option value="Parks">🌳 Parks & Environment</option>
+                            <option value="Transport">🚌 Public Transport</option>
+                            <option value="Healthcare">🏥 Healthcare</option>
+                            <option value="Public Safety">🚔 Public Safety</option>
+                            <option value="Other">📋 Other</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="location">Problem Location *</label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="Enter area, street or landmark"
+                            required
+                            maxlength="200"
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="description">Describe the Issue *</label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Explain the problem clearly..."
+                        required
+                        maxlength="3000"
+                    ></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="priority">Priority *</label>
+
+                    <select id="priority" name="priority" required>
+                        <option value="">Select priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+
+                <div class="form-note">
+                    💡 Please provide accurate information.
+                    This demonstration saves complaints in your browser.
+                    It does not automatically send a complaint to a
+                    municipal department.
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-action full-width-button"
+                >
+                    Submit Complaint →
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= TRACK COMPLAINT ================= -->
+
+        <section class="complaint-card" id="trackComplaintSection">
+
+            <h3>🔎 Track Your Complaint</h3>
+
+            <p class="track-description">
+                Enter the complaint ID you received after submitting
+                your complaint to view its saved details and status.
+            </p>
+
+            <form id="trackComplaintForm">
+
+                <div class="form-group">
+                    <label for="trackComplaintId">Complaint ID</label>
+
+                    <input
+                        type="text"
+                        id="trackComplaintId"
+                        placeholder="Example: SC123456"
+                        maxlength="30"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="primary-action"
+                >
+                    Track Complaint →
+                </button>
+
+            </form>
+
+            <div
+                id="trackingResult"
+                class="tracking-result"
+                aria-live="polite"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="complaints-footer">
+
+        <h2>🏙️ SmartCity</h2>
+
+        <p>
+            Smart services for a better connected city.
+        </p>
+
+        <div class="footer-navigation">
+            <a href="home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="transport.html">Transport</a>
+            <a href="complaint.html">Complaints</a>
+            <a href="news.html">News & Events</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="copyright">
+            © 2026 SmartCity Services Portal
+        </div>
+
+        <p>
+            Demo notice: complaints are stored locally in this browser.
+        </p>
+
+    </footer>
+
+    <script src="JS/theme.js"></script>
+</body>
+</html>

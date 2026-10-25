@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parks & Environment | SmartCity</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+        [hidden] {
+            display: none !important;
+        }
+
+        .park-panel {
+            width: 90%;
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 28px;
+            box-sizing: border-box;
+            background: #fff;
+            color: #263238;
+            border-radius: 16px;
+            box-shadow: 0 5px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .park-panel h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .park-panel p {
+            line-height: 1.7;
+        }
+
+        .park-panel label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .park-panel input,
+        .park-panel select,
+        .park-panel textarea {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+            font: inherit;
+        }
+
+        .park-panel button,
+        .park-back-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #27834a;
+            color: #fff;
+            font: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .park-panel button:hover,
+        .park-back-button:hover {
+            background: #195c32;
+        }
+
+        #parkDetails {
+            min-height: 65vh;
+            padding-top: 25px;
+            padding-bottom: 45px;
+        }
+
+        .park-back-button {
+            margin-left: 4%;
+        }
+
+        .park-result {
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 8px;
+            background: #edf8ef;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .park-notice {
+            padding: 12px;
+            border-left: 4px solid #d4a72c;
+            border-radius: 5px;
+            background: #fff8e6;
+        }
+
+        .park-info-card {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 10px;
+            background: #f0f8f1;
+            border-left: 4px solid #27834a;
+        }
+
+        .park-info-card h4 {
+            margin: 0 0 8px;
+        }
+
+        .park-info-card p {
+            margin: 0;
+        }
+
+        .park-history-item {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #e1e7eb;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .park-history-item p {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .park-panel {
+                padding: 20px;
+            }
+
+            .park-back-button {
+                margin-left: 5%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <header class="navbar">
+
+        <div class="logo-area">
+            <div class="logo-icon">🏙️</div>
+
+            <div>
+                <h2>SmartCity</h2>
+                <span>Services Portal</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="index.html#transport">Transport</a>
+            <a href="index.html#complaints">Complaints</a>
+            <a href="index.html#news">News & Events</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <a href="login.html" class="login-btn" id="authNav">
+            Citizen Login
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="services-hero" id="parkHero">
+
+        <div class="hero-overlay">
+
+            <span class="small-title">PARKS & ENVIRONMENT</span>
+
+            <h1>
+                Greener Parks.
+                <span>Cleaner City.</span>
+            </h1>
+
+            <p>
+                Explore green spaces, learn about environmental
+                protection, report park maintenance problems and
+                help make our city cleaner and greener.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN DASHBOARD ================= -->
+
+    <section class="full-section" id="parkDashboard">
+
+        <div class="section-heading">
+
+            <span>PARKS & ENVIRONMENT CENTER</span>
+
+            <h2>
+                Protect Nature.
+                <strong>Improve Our City.</strong>
+            </h2>
+
+            <p>
+                Choose a service to explore park information,
+                environmental awareness and maintenance reporting.
+            </p>
+
+        </div>
+
+        <div class="detail-grid">
+
+            <!-- 1. PARK INFORMATION -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🌳</div>
+
+                <h3>Park Information</h3>
+
+                <p>
+                    Explore sample information about parks and
+                    green spaces in different areas.
+                </p>
+
+                <button type="button"
+                        onclick="openParkService('parks')">
+                    Explore Parks →
+                </button>
+
+            </div>
+
+
+            <!-- 2. REPORT PARK PROBLEM -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🛝</div>
+
+                <h3>Report Park Problems</h3>
+
+                <p>
+                    Report damaged benches, broken playground
+                    equipment and park maintenance issues.
+                </p>
+
+                <button type="button"
+                        onclick="openParkService('report')">
+                    Report Problem →
+                </button>
+
+            </div>
+
+
+            <!-- 3. ENVIRONMENTAL COMPLAINTS -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🌱</div>
+
+                <h3>Environmental Complaints</h3>
+
+                <p>
+                    Report littering, pollution concerns and
+                    other environmental issues.
+                </p>
+
+                <button type="button"
+                        onclick="openParkService('environment')">
+                    Report Issue →
+                </button>
+
+            </div>
+
+
+            <!-- 4. TREE PLANTATION -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🌿</div>
+
+                <h3>Tree Plantation</h3>
+
+                <p>
+                    Learn about tree planting, protecting trees
+                    and increasing green cover.
+                </p>
+
+                <button type="button"
+                        onclick="openParkService('trees')">
+                    Explore Green Initiatives →
+                </button>
+
+            </div>
+
+
+            <!-- 5. ENVIRONMENTAL AWARENESS -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">♻️</div>
+
+                <h3>Environmental Awareness</h3>
+
+                <p>
+                    Discover practical ways to reduce waste,
+                    save water and protect nature.
+                </p>
+
+                <button type="button"
+                        onclick="openParkService('awareness')">
+                    Learn More →
+                </button>
+
+            </div>
+
+
+            <!-- 6. PARKS SUPPORT -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">📞</div>
+
+                <h3>Parks Support</h3>
+
+                <p>
+                    Submit a support request and review
+                    previously saved demo requests.
+                </p>
+
+                <button type="button"
+                        onclick="openParkService('support')">
+                    Get Help →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SERVICE DETAILS ================= -->
+
+    <section id="parkDetails" class="full-section" hidden>
+
+        <button type="button"
+                class="park-back-button"
+                onclick="backToParkServices()">
+            ← Back to Parks & Environment
+        </button>
+
+        <div class="section-heading">
+
+            <span>SMARTCITY GREEN SERVICES</span>
+
+            <h2 id="parkDetailTitle">Parks & Environment</h2>
+
+            <p id="parkDetailDescription"></p>
+
+        </div>
+
+
+        <!-- ================= 1. PARK INFORMATION ================= -->
+
+        <div id="parkParksPanel" class="park-panel" hidden>
+
+            <h3>🌳 Park Information</h3>
+
+            <p class="park-notice">
+                The information below is illustrative. This page
+                does not provide verified opening hours, live
+                availability or current park maintenance status.
+            </p>
+
+            <label for="parkArea">Select Area</label>
+
+            <select id="parkArea">
+                <option value="">Choose your area</option>
+                <option value="Ramnagar">Ramnagar</option>
+                <option value="Madhurawada">Madhurawada</option>
+                <option value="Gajuwaka">Gajuwaka</option>
+                <option value="Arilova">Arilova</option>
+                <option value="Visakhapatnam">Other Visakhapatnam Areas</option>
+            </select>
+
+            <button type="button" onclick="showParkInformation()">
+                View Park Information
+            </button>
+
+            <div id="parkInformationResult"
+                 class="park-result"
+                 aria-live="polite"
+                 hidden></div>
+
+            <div class="park-info-card">
+                <h4>🌲 Green Spaces</h4>
+                <p>
+                    Public green spaces can provide places for
+                    relaxation, walking and enjoying nature.
+                </p>
+            </div>
+
+            <div class="park-info-card">
+                <h4>🚶 Responsible Park Visits</h4>
+                <p>
+                    Keep pathways clear, use bins and respect
+                    plants, wildlife and park facilities.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ================= 2. PARK MAINTENANCE REPORT ================= -->
+
+        <div id="parkReportPanel" class="park-panel" hidden>
+
+            <h3>🛝 Report a Park Problem</h3>
+
+            <p>
+                Submit a demonstration report about a park
+                maintenance problem in your area.
+            </p>
+
+            <form id="parkReportForm">
+
+                <label for="parkReportName">Your Name</label>
+
+                <input
+                    type="text"
+                    id="parkReportName"
+                    name="name"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your name">
+
+                <label for="parkReportArea">Area</label>
+
+                <input
+                    type="text"
+                    id="parkReportArea"
+                    name="area"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your area">
+
+                <label for="parkReportLocation">
+                    Park Name or Landmark
+                </label>
+
+                <input
+                    type="text"
+                    id="parkReportLocation"
+                    name="location"
+                    maxlength="200"
+                    required
+                    placeholder="Enter park name or landmark">
+
+                <label for="parkReportType">
+                    Type of Problem
+                </label>
+
+                <select id="parkReportType" name="problem" required>
+                    <option value="">Select a problem</option>
+                    <option value="Damaged bench">Damaged bench</option>
+                    <option value="Broken playground equipment">Broken playground equipment</option>
+                    <option value="Damaged walking path">Damaged walking path</option>
+                    <option value="Park cleanliness">Park cleanliness</option>
+                    <option value="Damaged fencing">Damaged fencing</option>
+                    <option value="Damaged public facilities">Damaged public facilities</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="parkReportDescription">
+                    Describe the Problem
+                </label>
+
+                <textarea
+                    id="parkReportDescription"
+                    name="description"
+                    rows="4"
+                    maxlength="1000"
+                    required
+                    placeholder="Describe the problem"></textarea>
+
+                <button type="submit">
+                    Submit Demo Report
+                </button>
+
+            </form>
+
+            <div id="parkReportResult"
+                 class="park-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 3. ENVIRONMENTAL COMPLAINTS ================= -->
+
+        <div id="parkEnvironmentPanel" class="park-panel" hidden>
+
+            <h3>🌱 Environmental Complaints</h3>
+
+            <p>
+                Use this demonstration form to record an
+                environmental concern.
+            </p>
+
+            <p class="park-notice">
+                For immediate hazards or emergencies, contact the
+                appropriate local authorities directly. This form
+                does not notify any department.
+            </p>
+
+            <form id="environmentForm">
+
+                <label for="environmentName">Your Name</label>
+
+                <input
+                    type="text"
+                    id="environmentName"
+                    name="name"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your name">
+
+                <label for="environmentArea">Area</label>
+
+                <input
+                    type="text"
+                    id="environmentArea"
+                    name="area"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your area">
+
+                <label for="environmentLocation">
+                    Location or Landmark
+                </label>
+
+                <input
+                    type="text"
+                    id="environmentLocation"
+                    name="location"
+                    maxlength="200"
+                    required
+                    placeholder="Enter the location">
+
+                <label for="environmentType">
+                    Environmental Issue
+                </label>
+
+                <select id="environmentType" name="problem" required>
+                    <option value="">Select an issue</option>
+                    <option value="Littering">Littering</option>
+                    <option value="Air pollution concern">Air pollution concern</option>
+                    <option value="Water pollution concern">Water pollution concern</option>
+                    <option value="Illegal dumping concern">Illegal dumping concern</option>
+                    <option value="Tree damage concern">Tree damage concern</option>
+                    <option value="Noise pollution concern">Noise pollution concern</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="environmentDescription">
+                    Describe the Issue
+                </label>
+
+                <textarea
+                    id="environmentDescription"
+                    name="description"
+                    rows="4"
+                    maxlength="1000"
+                    required
+                    placeholder="Describe what you observed"></textarea>
+
+                <button type="submit">
+                    Submit Demo Complaint
+                </button>
+
+            </form>
+
+            <div id="environmentResult"
+                 class="park-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 4. TREE PLANTATION ================= -->
+
+        <div id="parkTreesPanel" class="park-panel" hidden>
+
+            <h3>🌿 Tree Plantation & Green Initiatives</h3>
+
+            <p>
+                Trees can provide shade, support biodiversity,
+                improve local habitats and help urban areas
+                adapt to heat.
+            </p>
+
+            <div class="park-info-card">
+                <h4>🌱 Plant Suitable Native Trees</h4>
+                <p>
+                    Choose tree species suited to the local climate
+                    and soil. Ask local horticulture experts about
+                    suitable species before planting.
+                </p>
+            </div>
+
+            <div class="park-info-card">
+                <h4>💧 Care for Young Trees</h4>
+                <p>
+                    Water plants appropriately, protect them from
+                    damage and monitor their growth.
+                </p>
+            </div>
+
+            <div class="park-info-card">
+                <h4>🌳 Protect Existing Trees</h4>
+                <p>
+                    Avoid damaging roots or bark. Report concerns
+                    about damaged public trees to the relevant
+                    local authority.
+                </p>
+            </div>
+
+            <div class="park-info-card">
+                <h4>🤝 Community Participation</h4>
+                <p>
+                    Join authorised local plantation drives and
+                    community clean-up programmes when available.
+                </p>
+            </div>
+
+            <h3 style="margin-top: 28px;">
+                Record a Tree Plantation Activity
+            </h3>
+
+            <p>
+                This form records a personal demonstration entry
+                in your browser. It does not register you for an
+                official plantation programme.
+            </p>
+
+            <form id="treeForm">
+
+                <label for="treeName">Your Name</label>
+
+                <input
+                    type="text"
+                    id="treeName"
+                    name="name"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your name">
+
+                <label for="treeArea">Area</label>
+
+                <input
+                    type="text"
+                    id="treeArea"
+                    name="area"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your area">
+
+                <label for="treeActivity">Activity</label>
+
+                <select id="treeActivity" name="activity" required>
+                    <option value="">Select activity</option>
+                    <option value="Planted a tree">Planted a tree</option>
+                    <option value="Watered a plant">Watered a plant</option>
+                    <option value="Participated in a clean-up">Participated in a clean-up</option>
+                    <option value="Helped care for existing trees">Helped care for existing trees</option>
+                    <option value="Other green activity">Other green activity</option>
+                </select>
+
+                <button type="submit">
+                    Save Activity
+                </button>
+
+            </form>
+
+            <div id="treeResult"
+                 class="park-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 5. ENVIRONMENTAL AWARENESS ================= -->
+
+        <div id="parkAwarenessPanel" class="park-panel" hidden>
+
+            <h3>♻️ Environmental Awareness</h3>
+
+            <p>
+                Small everyday actions can help protect natural
+                resources and keep public spaces clean.
+            </p>
+
+            <div class="park-info-card">
+                <h4>💧 Save Water</h4>
+                <p>
+                    Turn off taps when not in use, repair leaking
+                    taps and use water responsibly.
+                </p>
+            </div>
+
+            <div class="park-info-card">
+                <h4>♻️ Reduce Waste</h4>
+                <p>
+                    Avoid unnecessary packaging, reuse suitable
+                    items and separate waste according to local
+                    collection rules.
+                </p>
+            </div>
+
+            <div class="park-info-card">
+                <h4>🌳 Protect Green Spaces</h4>
+                <p>
+                    Do not litter in parks, avoid damaging plants
+                    and respect wildlife.
+                </p>
+            </div>
+
+            <div class="park-info-card">
+                <h4>⚡ Save Energy</h4>
+                <p>
+                    Switch off unused lights and devices and
+                    choose energy-efficient options where possible.
+                </p>
+            </div>
+
+            <div class="park-info-card">
+                <h4>🚲 Choose Greener Travel</h4>
+                <p>
+                    When practical and safe, consider walking,
+                    cycling or public transport for suitable trips.
+                </p>
+            </div>
+
+            <div class="park-info-card">
+                <h4>🧹 Keep Public Areas Clean</h4>
+                <p>
+                    Use designated bins and participate in
+                    authorised community clean-up activities.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ================= 6. PARKS SUPPORT ================= -->
+
+        <div id="parkSupportPanel" class="park-panel" hidden>
+
+            <h3>📞 Parks & Environment Support</h3>
+
+            <p>
+                Submit a demonstration support request and review
+                requests saved in this browser.
+            </p>
+
+            <form id="parkSupportForm">
+
+                <label for="parkSupportName">Your Name</label>
+
+                <input
+                    type="text"
+                    id="parkSupportName"
+                    name="name"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your name">
+
+                <label for="parkSupportArea">Area</label>
+
+                <input
+                    type="text"
+                    id="parkSupportArea"
+                    name="area"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your area">
+
+                <label for="parkSupportCategory">
+                    Support Category
+                </label>
+
+                <select id="parkSupportCategory" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="Park maintenance">Park maintenance</option>
+                    <option value="Environmental complaint">Environmental complaint</option>
+                    <option value="Tree plantation">Tree plantation</option>
+                    <option value="Green space information">Green space information</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="parkSupportIssue">
+                    Describe Your Request
+                </label>
+
+                <textarea
+                    id="parkSupportIssue"
+                    name="issue"
+                    rows="4"
+                    maxlength="1000"
+                    required
+                    placeholder="Describe how we can help"></textarea>
+
+                <button type="submit">
+                    Submit Demo Request
+                </button>
+
+            </form>
+
+            <div id="parkSupportResult"
+                 class="park-result"
+                 aria-live="polite"
+                 hidden></div>
+
+            <h3 style="margin-top: 30px;">
+                Previous Demo Requests
+            </h3>
+
+            <div id="parkSupportHistory"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= AWARENESS SECTION ================= -->
+
+    <section class="full-section" id="parkFooterAwareness">
+
+        <div class="section-heading">
+
+            <span>GO GREEN WITH SMARTCITY</span>
+
+            <h2>
+                A Cleaner Environment.
+                <strong>A Greener Future.</strong>
+            </h2>
+
+            <p>
+                Protect trees, care for parks, reduce waste and
+                work together to create a healthier urban environment.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="parkFooter">
+
+        <div class="footer-logo">
+            🌳 SmartCity
+        </div>
+
+        <p>
+            Working towards a cleaner, greener and healthier city.
+        </p>
+
+        <span>
+            © 2026 Smart City Services Portal
+        </span>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+        "use strict";
+
+
+        /* SERVICE CONFIGURATION */
+
+        const parkPanels = {
+            parks: "parkParksPanel",
+            report: "parkReportPanel",
+            environment: "parkEnvironmentPanel",
+            trees: "parkTreesPanel",
+            awareness: "parkAwarenessPanel",
+            support: "parkSupportPanel"
+        };
+
+
+        const parkTitles = {
+            parks: "🌳 Park Information",
+            report: "🛝 Report Park Problems",
+            environment: "🌱 Environmental Complaints",
+            trees: "🌿 Tree Plantation",
+            awareness: "♻️ Environmental Awareness",
+            support: "📞 Parks Support"
+        };
+
+
+        const parkDescriptions = {
+            parks: "Explore green spaces and sample park information.",
+            report: "Record a demonstration report about park maintenance.",
+            environment: "Record an environmental concern in your area.",
+            trees: "Learn about planting and caring for trees.",
+            awareness: "Discover practical ways to protect the environment.",
+            support: "Submit and review demonstration support requests."
+        };
+
+
+        /* LOCAL STORAGE HELPERS */
+
+        function getParkStorage(key) {
+            try {
+                const data = JSON.parse(localStorage.getItem(key) || "[]");
+                return Array.isArray(data) ? data : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+
+        function saveParkStorage(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify(data));
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+
+
+        /* OPEN A SERVICE */
+
+        function openParkService(service) {
+
+            const panelId = parkPanels[service];
+
+            if (!panelId) {
+                console.error("Unknown parks service:", service);
+                return;
+            }
+
+            document.getElementById("parkHero").hidden = true;
+            document.getElementById("parkDashboard").hidden = true;
+            document.getElementById("parkFooterAwareness").hidden = true;
+            document.getElementById("parkFooter").hidden = true;
+
+            Object.values(parkPanels).forEach(function(id) {
+                document.getElementById(id).hidden = true;
+            });
+
+            document.getElementById("parkDetailTitle").textContent =
+                parkTitles[service];
+
+            document.getElementById("parkDetailDescription").textContent =
+                parkDescriptions[service];
+
+            document.getElementById("parkDetails").hidden = false;
+            document.getElementById(panelId).hidden = false;
+
+            if (service === "support") {
+                displayParkSupportHistory();
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+
+        /* BACK TO DASHBOARD */
+
+        function backToParkServices() {
+
+            document.getElementById("parkDetails").hidden = true;
+
+            document.getElementById("parkHero").hidden = false;
+            document.getElementById("parkDashboard").hidden = false;
+            document.getElementById("parkFooterAwareness").hidden = false;
+            document.getElementById("parkFooter").hidden = false;
+
+            Object.values(parkPanels).forEach(function(id) {
+                document.getElementById(id).hidden = true;
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+
+        /* PARK INFORMATION */
+
+        function showParkInformation() {
+
+            const area = document.getElementById("parkArea").value;
+            const result = document.getElementById("parkInformationResult");
+
+            result.hidden = false;
+
+            if (!area) {
+                result.textContent = "Please select an area.";
+                return;
+            }
+
+            result.textContent =
+                "Selected Area: " + area +
+                ". This demo does not contain a verified park directory. " +
+                "Please check official local sources for park names, " +
+                "opening hours, facilities and current conditions.";
+        }
+
+
+        /* GENERIC FORM HANDLER */
+
+        function saveParkForm(event, config) {
+
+            event.preventDefault();
+
+            const form = event.currentTarget;
+            const formData = new FormData(form);
+            const record = {};
+
+            for (const [key, value] of formData.entries()) {
+                record[key] = String(value).trim();
+            }
+
+            record.reference =
+                config.prefix + "-" + Date.now().toString().slice(-8);
+
+            record.status = "Demo Request Saved";
+            record.date = new Date().toLocaleString();
+
+            const records = getParkStorage(config.storageKey);
+            records.push(record);
+
+            const result = document.getElementById(config.resultId);
+            result.hidden = false;
+
+            if (!saveParkStorage(config.storageKey, records)) {
+                result.textContent =
+                    "Unable to save this entry in browser storage. Please try again.";
+                return;
+            }
+
+            result.textContent =
+                "Success! Your demonstration entry has been saved. " +
+                "Reference Number: " + record.reference +
+                ". This entry has not been sent to a government department.";
+
+            form.reset();
+
+            if (config.showHistory) {
+                displayParkSupportHistory();
+            }
+        }
+
+
+        /* PARK MAINTENANCE REPORT */
+
+        document.getElementById("parkReportForm")
+            .addEventListener("submit", function(event) {
+
+                saveParkForm(event, {
+                    prefix: "PARK",
+                    storageKey: "smartCityParkReports",
+                    resultId: "parkReportResult"
+                });
+
+            });
+
+
+        /* ENVIRONMENTAL COMPLAINT FORM */
+
+        document.getElementById("environmentForm")
+            .addEventListener("submit", function(event) {
+
+                saveParkForm(event, {
+                    prefix: "ENV",
+                    storageKey: "smartCityEnvironmentReports",
+                    resultId: "environmentResult"
+                });
+
+            });
+
+
+        /* TREE PLANTATION ACTIVITY */
+
+        document.getElementById("treeForm")
+            .addEventListener("submit", function(event) {
+
+                saveParkForm(event, {
+                    prefix: "TREE",
+                    storageKey: "smartCityTreeActivities",
+                    resultId: "treeResult"
+                });
+
+            });
+
+
+        /* PARK SUPPORT FORM */
+
+        document.getElementById("parkSupportForm")
+            .addEventListener("submit", function(event) {
+
+                saveParkForm(event, {
+                    prefix: "PARKHELP",
+                    storageKey: "smartCityParkSupport",
+                    resultId: "parkSupportResult",
+                    showHistory: true
+                });
+
+            });
+
+
+        /* DISPLAY SUPPORT HISTORY */
+
+        function displayParkSupportHistory() {
+
+            const container =
+                document.getElementById("parkSupportHistory");
+
+            const requests =
+                getParkStorage("smartCityParkSupport");
+
+            container.replaceChildren();
+
+            if (requests.length === 0) {
+                container.textContent =
+                    "No demo support requests have been submitted yet.";
+                return;
+            }
+
+            requests.slice().reverse().forEach(function(request) {
+
+                const item = document.createElement("div");
+                item.className = "park-history-item";
+
+                const heading = document.createElement("strong");
+                heading.textContent =
+                    request.reference || "Parks Support Request";
+
+                const area = document.createElement("p");
+                area.textContent = "Area: " + (request.area || "");
+
+                const category = document.createElement("p");
+                category.textContent =
+                    "Category: " + (request.category || "");
+
+                const issue = document.createElement("p");
+                issue.textContent = "Request: " + (request.issue || "");
+
+                const date = document.createElement("p");
+                date.textContent = "Submitted: " + (request.date || "");
+
+                const status = document.createElement("p");
+                status.textContent = "Status: " + (request.status || "");
+
+                item.append(
+                    heading,
+                    area,
+                    category,
+                    issue,
+                    date,
+                    status
+                );
+
+                container.appendChild(item);
+            });
+        }
+
+    </script>
+
+    <script src="JS/auth.js"></script>
+
+    <script src="JS/theme.js"></script>
+</body>
+</html>

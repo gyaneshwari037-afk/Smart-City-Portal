@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & Emergency Helplines | SmartCity</title>
+
+<link rel="stylesheet" href="CSS/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+<style>
+/* =========================================================
+   SMARTCITY CONTACT DASHBOARD
+   Matching the Services, Transport, Complaints & News pages
+   Theme: Teal | White Navbar | Modern Cards | Responsive
+   ========================================================= */
+
+/* ------------------ GENERAL PAGE ------------------ */
+
+body:has(.emergency-banner) {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: #183b4e;
+    background: #f4f9fa;
+}
+
+body:has(.emergency-banner) * {
+    box-sizing: border-box;
+}
+
+body:has(.emergency-banner) html {
+    scroll-behavior: smooth;
+}
+
+/* ------------------ NAVIGATION BAR ------------------ */
+
+body:has(.emergency-banner) .navbar {
+    position: absolute;
+    top: 18px;
+    left: 2.5%;
+    right: 2.5%;
+    z-index: 100;
+    width: 95%;
+    min-height: 66px;
+    padding: 10px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 13px;
+
+    box-shadow: 0 8px 28px rgba(15, 60, 75, 0.13);
+    backdrop-filter: blur(12px);
+}
+
+body:has(.emergency-banner) .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+}
+
+body:has(.emergency-banner) .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    background: transparent;
+    border-radius: 9px;
+    box-shadow: none;
+
+    font-size: 27px;
+}
+
+body:has(.emergency-banner) .logo-area h2 {
+    margin: 0;
+    color: #123b56;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+body:has(.emergency-banner) .logo-area span {
+    display: block;
+    margin-top: 3px;
+    color: #64808e;
+    font-size: 10px;
+}
+
+body:has(.emergency-banner) nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(9px, 1.3vw, 20px);
+}
+
+body:has(.emergency-banner) nav a {
+    color: #23465b;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+}
+
+body:has(.emergency-banner) nav a:hover,
+body:has(.emergency-banner) nav a.active {
+    color: #0d9488;
+}
+
+body:has(.emergency-banner) .login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 17px;
+    border-radius: 8px;
+
+    background: #0d9488;
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: background 0.25s ease,
+                transform 0.25s ease;
+}
+
+body:has(.emergency-banner) .login-btn:hover {
+    background: #0f766e;
+    transform: translateY(-2px);
+}
+
+/* ------------------ CONTACT HERO ------------------ */
+
+body:has(.emergency-banner) .services-hero {
+    position: relative;
+
+    min-height: 470px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 115px 8% 65px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 45, 62, 0.91) 0%,
+            rgba(9, 78, 89, 0.78) 48%,
+            rgba(13, 148, 136, 0.35) 100%
+        ),
+        url("https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1920&q=85")
+        center / cover no-repeat;
+
+    overflow: hidden;
+}
+
+body:has(.emergency-banner) .hero-overlay {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+body:has(.emergency-banner) .small-title {
+    display: inline-block;
+    margin-bottom: 18px;
+
+    color: #5eead4;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+body:has(.emergency-banner) .services-hero h1 {
+    max-width: 850px;
+    margin: 0 0 20px;
+
+    color: #ffffff;
+    font-size: clamp(44px, 5.3vw, 70px);
+    font-weight: 700;
+    line-height: 1.13;
+    letter-spacing: -1.5px;
+}
+
+body:has(.emergency-banner) .services-hero h1 span {
+    color: #5eead4;
+}
+
+body:has(.emergency-banner) .services-hero p {
+    max-width: 650px;
+    margin: 0;
+
+    color: #e4f5f5;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.9;
+}
+
+/* ------------------ CONTENT SECTIONS ------------------ */
+
+body:has(.emergency-banner) .full-section {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 55px 30px;
+}
+
+body:has(.emergency-banner) .section-heading {
+    max-width: 780px;
+    margin: 0 auto 36px;
+    text-align: center;
+}
+
+body:has(.emergency-banner) .section-heading > span {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    color: #0d9488;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+body:has(.emergency-banner) .section-heading h2 {
+    margin: 0 0 14px;
+
+    color: #123b56;
+    font-size: clamp(28px, 3vw, 39px);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+body:has(.emergency-banner) .section-heading h2 strong {
+    color: #0d9488;
+    font-weight: 700;
+}
+
+body:has(.emergency-banner) .section-heading p {
+    max-width: 700px;
+    margin: 0 auto;
+
+    color: #647b88;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* ------------------ MAIN EMERGENCY BANNER ------------------ */
+
+body:has(.emergency-banner) .emergency-banner {
+    max-width: 1100px;
+    margin: 0 auto 28px;
+    padding: 38px 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+
+    background: linear-gradient(135deg, #0f766e, #0d9488, #14b8a6);
+    color: #ffffff;
+
+    text-align: center;
+
+    box-shadow: 0 14px 35px rgba(13, 148, 136, 0.18);
+}
+
+body:has(.emergency-banner) .emergency-banner .emergency-icon {
+    margin-bottom: 12px;
+    font-size: 43px;
+}
+
+body:has(.emergency-banner) .emergency-banner h2 {
+    margin: 0 0 12px;
+
+    color: #ffffff;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700;
+}
+
+body:has(.emergency-banner) .emergency-banner p {
+    max-width: 650px;
+    margin: 0 auto 16px;
+
+    color: #e6fffb;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+body:has(.emergency-banner) .emergency-number {
+    display: block;
+    margin: 12px 0;
+
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+/* ------------------ BUTTONS ------------------ */
+
+body:has(.emergency-banner) .call-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    margin-top: 10px;
+    padding: 11px 21px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #0f766e;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: background 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+body:has(.emergency-banner) .call-button:hover {
+    background: #ccfbf1;
+    color: #115e59;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 17px rgba(0, 0, 0, 0.12);
+}
+
+/* ------------------ WARNING BOX ------------------ */
+
+body:has(.emergency-banner) .emergency-warning {
+    max-width: 1100px;
+    margin: 25px auto 0;
+    padding: 18px 22px;
+
+    border: 1px solid #fde68a;
+    border-left: 5px solid #f59e0b;
+    border-radius: 11px;
+
+    background: #fffbeb;
+    color: #78350f;
+
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+body:has(.emergency-banner) .emergency-warning strong {
+    color: #92400e;
+}
+
+/* ------------------ EMERGENCY CARDS ------------------ */
+
+body:has(.emergency-banner) .emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 23px;
+}
+
+body:has(.emergency-banner) .emergency-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+    padding: 26px 24px;
+
+    border: 1px solid #e1eded;
+    border-radius: 16px;
+
+    background: #ffffff;
+    box-shadow: 0 7px 22px rgba(20, 65, 75, 0.06);
+
+    transition: transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+body:has(.emergency-banner) .emergency-card:hover {
+    transform: translateY(-5px);
+    border-color: #99f6e4;
+    box-shadow: 0 15px 30px rgba(13, 148, 136, 0.12);
+}
+
+body:has(.emergency-banner) .emergency-card .detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    margin-bottom: 17px;
+
+    border-radius: 14px;
+    background: #ccfbf1;
+
+    font-size: 29px;
+}
+
+body:has(.emergency-banner) .emergency-card h3 {
+    margin: 0 0 11px;
+
+    color: #123b56;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+body:has(.emergency-banner) .emergency-card p {
+    flex-grow: 1;
+    margin: 0 0 16px;
+
+    color: #647b88;
+    font-size: 13px;
+    line-height: 1.85;
+}
+
+body:has(.emergency-banner) .helpline-type {
+    display: inline-block;
+
+    margin: 0 0 8px;
+    padding: 6px 10px;
+
+    border-radius: 20px;
+    background: #ccfbf1;
+    color: #0f766e;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+body:has(.emergency-banner) .helpline-number {
+    display: block;
+    margin: 12px 0;
+
+    color: #0d9488;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+body:has(.emergency-banner) .emergency-card .call-button {
+    margin-top: 10px;
+    padding: 10px 16px;
+
+    background: #0d9488;
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+body:has(.emergency-banner) .emergency-card .call-button:hover {
+    background: #0f766e;
+    color: #ffffff;
+}
+
+/* ------------------ GENERAL SERVICE CARDS ------------------ */
+
+body:has(.emergency-banner) .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 23px;
+    align-items: stretch;
+}
+
+body:has(.emergency-banner) .service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 27px 24px;
+
+    border: 1px solid #e1eded;
+    border-radius: 16px;
+
+    background: #ffffff;
+    box-shadow: 0 7px 22px rgba(20, 65, 75, 0.06);
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+body:has(.emergency-banner) .service-card:hover {
+    transform: translateY(-5px);
+    border-color: #99f6e4;
+    box-shadow: 0 15px 30px rgba(13, 148, 136, 0.12);
+}
+
+body:has(.emergency-banner) .service-card .service-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    margin-bottom: 17px;
+
+    border-radius: 14px;
+    background: #ccfbf1;
+
+    font-size: 29px;
+}
+
+body:has(.emergency-banner) .service-card h3 {
+    margin: 0 0 11px;
+
+    color: #123b56;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+body:has(.emergency-banner) .service-card p {
+    flex-grow: 1;
+    margin: 0 0 18px;
+
+    color: #647b88;
+    font-size: 13px;
+    line-height: 1.85;
+}
+
+body:has(.emergency-banner) .service-card > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: auto;
+    padding: 11px 17px;
+
+    border-radius: 8px;
+    background: #0d9488;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: background 0.25s ease,
+                transform 0.25s ease;
+}
+
+body:has(.emergency-banner) .service-card > a:hover {
+    background: #0f766e;
+    transform: translateY(-2px);
+}
+
+/* ------------------ CONTACT INFORMATION CARDS ------------------ */
+
+body:has(.emergency-banner) .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 23px;
+    align-items: stretch;
+}
+
+body:has(.emergency-banner) .detail-card {
+    padding: 26px 24px;
+
+    border: 1px solid #e1eded;
+    border-radius: 16px;
+
+    background: #ffffff;
+    box-shadow: 0 7px 22px rgba(20, 65, 75, 0.06);
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+body:has(.emergency-banner) .detail-card:hover {
+    transform: translateY(-5px);
+    border-color: #99f6e4;
+    box-shadow: 0 15px 30px rgba(13, 148, 136, 0.12);
+}
+
+body:has(.emergency-banner) .detail-card .detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    margin-bottom: 17px;
+
+    border-radius: 14px;
+    background: #ccfbf1;
+
+    font-size: 29px;
+}
+
+body:has(.emergency-banner) .detail-card h3 {
+    margin: 0 0 11px;
+
+    color: #123b56;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+body:has(.emergency-banner) .detail-card p {
+    margin: 0 0 16px;
+
+    color: #647b88;
+    font-size: 13px;
+    line-height: 1.85;
+}
+
+body:has(.emergency-banner) .contact-info {
+    display: block;
+    color: #0d9488;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* ------------------ FOOTER ------------------ */
+
+body:has(.emergency-banner) footer {
+    padding: 35px 25px;
+
+    background: #102f46;
+    color: #dbe8ef;
+
+    text-align: center;
+}
+
+body:has(.emergency-banner) .footer-logo {
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-size: 21px;
+}
+
+body:has(.emergency-banner) .footer-logo strong {
+    color: #5eead4;
+}
+
+body:has(.emergency-banner) footer p {
+    margin: 10px auto;
+    color: #c3d3de;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* ------------------ TABLET RESPONSIVENESS ------------------ */
+
+@media (max-width: 1050px) {
+    body:has(.emergency-banner) .navbar {
+        gap: 12px;
+        padding: 10px 16px;
+    }
+
+    body:has(.emergency-banner) nav {
+        gap: 10px;
+    }
+
+    body:has(.emergency-banner) nav a {
+        font-size: 10px;
+    }
+
+    body:has(.emergency-banner) .emergency-grid,
+    body:has(.emergency-banner) .service-grid,
+    body:has(.emergency-banner) .detail-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ------------------ MOBILE RESPONSIVENESS ------------------ */
+
+@media (max-width: 760px) {
+    body:has(.emergency-banner) .navbar {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+
+        width: 100%;
+        height: auto;
+        min-height: 65px;
+
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        padding: 13px 18px;
+        border-radius: 0;
+    }
+
+    body:has(.emergency-banner) nav {
+        order: 3;
+        width: 100%;
+
+        justify-content: flex-start;
+        gap: 14px;
+
+        padding: 10px 0 3px;
+    }
+
+    body:has(.emergency-banner) nav a {
+        font-size: 11px;
+    }
+
+    body:has(.emergency-banner) .services-hero {
+        min-height: 390px;
+        padding: 65px 7% 55px;
+    }
+
+    body:has(.emergency-banner) .services-hero h1 {
+        font-size: clamp(39px, 8vw, 52px);
+        letter-spacing: -0.7px;
+    }
+
+    body:has(.emergency-banner) .services-hero p {
+        font-size: 14px;
+    }
+
+    body:has(.emergency-banner) .full-section {
+        padding: 40px 20px;
+    }
+
+    body:has(.emergency-banner) .emergency-banner {
+        padding: 30px 18px;
+    }
+
+    body:has(.emergency-banner) .emergency-warning {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 520px) {
+    body:has(.emergency-banner) .emergency-grid,
+    body:has(.emergency-banner) .service-grid,
+    body:has(.emergency-banner) .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    body:has(.emergency-banner) .section-heading h2 {
+        font-size: 27px;
+    }
+
+    body:has(.emergency-banner) .emergency-number {
+        font-size: 40px;
+    }
+
+    body:has(.emergency-banner) .emergency-card,
+    body:has(.emergency-banner) .service-card,
+    body:has(.emergency-banner) .detail-card {
+        padding: 23px;
+    }
+
+    body:has(.emergency-banner) .login-btn {
+        padding: 10px 12px;
+        font-size: 10px;
+    }
+}
+
+</style>
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body>
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+        <div class="logo-icon">🏙️</div>
+
+        <div>
+            <h2>SmartCity</h2>
+            <span>Services Portal</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="transport.html">Transport</a>
+        <a href="complaint.html">Complaints</a>
+        <a href="news.html">News & Events</a>
+        <a href="contact.html" class="active">Contact</a>
+    </nav>
+
+    <a href="login.html" class="login-btn" id="authNav">
+        Citizen Login
+    </a>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="services-hero">
+
+    <div class="hero-overlay">
+
+        <span class="small-title">SMART CITY SUPPORT</span>
+
+        <h1>
+            We're Here
+            <span>To Help.</span>
+        </h1>
+
+        <p>
+            Find SmartCity support information and important
+            emergency helpline numbers for services across India.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAIN EMERGENCY NUMBER ================= -->
+
+<section class="full-section">
+
+    <div class="emergency-banner">
+
+        <div class="emergency-icon">🚨</div>
+
+        <h2>India's Emergency Helpline</h2>
+
+        <p>
+            For immediate police, fire, rescue, medical or other
+            emergencies, call India's integrated emergency
+            response number.
+        </p>
+
+        <span class="emergency-number">112</span>
+
+        <a href="tel:112" class="call-button">
+            📞 Call 112
+        </a>
+
+    </div>
+
+    <div class="emergency-warning">
+        <strong>⚠️ Important:</strong>
+        Call emergency services only when necessary. This webpage
+        is an information directory and does not itself contact
+        emergency responders. For a serious or immediate emergency,
+        call 112 directly.
+    </div>
+
+</section>
+
+
+<!-- ================= POLICE, FIRE AND MEDICAL ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>EMERGENCY SERVICES</span>
+
+        <h2>
+            Immediate
+            <strong>Emergency Assistance.</strong>
+        </h2>
+
+        <p>
+            Important numbers for public safety, fire, medical
+            assistance and disaster response.
+        </p>
+
+    </div>
+
+    <div class="emergency-grid">
+
+        <!-- 112 -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🚨</div>
+
+            <h3>All-in-One Emergency</h3>
+
+            <p>
+                Integrated emergency response for police, fire,
+                rescue, health and other emergencies.
+            </p>
+
+            <span class="helpline-type">PRIMARY EMERGENCY NUMBER</span>
+
+            <span class="helpline-number">112</span>
+
+            <a href="tel:112" class="call-button">📞 Call Now</a>
+
+        </div>
+
+
+        <!-- POLICE -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">👮</div>
+
+            <h3>Police</h3>
+
+            <p>
+                Police assistance and reporting crime or
+                public safety emergencies.
+            </p>
+
+            <span class="helpline-number">100</span>
+
+            <a href="tel:100" class="call-button">📞 Call Police</a>
+
+        </div>
+
+
+        <!-- AMBULANCE -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🚑</div>
+
+            <h3>National Ambulance Service</h3>
+
+            <p>
+                Medical transportation and emergency ambulance
+                assistance where available.
+            </p>
+
+            <span class="helpline-number">102</span>
+
+            <a href="tel:102" class="call-button">📞 Call Ambulance</a>
+
+        </div>
+
+
+        <!-- FIRE -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🚒</div>
+
+            <h3>Fire & Rescue</h3>
+
+            <p>
+                Fire incidents and rescue assistance.
+                You can also use the integrated emergency number.
+            </p>
+
+            <span class="helpline-number">101</span>
+
+            <a href="tel:101" class="call-button">📞 Call Fire Service</a>
+
+        </div>
+
+
+        <!-- DISASTER -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🌪️</div>
+
+            <h3>Natural Disaster Relief</h3>
+
+            <p>
+                Relief Commissioner contact for natural calamities
+                and disaster-related assistance.
+            </p>
+
+            <span class="helpline-number">1070</span>
+
+            <a href="tel:1070" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+
+        <!-- DISTRICT DISASTER -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🏚️</div>
+
+            <h3>District Disaster Management</h3>
+
+            <p>
+                District-level disaster management assistance.
+                Availability and routing may vary by location.
+            </p>
+
+            <span class="helpline-number">1077</span>
+
+            <a href="tel:1077" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+
+        <!-- NDRF / DISASTER -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🛟</div>
+
+            <h3>Disaster / NDRF Information</h3>
+
+            <p>
+                Earthquake, flood and disaster-related information
+                listed by the Government of India.
+            </p>
+
+            <span class="helpline-number">011-24363260</span>
+
+            <a href="tel:01124363260" class="call-button">📞 Call Number</a>
+
+        </div>
+
+
+        <!-- LPG -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🔥</div>
+
+            <h3>LPG Gas Leakage</h3>
+
+            <p>
+                Contact the LPG emergency helpline for a gas leak.
+                Move away from danger and follow safety guidance.
+            </p>
+
+            <span class="helpline-number">1906</span>
+
+            <a href="tel:1906" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WOMEN AND CHILD SAFETY ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>PERSONAL SAFETY</span>
+
+        <h2>
+            Women & Child
+            <strong>Helplines.</strong>
+        </h2>
+
+        <p>
+            Helplines for women seeking support and children
+            who need care or protection.
+        </p>
+
+    </div>
+
+    <div class="emergency-grid">
+
+        <!-- WOMEN -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">👩</div>
+
+            <h3>Women Helpline</h3>
+
+            <p>
+                Support and assistance for women in distress.
+                Availability can vary by state.
+            </p>
+
+            <span class="helpline-number">181</span>
+
+            <a href="tel:181" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+
+        <!-- NCW -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🛡️</div>
+
+            <h3>National Commission for Women</h3>
+
+            <p>
+                National Commission for Women helpline for
+                women seeking assistance.
+            </p>
+
+            <span class="helpline-number">7827170170</span>
+
+            <a href="tel:7827170170" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+
+        <!-- CHILD -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🧒</div>
+
+            <h3>Child Helpline</h3>
+
+            <p>
+                Assistance for children who need care, protection
+                or help in an unsafe situation.
+            </p>
+
+            <span class="helpline-number">1098</span>
+
+            <a href="tel:1098" class="call-button">📞 Call Child Helpline</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CYBER AND PUBLIC HELPLINES ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>CYBER & PUBLIC SUPPORT</span>
+
+        <h2>
+            Report & Request
+            <strong>Assistance.</strong>
+        </h2>
+
+        <p>
+            Contact the relevant helpline for online fraud,
+            consumer concerns and other public services.
+        </p>
+
+    </div>
+
+    <div class="emergency-grid">
+
+        <!-- CYBERCRIME -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">💻</div>
+
+            <h3>Cybercrime & Online Fraud</h3>
+
+            <p>
+                Report cybercrime and online financial fraud.
+                For financial fraud, contact the helpline promptly.
+            </p>
+
+            <span class="helpline-number">1930</span>
+
+            <a href="tel:1930" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+
+        <!-- NARCOTICS -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">☎️</div>
+
+            <h3>National Narcotics Helpline (MANAS)</h3>
+
+            <p>
+                National helpline for reporting information related
+                to narcotics and drug trafficking.
+            </p>
+
+            <span class="helpline-number">1933</span>
+
+            <a href="tel:1933" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+
+        <!-- CONSUMER -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🛒</div>
+
+            <h3>National Consumer Helpline</h3>
+
+            <p>
+                Consumer guidance and support for complaints
+                about products or services.
+            </p>
+
+            <span class="helpline-number">1915</span>
+
+            <a href="tel:1915" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+
+        <!-- ROAD ACCIDENT -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🚗</div>
+
+            <h3>Road Accident Helpline</h3>
+
+            <p>
+                Road accident assistance number listed in the
+                Government of India's helpline directory.
+            </p>
+
+            <span class="helpline-number">1073</span>
+
+            <a href="tel:1073" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+
+        <!-- HIGHWAY -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🛣️</div>
+
+            <h3>National Highway Assistance</h3>
+
+            <p>
+                National highway assistance and incident reporting.
+                Confirm the service's availability for your location.
+            </p>
+
+            <span class="helpline-number">1033</span>
+
+            <a href="tel:1033" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RAILWAYS AND TRAVEL ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>TRAVEL & TRANSPORT</span>
+
+        <h2>
+            Travel Support
+            <strong>Helplines.</strong>
+        </h2>
+
+        <p>
+            Numbers for railway assistance and tourist information.
+        </p>
+
+    </div>
+
+    <div class="emergency-grid">
+
+        <!-- RAILWAYS -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🚆</div>
+
+            <h3>Railway Assistance</h3>
+
+            <p>
+                Railway-related enquiries and assistance,
+                including certain security and medical requests.
+            </p>
+
+            <span class="helpline-number">139</span>
+
+            <a href="tel:139" class="call-button">📞 Call Railways</a>
+
+        </div>
+
+
+        <!-- TOURISM -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🧳</div>
+
+            <h3>Tourist Helpline</h3>
+
+            <p>
+                Tourist information and assistance for visitors
+                travelling in India.
+            </p>
+
+            <span class="helpline-number">1363</span>
+
+            <a href="tel:1363" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SENIOR CITIZENS AND ACCESSIBILITY ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>INCLUSIVE CITIZEN SUPPORT</span>
+
+        <h2>
+            Support For
+            <strong>Every Citizen.</strong>
+        </h2>
+
+        <p>
+            Helplines for senior citizens and persons with disabilities.
+        </p>
+
+    </div>
+
+    <div class="emergency-grid">
+
+        <!-- SENIOR CITIZENS -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">🧓</div>
+
+            <h3>Senior Citizens Helpline</h3>
+
+            <p>
+                Information and support for senior citizens.
+                The national directory also lists a regional contact.
+            </p>
+
+            <span class="helpline-number">14567</span>
+
+            <a href="tel:14567" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+
+        <!-- DISABILITY -->
+
+        <div class="emergency-card">
+
+            <div class="detail-icon">♿</div>
+
+            <h3>Persons with Disabilities Helpline</h3>
+
+            <p>
+                Information and assistance for persons with disabilities.
+            </p>
+
+            <span class="helpline-number">14456</span>
+
+            <a href="tel:14456" class="call-button">📞 Call Helpline</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GENERAL CITIZEN SUPPORT ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>SMARTCITY CITIZEN SUPPORT</span>
+
+        <h2>
+            Need Help With
+            <strong>A City Service?</strong>
+        </h2>
+
+        <p>
+            Use the SmartCity Portal to explore services and submit
+            a complaint through the demonstration form.
+        </p>
+
+    </div>
+
+    <div class="service-grid">
+
+        <!-- COMPLAINT -->
+
+        <div class="service-card">
+
+            <div class="service-icon water-icon">📝</div>
+
+            <h3>Report a Complaint</h3>
+
+            <p>
+                Report water, electricity, waste, road or other
+                city-related issues through the portal.
+            </p>
+
+            <a href="complaint.html">Report Now →</a>
+
+        </div>
+
+
+        <!-- TRACK -->
+
+        <div class="service-card">
+
+            <div class="service-icon transport-icon">🔎</div>
+
+            <h3>Track Complaint</h3>
+
+            <p>
+                Visit the complaints page to access the complaint
+                tracking options available in the portal.
+            </p>
+
+            <a href="complaint.html">Track Complaint →</a>
+
+        </div>
+
+
+        <!-- SERVICES -->
+
+        <div class="service-card">
+
+            <div class="service-icon park-icon">🏙️</div>
+
+            <h3>Explore City Services</h3>
+
+            <p>
+                Browse water, waste, transport, roads, parks
+                and other city services.
+            </p>
+
+            <a href="services.html">View Services →</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT INFORMATION ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>CONTACT INFORMATION</span>
+
+        <h2>
+            SmartCity
+            <strong>Portal Support.</strong>
+        </h2>
+
+        <p>
+            The following details are demonstration placeholders
+            for this student project. Replace them with verified
+            contact information before publishing.
+        </p>
+
+    </div>
+
+    <div class="detail-grid">
+
+        <div class="detail-card">
+
+            <div class="detail-icon">📞</div>
+
+            <h3>Citizen Helpdesk</h3>
+
+            <p>
+                General assistance and city-service information.
+            </p>
+
+            <strong class="contact-info">Demo contact — not active</strong>
+
+        </div>
+
+
+        <div class="detail-card">
+
+            <div class="detail-icon">✉️</div>
+
+            <h3>Email Support</h3>
+
+            <p>
+                Use a verified project or administration email
+                address when one is available.
+            </p>
+
+            <strong class="contact-info">Email to be configured</strong>
+
+        </div>
+
+
+        <div class="detail-card">
+
+            <div class="detail-icon">🏢</div>
+
+            <h3>Administration Office</h3>
+
+            <p>
+                Contact your local municipal administration
+                for official city-service information.
+            </p>
+
+            <strong class="contact-info">Contact your local authority</strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        🏙️ <strong>SmartCity</strong>
+    </div>
+
+    <p>
+        Smart services for a better connected city.
+    </p>
+
+    <span>
+        © 2026 Smart City Services Portal
+    </span>
+
+</footer>
+
+
+<!-- LOGIN STATUS -->
+
+<script src="JS/auth.js"></script>
+
+    <script src="JS/theme.js"></script>
+</body>
+
+</html>

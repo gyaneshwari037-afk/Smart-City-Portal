@@ -1,0 +1,26 @@
+SMARTCITY PORTAL — MAP & PUBLIC HOSTING NOTES
+================================================
+
+MAP UPDATE
+----------
+The map.html page now requests a broader selection of mapped public places around Visakhapatnam from OpenStreetMap via public Overpass API instances. It includes hospitals/clinics/pharmacies, emergency services, transport, parks, water, electricity, waste, schools/colleges/universities, libraries, post offices and other public services.
+
+Important accuracy note: OpenStreetMap is community-maintained map data, not a guaranteed real-time sensor feed. Place availability, names, addresses, phone numbers and opening hours depend on what contributors have entered. The public Overpass services can occasionally be busy or unavailable; the map still shows its base map and project locations if the query fails. Do not rely on this student demo as the sole source for emergency decisions.
+
+OpenStreetMap tile credit is shown on the map. If the site becomes popular or receives heavy traffic, use a suitable hosted map-tile provider and follow that provider's terms and usage limits rather than relying on public community endpoints for unlimited traffic.
+
+PUBLISH THE WEBSITE PUBLICLY (EASIEST OPTION: NETLIFY DROP)
+----------------------------------------------------------
+1. Extract this ZIP file first.
+2. Open the extracted Smart-City-Portal folder and confirm that index.html is directly inside it. (index.html is the project introduction page; its Website button opens home.html.)
+3. Open https://app.netlify.com/drop in your browser.
+4. Drag the entire extracted Smart-City-Portal folder into the drop zone, or choose the folder when prompted.
+5. Wait for deployment to finish. Netlify will show you a public URL ending in netlify.app.
+6. Open that URL in a private/incognito window or on another device to check that visitors can see the introduction page. Click the Website button to enter the portal and test Map.
+7. Save the URL and share it with people.
+
+To publish updates later, edit your local files, then upload the updated project folder again from your site's Deploys page. Keep a backup before replacing files.
+
+PUBLIC ACCESS & PRIVACY
+-----------------------
+A public website can be viewed by anyone who has its URL (and may be discoverable by search engines). Do not upload passwords, private keys, personal records or confidential information. This project is a static front-end demo; localStorage login/complaint data is stored in each visitor's own browser and is not a shared secure backend/database.

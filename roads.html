@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roads & Infrastructure | SmartCity</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+        [hidden] {
+            display: none !important;
+        }
+
+        .road-panel {
+            width: 90%;
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 28px;
+            box-sizing: border-box;
+            background: #fff;
+            color: #263238;
+            border-radius: 16px;
+            box-shadow: 0 5px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .road-panel h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .road-panel p {
+            line-height: 1.7;
+        }
+
+        .road-panel label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .road-panel input,
+        .road-panel select,
+        .road-panel textarea {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+            font: inherit;
+        }
+
+        .road-panel button,
+        .road-back-button,
+        .road-map-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #236b9b;
+            color: white;
+            font: inherit;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .road-panel button:hover,
+        .road-back-button:hover,
+        .road-map-link:hover {
+            background: #174a6c;
+        }
+
+        #roadDetails {
+            min-height: 65vh;
+            padding-top: 25px;
+            padding-bottom: 45px;
+        }
+
+        .road-back-button {
+            margin-left: 4%;
+        }
+
+        .road-result {
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 8px;
+            background: #edf6fc;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .road-notice {
+            padding: 12px;
+            border-left: 4px solid #e6aa35;
+            border-radius: 5px;
+            background: #fff8e6;
+        }
+
+        .road-history-item {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #e1e7eb;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .road-history-item p {
+            margin-bottom: 0;
+        }
+
+        .road-info-card {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 10px;
+            background: #f1f7fb;
+            border-left: 4px solid #236b9b;
+        }
+
+        .road-info-card h4 {
+            margin: 0 0 8px;
+        }
+
+        .road-info-card p {
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .road-panel {
+                padding: 20px;
+            }
+
+            .road-back-button {
+                margin-left: 5%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <header class="navbar">
+
+        <div class="logo-area">
+            <div class="logo-icon">🏙️</div>
+
+            <div>
+                <h2>SmartCity</h2>
+                <span>Services Portal</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="index.html#transport">Transport</a>
+            <a href="index.html#complaints">Complaints</a>
+            <a href="index.html#news">News & Events</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <a href="login.html" class="login-btn" id="authNav">
+            Citizen Login
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="services-hero" id="roadHero">
+
+        <div class="hero-overlay">
+
+            <span class="small-title">ROADS & INFRASTRUCTURE</span>
+
+            <h1>
+                Better Roads.
+                <span>Better City.</span>
+            </h1>
+
+            <p>
+                Report road damage, check road condition information,
+                follow infrastructure projects and help make our
+                city safer and more accessible.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN DASHBOARD ================= -->
+
+    <section class="full-section" id="roadDashboard">
+
+        <div class="section-heading">
+
+            <span>ROADS & INFRASTRUCTURE CENTER</span>
+
+            <h2>
+                Building a Better
+                <strong>Connected City.</strong>
+            </h2>
+
+            <p>
+                Choose a service to view information or submit
+                a demonstration report.
+            </p>
+
+        </div>
+
+        <div class="detail-grid">
+
+            <!-- 1. ROAD CONDITION -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🛣️</div>
+
+                <h3>Road Condition Status</h3>
+
+                <p>
+                    Select an area to view sample road condition
+                    information.
+                </p>
+
+                <button type="button"
+                        onclick="openRoadService('condition')">
+                    Check Condition →
+                </button>
+
+            </div>
+
+
+            <!-- 2. REPORT ROAD DAMAGE -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🚧</div>
+
+                <h3>Report Road Damage</h3>
+
+                <p>
+                    Report potholes, damaged roads and
+                    broken footpaths.
+                </p>
+
+                <button type="button"
+                        onclick="openRoadService('report')">
+                    Report Damage →
+                </button>
+
+            </div>
+
+
+            <!-- 3. TRAFFIC UPDATES -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🚦</div>
+
+                <h3>Traffic & Road Updates</h3>
+
+                <p>
+                    View sample traffic notices and
+                    roadwork information.
+                </p>
+
+                <button type="button"
+                        onclick="openRoadService('traffic')">
+                    View Updates →
+                </button>
+
+            </div>
+
+
+            <!-- 4. STREETLIGHT COMPLAINTS -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">💡</div>
+
+                <h3>Streetlight Complaints</h3>
+
+                <p>
+                    Report streetlights that are broken
+                    or not working.
+                </p>
+
+                <button type="button"
+                        onclick="openRoadService('streetlight')">
+                    Report Streetlight →
+                </button>
+
+            </div>
+
+
+            <!-- 5. INFRASTRUCTURE PROJECTS -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🏗️</div>
+
+                <h3>Infrastructure Work Status</h3>
+
+                <p>
+                    Explore sample information about
+                    infrastructure improvement projects.
+                </p>
+
+                <button type="button"
+                        onclick="openRoadService('projects')">
+                    View Projects →
+                </button>
+
+            </div>
+
+
+            <!-- 6. SUPPORT -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">📞</div>
+
+                <h3>Roads Support</h3>
+
+                <p>
+                    Submit a support request and review
+                    previously saved demo requests.
+                </p>
+
+                <button type="button"
+                        onclick="openRoadService('support')">
+                    Get Help →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SERVICE DETAILS ================= -->
+
+    <section id="roadDetails" class="full-section" hidden>
+
+        <button type="button"
+                class="road-back-button"
+                onclick="backToRoadServices()">
+            ← Back to Roads & Infrastructure
+        </button>
+
+        <div class="section-heading">
+
+            <span>SMARTCITY INFRASTRUCTURE SERVICES</span>
+
+            <h2 id="roadDetailTitle">Road Service</h2>
+
+            <p id="roadDetailDescription"></p>
+
+        </div>
+
+
+        <!-- ================= 1. ROAD CONDITION ================= -->
+
+        <div id="roadConditionPanel" class="road-panel" hidden>
+
+            <h3>🛣️ Road Condition Status</h3>
+
+            <p class="road-notice">
+                This page displays sample information only.
+                It is not connected to live municipal road inspections.
+            </p>
+
+            <label for="conditionArea">Select Area</label>
+
+            <select id="conditionArea">
+                <option value="">Choose your area</option>
+                <option value="Ramnagar">Ramnagar</option>
+                <option value="Madhurawada">Madhurawada</option>
+                <option value="Gajuwaka">Gajuwaka</option>
+                <option value="Arilova">Arilova</option>
+                <option value="Visakhapatnam">Other Visakhapatnam Areas</option>
+            </select>
+
+            <button type="button" onclick="showRoadCondition()">
+                Check Road Condition
+            </button>
+
+            <div id="roadConditionResult"
+                 class="road-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 2. REPORT ROAD DAMAGE ================= -->
+
+        <div id="roadReportPanel" class="road-panel" hidden>
+
+            <h3>🚧 Report Road Damage</h3>
+
+            <p>
+                Create a demonstration report about road damage
+                in your neighbourhood.
+            </p>
+
+            <form id="roadReportForm">
+
+                <label for="roadReportName">Your Name</label>
+
+                <input
+                    type="text"
+                    id="roadReportName"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your name">
+
+                <label for="roadReportArea">Area</label>
+
+                <input
+                    type="text"
+                    id="roadReportArea"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your area">
+
+                <label for="roadReportLocation">
+                    Road Name or Landmark
+                </label>
+
+                <input
+                    type="text"
+                    id="roadReportLocation"
+                    maxlength="200"
+                    required
+                    placeholder="Enter road name or landmark">
+
+                <label for="roadReportType">
+                    Type of Damage
+                </label>
+
+                <select id="roadReportType" required>
+                    <option value="">Select damage type</option>
+                    <option value="Pothole">Pothole</option>
+                    <option value="Damaged road surface">Damaged road surface</option>
+                    <option value="Broken footpath">Broken footpath</option>
+                    <option value="Damaged drainage cover">Damaged drainage cover</option>
+                    <option value="Road erosion">Road erosion</option>
+                    <option value="Other road damage">Other road damage</option>
+                </select>
+
+                <label for="roadReportDescription">
+                    Describe the Problem
+                </label>
+
+                <textarea
+                    id="roadReportDescription"
+                    rows="4"
+                    maxlength="1000"
+                    required
+                    placeholder="Describe the road damage"></textarea>
+
+                <button type="submit">
+                    Submit Demo Report
+                </button>
+
+            </form>
+
+            <div id="roadReportResult"
+                 class="road-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 3. TRAFFIC UPDATES ================= -->
+
+        <div id="roadTrafficPanel" class="road-panel" hidden>
+
+            <h3>🚦 Traffic & Road Updates</h3>
+
+            <p class="road-notice">
+                These are illustrative notices, not live traffic data
+                or verified road closures. Check official traffic
+                announcements before travelling.
+            </p>
+
+            <div class="road-info-card">
+                <h4>🛠️ Road Maintenance</h4>
+                <p>
+                    Maintenance work may require temporary lane
+                    restrictions. Follow posted signs and local
+                    traffic instructions.
+                </p>
+            </div>
+
+            <div class="road-info-card">
+                <h4>🚧 Road Construction</h4>
+                <p>
+                    Construction areas may have temporary diversions.
+                    Allow extra travel time and follow marked routes.
+                </p>
+            </div>
+
+            <div class="road-info-card">
+                <h4>🚸 Road Safety</h4>
+                <p>
+                    Slow down near roadworks, keep a safe distance
+                    from other vehicles and follow traffic signals.
+                </p>
+            </div>
+
+            <label for="trafficArea">Select Area</label>
+
+            <select id="trafficArea">
+                <option value="">Choose your area</option>
+                <option value="Ramnagar">Ramnagar</option>
+                <option value="Madhurawada">Madhurawada</option>
+                <option value="Gajuwaka">Gajuwaka</option>
+                <option value="Arilova">Arilova</option>
+                <option value="Visakhapatnam">Other Visakhapatnam Areas</option>
+            </select>
+
+            <button type="button" onclick="showTrafficInformation()">
+                View Area Information
+            </button>
+
+            <div id="trafficResult"
+                 class="road-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 4. STREETLIGHT COMPLAINT ================= -->
+
+        <div id="roadStreetlightPanel" class="road-panel" hidden>
+
+            <h3>💡 Report a Streetlight Problem</h3>
+
+            <p>
+                Submit a demonstration report about a streetlight
+                that is not working properly.
+            </p>
+
+            <form id="streetlightForm">
+
+                <label for="streetlightName">Your Name</label>
+
+                <input
+                    type="text"
+                    id="streetlightName"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your name">
+
+                <label for="streetlightArea">Area</label>
+
+                <input
+                    type="text"
+                    id="streetlightArea"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your area">
+
+                <label for="streetlightLocation">
+                    Street or Pole Location
+                </label>
+
+                <input
+                    type="text"
+                    id="streetlightLocation"
+                    maxlength="200"
+                    required
+                    placeholder="Enter street name or nearby landmark">
+
+                <label for="streetlightProblem">
+                    Problem Type
+                </label>
+
+                <select id="streetlightProblem" required>
+                    <option value="">Select problem</option>
+                    <option value="Light not working">Light not working</option>
+                    <option value="Light flickering">Light flickering</option>
+                    <option value="Damaged pole">Damaged pole</option>
+                    <option value="Light stays on during daytime">Light stays on during daytime</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="streetlightDescription">
+                    Additional Details
+                </label>
+
+                <textarea
+                    id="streetlightDescription"
+                    rows="3"
+                    maxlength="1000"
+                    placeholder="Enter additional details"></textarea>
+
+                <button type="submit">
+                    Submit Demo Complaint
+                </button>
+
+            </form>
+
+            <div id="streetlightResult"
+                 class="road-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 5. INFRASTRUCTURE PROJECTS ================= -->
+
+        <div id="roadProjectsPanel" class="road-panel" hidden>
+
+            <h3>🏗️ Infrastructure Work Status</h3>
+
+            <p class="road-notice">
+                The project examples below are for demonstration.
+                They do not represent verified ongoing projects
+                or official completion dates.
+            </p>
+
+            <div class="road-info-card">
+                <h4>🛣️ Road Improvement</h4>
+                <p>
+                    Example project: repairing damaged road surfaces
+                    and improving road accessibility.
+                </p>
+                <p><strong>Demo Status:</strong> Sample project</p>
+            </div>
+
+            <div class="road-info-card">
+                <h4>🚶 Footpath Development</h4>
+                <p>
+                    Example project: improving pedestrian paths
+                    and accessibility near public spaces.
+                </p>
+                <p><strong>Demo Status:</strong> Sample project</p>
+            </div>
+
+            <div class="road-info-card">
+                <h4>💡 Streetlight Improvements</h4>
+                <p>
+                    Example project: maintaining streetlights
+                    and improving visibility on city roads.
+                </p>
+                <p><strong>Demo Status:</strong> Sample project</p>
+            </div>
+
+            <div class="road-info-card">
+                <h4>🌧️ Drainage Infrastructure</h4>
+                <p>
+                    Example project: maintaining roadside drainage
+                    to help manage rainwater.
+                </p>
+                <p><strong>Demo Status:</strong> Sample project</p>
+            </div>
+
+        </div>
+
+
+        <!-- ================= 6. ROADS SUPPORT ================= -->
+
+        <div id="roadSupportPanel" class="road-panel" hidden>
+
+            <h3>📞 Roads & Infrastructure Support</h3>
+
+            <p>
+                Create a demonstration support request and review
+                previous requests saved in this browser.
+            </p>
+
+            <form id="roadSupportForm">
+
+                <label for="roadSupportName">Your Name</label>
+
+                <input
+                    type="text"
+                    id="roadSupportName"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your name">
+
+                <label for="roadSupportArea">Area</label>
+
+                <input
+                    type="text"
+                    id="roadSupportArea"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your area">
+
+                <label for="roadSupportCategory">
+                    Support Category
+                </label>
+
+                <select id="roadSupportCategory" required>
+                    <option value="">Select category</option>
+                    <option value="Road damage">Road damage</option>
+                    <option value="Streetlight">Streetlight</option>
+                    <option value="Traffic issue">Traffic issue</option>
+                    <option value="Infrastructure project">Infrastructure project</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="roadSupportIssue">
+                    Describe Your Issue
+                </label>
+
+                <textarea
+                    id="roadSupportIssue"
+                    rows="4"
+                    maxlength="1000"
+                    required
+                    placeholder="Describe how we can help"></textarea>
+
+                <button type="submit">
+                    Submit Demo Request
+                </button>
+
+            </form>
+
+            <div id="roadSupportResult"
+                 class="road-result"
+                 aria-live="polite"
+                 hidden></div>
+
+            <h3 style="margin-top: 30px;">
+                Previous Demo Requests
+            </h3>
+
+            <div id="roadSupportHistory"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= AWARENESS SECTION ================= -->
+
+    <section class="full-section" id="roadAwareness">
+
+        <div class="section-heading">
+
+            <span>BUILD A SAFER CITY</span>
+
+            <h2>
+                Better Infrastructure.
+                <strong>Better Living.</strong>
+            </h2>
+
+            <p>
+                Report road damage responsibly, respect traffic rules,
+                protect public infrastructure and help create safer
+                streets for everyone.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="roadFooter">
+
+        <div class="footer-logo">
+            🏙️ SmartCity
+        </div>
+
+        <p>
+            Smart services for a safer and better-connected city.
+        </p>
+
+        <span>
+            © 2026 Smart City Services Portal
+        </span>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+        "use strict";
+
+
+        /* SERVICE CONFIGURATION */
+
+        const roadPanels = {
+            condition: "roadConditionPanel",
+            report: "roadReportPanel",
+            traffic: "roadTrafficPanel",
+            streetlight: "roadStreetlightPanel",
+            projects: "roadProjectsPanel",
+            support: "roadSupportPanel"
+        };
+
+
+        const roadTitles = {
+            condition: "🛣️ Road Condition Status",
+            report: "🚧 Report Road Damage",
+            traffic: "🚦 Traffic & Road Updates",
+            streetlight: "💡 Streetlight Complaints",
+            projects: "🏗️ Infrastructure Work Status",
+            support: "📞 Roads Support"
+        };
+
+
+        const roadDescriptions = {
+            condition: "View sample road condition information for your area.",
+            report: "Submit a demonstration report about road damage.",
+            traffic: "View general road safety information and sample updates.",
+            streetlight: "Report a streetlight problem in your neighbourhood.",
+            projects: "Explore examples of infrastructure improvement projects.",
+            support: "Submit and review demonstration support requests."
+        };
+
+
+        /* LOCAL STORAGE HELPERS */
+
+        function getRoadStorage(key) {
+            try {
+                const data = JSON.parse(localStorage.getItem(key) || "[]");
+                return Array.isArray(data) ? data : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+
+        function saveRoadStorage(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify(data));
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+
+
+        /* OPEN A SERVICE */
+
+        function openRoadService(service) {
+
+            const panelId = roadPanels[service];
+
+            if (!panelId) {
+                console.error("Unknown road service:", service);
+                return;
+            }
+
+            document.getElementById("roadHero").hidden = true;
+            document.getElementById("roadDashboard").hidden = true;
+            document.getElementById("roadAwareness").hidden = true;
+            document.getElementById("roadFooter").hidden = true;
+
+            Object.values(roadPanels).forEach(function(id) {
+                document.getElementById(id).hidden = true;
+            });
+
+            document.getElementById("roadDetailTitle").textContent =
+                roadTitles[service];
+
+            document.getElementById("roadDetailDescription").textContent =
+                roadDescriptions[service];
+
+            document.getElementById("roadDetails").hidden = false;
+            document.getElementById(panelId).hidden = false;
+
+            if (service === "support") {
+                displayRoadSupportHistory();
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+
+        /* RETURN TO DASHBOARD */
+
+        function backToRoadServices() {
+
+            document.getElementById("roadDetails").hidden = true;
+
+            document.getElementById("roadHero").hidden = false;
+            document.getElementById("roadDashboard").hidden = false;
+            document.getElementById("roadAwareness").hidden = false;
+            document.getElementById("roadFooter").hidden = false;
+
+            Object.values(roadPanels).forEach(function(id) {
+                document.getElementById(id).hidden = true;
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+
+        /* ROAD CONDITION STATUS */
+
+        function showRoadCondition() {
+
+            const area = document.getElementById("conditionArea").value;
+            const result = document.getElementById("roadConditionResult");
+
+            result.hidden = false;
+
+            if (!area) {
+                result.textContent = "Please select your area.";
+                return;
+            }
+
+            result.textContent =
+                "Selected Area: " + area +
+                ". Live road inspection data is not connected. " +
+                "Please verify actual road conditions with the relevant local authority.";
+        }
+
+
+        /* TRAFFIC AND ROAD UPDATES */
+
+        function showTrafficInformation() {
+
+            const area = document.getElementById("trafficArea").value;
+            const result = document.getElementById("trafficResult");
+
+            result.hidden = false;
+
+            if (!area) {
+                result.textContent = "Please select your area.";
+                return;
+            }
+
+            result.textContent =
+                "Selected Area: " + area +
+                ". This demo does not receive live traffic, road closure " +
+                "or construction updates. Check official traffic notices before travelling.";
+        }
+
+
+        /* GENERIC FORM SUBMISSION */
+
+        function saveRoadForm(event, config) {
+
+            event.preventDefault();
+
+            const form = event.currentTarget;
+            const formData = new FormData(form);
+            const record = {};
+
+            for (const [key, value] of formData.entries()) {
+                record[key] = String(value).trim();
+            }
+
+            record.reference =
+                config.prefix + "-" + Date.now().toString().slice(-8);
+
+            record.status = "Demo Request Saved";
+            record.date = new Date().toLocaleString();
+
+            const records = getRoadStorage(config.storageKey);
+            records.push(record);
+
+            const result = document.getElementById(config.resultId);
+            result.hidden = false;
+
+            if (!saveRoadStorage(config.storageKey, records)) {
+                result.textContent =
+                    "Unable to save the demo request in browser storage. Please try again.";
+                return;
+            }
+
+            result.textContent =
+                "Your demonstration request has been saved! Reference Number: " +
+                record.reference +
+                ". It has not been sent to a government department or service team.";
+
+            form.reset();
+
+            if (config.showHistory) {
+                displayRoadSupportHistory();
+            }
+        }
+
+
+        /* ROAD DAMAGE FORM */
+
+        document.getElementById("roadReportForm")
+            .addEventListener("submit", function(event) {
+
+                saveRoadForm(event, {
+                    prefix: "ROAD",
+                    storageKey: "smartCityRoadReports",
+                    resultId: "roadReportResult"
+                });
+
+            });
+
+
+        /* STREETLIGHT FORM */
+
+        document.getElementById("streetlightForm")
+            .addEventListener("submit", function(event) {
+
+                saveRoadForm(event, {
+                    prefix: "LIGHT",
+                    storageKey: "smartCityStreetlightReports",
+                    resultId: "streetlightResult"
+                });
+
+            });
+
+
+        /* ROADS SUPPORT FORM */
+
+        document.getElementById("roadSupportForm")
+            .addEventListener("submit", function(event) {
+
+                saveRoadForm(event, {
+                    prefix: "HELP",
+                    storageKey: "smartCityRoadSupport",
+                    resultId: "roadSupportResult",
+                    showHistory: true
+                });
+
+            });
+
+
+        /* DISPLAY SUPPORT HISTORY */
+
+        function displayRoadSupportHistory() {
+
+            const container =
+                document.getElementById("roadSupportHistory");
+
+            const requests =
+                getRoadStorage("smartCityRoadSupport");
+
+            container.replaceChildren();
+
+            if (requests.length === 0) {
+                container.textContent =
+                    "No demo support requests have been submitted yet.";
+                return;
+            }
+
+            requests.slice().reverse().forEach(function(request) {
+
+                const item = document.createElement("div");
+                item.className = "road-history-item";
+
+                const heading = document.createElement("strong");
+                heading.textContent = request.reference || "Road Support Request";
+
+                const area = document.createElement("p");
+                area.textContent = "Area: " + (request.roadSupportArea || "");
+
+                const category = document.createElement("p");
+                category.textContent =
+                    "Category: " + (request.roadSupportCategory || "");
+
+                const issue = document.createElement("p");
+                issue.textContent =
+                    "Issue: " + (request.roadSupportIssue || "");
+
+                const date = document.createElement("p");
+                date.textContent = "Submitted: " + (request.date || "");
+
+                const status = document.createElement("p");
+                status.textContent = "Status: " + (request.status || "");
+
+                item.append(
+                    heading,
+                    area,
+                    category,
+                    issue,
+                    date,
+                    status
+                );
+
+                container.appendChild(item);
+            });
+        }
+
+    </script>
+
+
+    <!-- EXISTING AUTHENTICATION SCRIPT -->
+
+    <script src="JS/auth.js"></script>
+
+    <script src="JS/theme.js"></script>
+</body>
+</html>

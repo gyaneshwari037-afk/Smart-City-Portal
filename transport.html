@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Public Transport | SmartCity</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/transport.css">
+
+    <style>
+        [hidden] {
+            display: none !important;
+        }
+
+        .transport-panel {
+            width: 90%;
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 28px;
+            box-sizing: border-box;
+            background: #fff;
+            color: #263238;
+            border-radius: 16px;
+            box-shadow: 0 5px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .transport-panel h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .transport-panel p {
+            line-height: 1.7;
+        }
+
+        .transport-panel label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .transport-panel input,
+        .transport-panel select,
+        .transport-panel textarea {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+            font: inherit;
+        }
+
+        .transport-panel button,
+        .transport-back-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #236b9b;
+            color: white;
+            font: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .transport-panel button:hover,
+        .transport-back-button:hover {
+            background: #174a6c;
+        }
+
+        #transportDetails {
+            min-height: 65vh;
+            padding-top: 25px;
+            padding-bottom: 45px;
+        }
+
+        .transport-back-button {
+            margin-left: 4%;
+        }
+
+        .transport-result {
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 8px;
+            background: #edf6fc;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .transport-notice {
+            padding: 12px;
+            border-left: 4px solid #e6aa35;
+            border-radius: 5px;
+            background: #fff8e6;
+        }
+
+        .transport-info-card {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 10px;
+            background: #f1f7fb;
+            border-left: 4px solid #236b9b;
+        }
+
+        .transport-info-card h4 {
+            margin: 0 0 8px;
+        }
+
+        .transport-info-card p {
+            margin: 0;
+        }
+
+        .transport-history-item {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #e1e7eb;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .transport-history-item p {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .transport-panel {
+                padding: 20px;
+            }
+
+            .transport-back-button {
+                margin-left: 5%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body class="page-transport">
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <header class="navbar">
+
+        <div class="logo-area">
+            <div class="logo-icon">🏙️</div>
+
+            <div>
+                <h2>SmartCity</h2>
+                <span>Services Portal</span>
+            </div>
+        </div>
+<nav>
+    <a href="home.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="transport.html" class="active">Transport</a>
+    <a href="complaint.html">Complaints</a>
+    <a href="news.html">News & Events</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+
+
+        <a href="login.html" class="login-btn" id="authNav">
+            Citizen Login
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="services-hero" id="transportHero">
+
+        <div class="hero-overlay">
+
+            <span class="small-title">PUBLIC TRANSPORT</span>
+
+            <h1>
+                Travel Smarter.
+                <span>Move Better.</span>
+            </h1>
+
+            <p>
+                Explore public transport information, check sample
+                routes and schedules, calculate estimated fares,
+                and report transport-related issues.
+            </p>
+
+            <button type="button" class="transport-hero-button"
+                    onclick="openTransportService('routes')">
+                Plan Your Journey <span aria-hidden="true">→</span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN DASHBOARD ================= -->
+
+    <section class="full-section" id="transportDashboard">
+
+        <div class="section-heading">
+
+            <span>PUBLIC TRANSPORT CENTER</span>
+
+            <h2>
+                Connected Journeys.
+                <strong>Smarter Mobility.</strong>
+            </h2>
+
+            <p>
+                Choose a transport service to explore travel
+                information or submit a demonstration report.
+            </p>
+
+        </div>
+
+        <div class="detail-grid">
+
+            <!-- 1. BUS ROUTES -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🚌</div>
+
+                <h3>Bus Routes</h3>
+
+                <p>
+                    Explore sample bus route information and
+                    select your travel area.
+                </p>
+
+                <button type="button"
+                        onclick="openTransportService('routes')">
+                    Explore Routes →
+                </button>
+
+            </div>
+
+
+            <!-- 2. BUS SCHEDULE -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">🕒</div>
+
+                <h3>Bus Schedule</h3>
+
+                <p>
+                    View a sample timetable and learn how
+                    to plan a public transport journey.
+                </p>
+
+                <button type="button"
+                        onclick="openTransportService('schedule')">
+                    View Schedule →
+                </button>
+
+            </div>
+
+
+            <!-- 3. FARE CALCULATOR -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">💰</div>
+
+                <h3>Fare Calculator</h3>
+
+                <p>
+                    Calculate an illustrative fare estimate
+                    for your journey.
+                </p>
+
+                <button type="button"
+                        onclick="openTransportService('fare')">
+                    Calculate Fare →
+                </button>
+
+            </div>
+
+
+            <!-- 4. TRANSPORT COMPLAINTS -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">📝</div>
+
+                <h3>Transport Complaints</h3>
+
+                <p>
+                    Report a transport-related issue using
+                    our demonstration complaint form.
+                </p>
+
+                <button type="button"
+                        onclick="openTransportService('complaints')">
+                    Report Issue →
+                </button>
+
+            </div>
+
+
+            <!-- 5. TRANSPORT ACCESSIBILITY -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">♿</div>
+
+                <h3>Passenger Information</h3>
+
+                <p>
+                    Learn about safer travel, accessibility
+                    and responsible passenger behaviour.
+                </p>
+
+                <button type="button"
+                        onclick="openTransportService('passenger')">
+                    Passenger Guide →
+                </button>
+
+            </div>
+
+
+            <!-- 6. TRANSPORT SUPPORT -->
+
+            <div class="detail-card">
+
+                <div class="detail-icon">📞</div>
+
+                <h3>Transport Support</h3>
+
+                <p>
+                    Submit a support request and review
+                    previously saved demo requests.
+                </p>
+
+                <button type="button"
+                        onclick="openTransportService('support')">
+                    Get Help →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SERVICE DETAILS ================= -->
+
+    <section id="transportDetails" class="full-section" hidden>
+
+        <button type="button"
+                class="transport-back-button"
+                onclick="backToTransportServices()">
+            ← Back to Public Transport
+        </button>
+
+        <div class="section-heading">
+
+            <span>SMARTCITY MOBILITY SERVICES</span>
+
+            <h2 id="transportDetailTitle">Public Transport</h2>
+
+            <p id="transportDetailDescription"></p>
+
+        </div>
+
+
+        <!-- ================= 1. BUS ROUTES ================= -->
+
+        <div id="transportRoutesPanel" class="transport-panel" hidden>
+
+            <h3>🚌 Bus Routes</h3>
+
+            <p class="transport-notice">
+                Route information on this page is illustrative.
+                It is not connected to a live bus tracking system
+                or an official transport timetable.
+            </p>
+
+            <label for="routeFrom">Starting Area</label>
+
+            <select id="routeFrom">
+                <option value="">Select starting area</option>
+                <option value="Ramnagar">Ramnagar</option>
+                <option value="Madhurawada">Madhurawada</option>
+                <option value="Gajuwaka">Gajuwaka</option>
+                <option value="Arilova">Arilova</option>
+                <option value="RTC Complex">RTC Complex</option>
+                <option value="Railway Station">Railway Station</option>
+            </select>
+
+            <label for="routeTo">Destination</label>
+
+            <select id="routeTo">
+                <option value="">Select destination</option>
+                <option value="Ramnagar">Ramnagar</option>
+                <option value="Madhurawada">Madhurawada</option>
+                <option value="Gajuwaka">Gajuwaka</option>
+                <option value="Arilova">Arilova</option>
+                <option value="RTC Complex">RTC Complex</option>
+                <option value="Railway Station">Railway Station</option>
+            </select>
+
+            <button type="button" onclick="findBusRoute()">
+                Find Sample Route
+            </button>
+
+            <div id="routeResult"
+                 class="transport-result"
+                 aria-live="polite"
+                 hidden></div>
+
+            <div class="transport-info-card">
+                <h4>🗺️ Plan Your Journey</h4>
+                <p>
+                    Confirm your route, stops and connections
+                    through the official transport operator before
+                    beginning your journey.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ================= 2. BUS SCHEDULE ================= -->
+
+        <div id="transportSchedulePanel"
+             class="transport-panel"
+             hidden>
+
+            <h3>🕒 Bus Schedule</h3>
+
+            <p class="transport-notice">
+                The times below are sample demonstration times,
+                not actual departure or arrival times.
+            </p>
+
+            <label for="scheduleRoute">Select a Sample Route</label>
+
+            <select id="scheduleRoute">
+                <option value="">Choose a route</option>
+                <option value="Ramnagar to RTC Complex">
+                    Ramnagar → RTC Complex
+                </option>
+                <option value="Madhurawada to RTC Complex">
+                    Madhurawada → RTC Complex
+                </option>
+                <option value="Gajuwaka to Railway Station">
+                    Gajuwaka → Railway Station
+                </option>
+                <option value="Arilova to RTC Complex">
+                    Arilova → RTC Complex
+                </option>
+            </select>
+
+            <button type="button" onclick="showBusSchedule()">
+                View Sample Timetable
+            </button>
+
+            <div id="scheduleResult"
+                 class="transport-result"
+                 aria-live="polite"
+                 hidden></div>
+
+            <div class="transport-info-card">
+                <h4>📌 Travel Reminder</h4>
+                <p>
+                    Confirm current bus timings with the official
+                    operator before travelling. Services can change
+                    because of holidays, traffic and operational needs.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ================= 3. FARE CALCULATOR ================= -->
+
+        <div id="transportFarePanel" class="transport-panel" hidden>
+
+            <h3>💰 Estimated Fare Calculator</h3>
+
+            <p class="transport-notice">
+                This is an illustrative calculator, not an official
+                fare chart. The estimate may not match actual
+                public transport fares.
+            </p>
+
+            <label for="fareDistance">Estimated Distance (km)</label>
+
+            <input
+                type="number"
+                id="fareDistance"
+                min="1"
+                max="300"
+                step="0.5"
+                placeholder="Enter distance in kilometres">
+
+            <label for="farePassengers">Number of Passengers</label>
+
+            <select id="farePassengers">
+                <option value="1">1 Passenger</option>
+                <option value="2">2 Passengers</option>
+                <option value="3">3 Passengers</option>
+                <option value="4">4 Passengers</option>
+                <option value="5">5 Passengers</option>
+                <option value="6">6 Passengers</option>
+            </select>
+
+            <button type="button" onclick="calculateTransportFare()">
+                Calculate Estimate
+            </button>
+
+            <div id="fareResult"
+                 class="transport-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 4. TRANSPORT COMPLAINTS ================= -->
+
+        <div id="transportComplaintsPanel"
+             class="transport-panel"
+             hidden>
+
+            <h3>📝 Transport Complaints</h3>
+
+            <p>
+                Record a demonstration complaint about a public
+                transport service.
+            </p>
+
+            <p class="transport-notice">
+                Submitting this form saves a record in your browser.
+                It does not notify a transport operator or government
+                department.
+            </p>
+
+            <form id="transportComplaintForm">
+
+                <label for="complaintName">Your Name</label>
+
+                <input
+                    type="text"
+                    id="complaintName"
+                    name="name"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your name">
+
+                <label for="complaintArea">Area</label>
+
+                <input
+                    type="text"
+                    id="complaintArea"
+                    name="area"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your area">
+
+                <label for="complaintType">Complaint Type</label>
+
+                <select id="complaintType" name="type" required>
+                    <option value="">Select complaint type</option>
+                    <option value="Bus delay">Bus delay</option>
+                    <option value="Missed stop">Missed stop</option>
+                    <option value="Cleanliness">Cleanliness</option>
+                    <option value="Passenger safety concern">Passenger safety concern</option>
+                    <option value="Accessibility concern">Accessibility concern</option>
+                    <option value="Bus stop maintenance">Bus stop maintenance</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="complaintDescription">
+                    Describe the Problem
+                </label>
+
+                <textarea
+                    id="complaintDescription"
+                    name="description"
+                    rows="4"
+                    maxlength="1000"
+                    required
+                    placeholder="Describe your transport-related concern"></textarea>
+
+                <button type="submit">
+                    Submit Demo Complaint
+                </button>
+
+            </form>
+
+            <div id="transportComplaintResult"
+                 class="transport-result"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+
+        <!-- ================= 5. PASSENGER INFORMATION ================= -->
+
+        <div id="transportPassengerPanel"
+             class="transport-panel"
+             hidden>
+
+            <h3>♿ Passenger Information & Travel Safety</h3>
+
+            <div class="transport-info-card">
+                <h4>♿ Accessibility</h4>
+                <p>
+                    Check whether your chosen service and stop offer
+                    accessible boarding, ramps, lifts or other
+                    facilities before travelling.
+                </p>
+            </div>
+
+            <div class="transport-info-card">
+                <h4>🎫 Tickets & Passes</h4>
+                <p>
+                    Use valid tickets or passes and follow the
+                    transport operator's ticketing rules.
+                </p>
+            </div>
+
+            <div class="transport-info-card">
+                <h4>🛡️ Passenger Safety</h4>
+                <p>
+                    Wait in designated areas, follow instructions
+                    at stops and avoid boarding a moving vehicle.
+                </p>
+            </div>
+
+            <div class="transport-info-card">
+                <h4>🧳 Personal Belongings</h4>
+                <p>
+                    Keep your belongings secure and check your
+                    seating area before leaving the vehicle.
+                </p>
+            </div>
+
+            <div class="transport-info-card">
+                <h4>🚌 At Bus Stops</h4>
+                <p>
+                    Queue safely where required, allow passengers
+                    to exit before boarding and follow posted signs.
+                </p>
+            </div>
+
+            <div class="transport-info-card">
+                <h4>📍 Before You Travel</h4>
+                <p>
+                    Verify the route, fare, schedule and service
+                    availability using official transport information.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ================= 6. TRANSPORT SUPPORT ================= -->
+
+        <div id="transportSupportPanel"
+             class="transport-panel"
+             hidden>
+
+            <h3>📞 Public Transport Support</h3>
+
+            <p>
+                Submit a demonstration support request and review
+                requests previously saved in this browser.
+            </p>
+
+            <form id="transportSupportForm">
+
+                <label for="supportName">Your Name</label>
+
+                <input
+                    type="text"
+                    id="supportName"
+                    name="name"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your name">
+
+                <label for="supportArea">Area</label>
+
+                <input
+                    type="text"
+                    id="supportArea"
+                    name="area"
+                    maxlength="100"
+                    required
+                    placeholder="Enter your area">
+
+                <label for="supportCategory">Support Category</label>
+
+                <select id="supportCategory" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="Bus route information">Bus route information</option>
+                    <option value="Schedule information">Schedule information</option>
+                    <option value="Fare information">Fare information</option>
+                    <option value="Passenger accessibility">Passenger accessibility</option>
+                    <option value="Transport complaint">Transport complaint</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="supportIssue">Describe Your Request</label>
+
+                <textarea
+                    id="supportIssue"
+                    name="issue"
+                    rows="4"
+                    maxlength="1000"
+                    required
+                    placeholder="Describe how we can help"></textarea>
+
+                <button type="submit">
+                    Submit Demo Request
+                </button>
+
+            </form>
+
+            <div id="transportSupportResult"
+                 class="transport-result"
+                 aria-live="polite"
+                 hidden></div>
+
+            <h3 style="margin-top: 30px;">
+                Previous Demo Requests
+            </h3>
+
+            <div id="transportSupportHistory"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= AWARENESS SECTION ================= -->
+
+    <section class="full-section" id="transportAwareness">
+
+        <div class="section-heading">
+
+            <span>SMARTER MOBILITY</span>
+
+            <h2>
+                Better Journeys.
+                <strong>Better Connections.</strong>
+            </h2>
+
+            <p>
+                Choose safe travel, respect fellow passengers and
+                use reliable transport information to plan your journey.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="transportFooter">
+
+        <div class="footer-logo">
+            🚌 SmartCity
+        </div>
+
+        <p>
+            Connecting people with smarter city services.
+        </p>
+
+        <span>
+            © 2026 Smart City Services Portal
+        </span>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+        "use strict";
+
+
+        /* SERVICE CONFIGURATION */
+
+        const transportPanels = {
+            routes: "transportRoutesPanel",
+            schedule: "transportSchedulePanel",
+            fare: "transportFarePanel",
+            complaints: "transportComplaintsPanel",
+            passenger: "transportPassengerPanel",
+            support: "transportSupportPanel"
+        };
+
+
+        const transportTitles = {
+            routes: "🚌 Bus Routes",
+            schedule: "🕒 Bus Schedule",
+            fare: "💰 Fare Calculator",
+            complaints: "📝 Transport Complaints",
+            passenger: "♿ Passenger Information",
+            support: "📞 Transport Support"
+        };
+
+
+        const transportDescriptions = {
+            routes: "Explore sample route information for your journey.",
+            schedule: "View an illustrative public transport timetable.",
+            fare: "Calculate an estimated fare for demonstration purposes.",
+            complaints: "Record a demonstration transport complaint.",
+            passenger: "Learn about accessibility and passenger safety.",
+            support: "Submit and review demonstration support requests."
+        };
+
+
+        /* LOCAL STORAGE HELPERS */
+
+        function getTransportStorage(key) {
+            try {
+                const data = JSON.parse(localStorage.getItem(key) || "[]");
+                return Array.isArray(data) ? data : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+
+        function saveTransportStorage(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify(data));
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+
+
+        /* OPEN SERVICE PAGE */
+
+        function openTransportService(service) {
+
+            const panelId = transportPanels[service];
+
+            if (!panelId) {
+                console.error("Unknown transport service:", service);
+                return;
+            }
+
+            document.getElementById("transportHero").hidden = true;
+            document.getElementById("transportDashboard").hidden = true;
+            document.getElementById("transportAwareness").hidden = true;
+            document.getElementById("transportFooter").hidden = true;
+
+            Object.values(transportPanels).forEach(function(id) {
+                document.getElementById(id).hidden = true;
+            });
+
+            document.getElementById("transportDetailTitle").textContent =
+                transportTitles[service];
+
+            document.getElementById("transportDetailDescription").textContent =
+                transportDescriptions[service];
+
+            document.getElementById("transportDetails").hidden = false;
+            document.getElementById(panelId).hidden = false;
+
+            if (service === "support") {
+                displayTransportSupportHistory();
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+
+        /* BACK TO DASHBOARD */
+
+        function backToTransportServices() {
+
+            document.getElementById("transportDetails").hidden = true;
+
+            document.getElementById("transportHero").hidden = false;
+            document.getElementById("transportDashboard").hidden = false;
+            document.getElementById("transportAwareness").hidden = false;
+            document.getElementById("transportFooter").hidden = false;
+
+            Object.values(transportPanels).forEach(function(id) {
+                document.getElementById(id).hidden = true;
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+
+        /* BUS ROUTE SEARCH */
+
+        function findBusRoute() {
+
+            const from = document.getElementById("routeFrom").value;
+            const to = document.getElementById("routeTo").value;
+            const result = document.getElementById("routeResult");
+
+            result.hidden = false;
+
+            if (!from || !to) {
+                result.textContent =
+                    "Please select both a starting area and a destination.";
+                return;
+            }
+
+            if (from === to) {
+                result.textContent =
+                    "Your starting area and destination are the same. Please select different areas.";
+                return;
+            }
+
+            result.textContent =
+                "Sample journey: " + from + " → " + to +
+                ". This demo does not calculate a verified bus route " +
+                "or confirm that a direct service is available. " +
+                "Check the official operator's route information before travelling.";
+        }
+
+
+        /* BUS SCHEDULE */
+
+        function showBusSchedule() {
+
+            const route = document.getElementById("scheduleRoute").value;
+            const result = document.getElementById("scheduleResult");
+
+            result.hidden = false;
+
+            if (!route) {
+                result.textContent = "Please select a sample route.";
+                return;
+            }
+
+            result.textContent =
+                "Selected sample route: " + route +
+                ". No verified timetable is available in this demo. " +
+                "Please check the official operator for actual departure times.";
+        }
+
+
+        /* FARE CALCULATOR */
+
+        function calculateTransportFare() {
+
+            const distanceInput =
+                document.getElementById("fareDistance");
+
+            const distance = Number(distanceInput.value);
+
+            const passengers = Number(
+                document.getElementById("farePassengers").value
+            );
+
+            const result = document.getElementById("fareResult");
+
+            result.hidden = false;
+
+            if (
+                distanceInput.value.trim() === "" ||
+                !Number.isFinite(distance) ||
+                distance <= 0 ||
+                distance > 300
+            ) {
+                result.textContent =
+                    "Please enter a distance greater than 0 and no more than 300 km.";
+                return;
+            }
+
+            /*
+              DEMONSTRATION FORMULA ONLY:
+              Illustrative base estimate: ₹10 per passenger
+              plus ₹2 per kilometre per passenger.
+              These are NOT official public transport fares.
+            */
+
+            const farePerPassenger = 10 + (distance * 2);
+            const totalFare = farePerPassenger * passengers;
+
+            result.textContent =
+                "Estimated distance: " + distance + " km. " +
+                "Illustrative estimate per passenger: ₹" +
+                farePerPassenger.toFixed(2) + ". " +
+                "Passengers: " + passengers + ". " +
+                "Illustrative total: ₹" + totalFare.toFixed(2) +
+                ". This is a demo calculation, not an official fare.";
+        }
+
+
+        /* GENERIC FORM HANDLER */
+
+        function saveTransportForm(event, config) {
+
+            event.preventDefault();
+
+            const form = event.currentTarget;
+            const formData = new FormData(form);
+            const record = {};
+
+            for (const [key, value] of formData.entries()) {
+                record[key] = String(value).trim();
+            }
+
+            record.reference =
+                config.prefix + "-" + Date.now().toString().slice(-8);
+
+            record.status = "Demo Request Saved";
+            record.date = new Date().toLocaleString();
+
+            const records = getTransportStorage(config.storageKey);
+            records.push(record);
+
+            const result = document.getElementById(config.resultId);
+            result.hidden = false;
+
+            if (!saveTransportStorage(config.storageKey, records)) {
+                result.textContent =
+                    "Unable to save this demo request in browser storage. Please try again.";
+                return;
+            }
+
+            result.textContent =
+                "Your demonstration request has been saved! Reference Number: " +
+                record.reference +
+                ". It has not been sent to a transport operator or government department.";
+
+            form.reset();
+
+            if (config.showHistory) {
+                displayTransportSupportHistory();
+            }
+        }
+
+
+        /* TRANSPORT COMPLAINT FORM */
+
+        document.getElementById("transportComplaintForm")
+            .addEventListener("submit", function(event) {
+
+                saveTransportForm(event, {
+                    prefix: "TRANS",
+                    storageKey: "smartCityTransportComplaints",
+                    resultId: "transportComplaintResult"
+                });
+
+            });
+
+
+        /* TRANSPORT SUPPORT FORM */
+
+        document.getElementById("transportSupportForm")
+            .addEventListener("submit", function(event) {
+
+                saveTransportForm(event, {
+                    prefix: "TRANSHELP",
+                    storageKey: "smartCityTransportSupport",
+                    resultId: "transportSupportResult",
+                    showHistory: true
+                });
+
+            });
+
+
+        /* DISPLAY SUPPORT HISTORY */
+
+        function displayTransportSupportHistory() {
+
+            const container =
+                document.getElementById("transportSupportHistory");
+
+            const requests =
+                getTransportStorage("smartCityTransportSupport");
+
+            container.replaceChildren();
+
+            if (requests.length === 0) {
+                container.textContent =
+                    "No demo support requests have been submitted yet.";
+                return;
+            }
+
+            requests.slice().reverse().forEach(function(request) {
+
+                const item = document.createElement("div");
+                item.className = "transport-history-item";
+
+                const heading = document.createElement("strong");
+                heading.textContent =
+                    request.reference || "Transport Support Request";
+
+                const area = document.createElement("p");
+                area.textContent = "Area: " + (request.area || "");
+
+                const category = document.createElement("p");
+                category.textContent =
+                    "Category: " + (request.category || "");
+
+                const issue = document.createElement("p");
+                issue.textContent = "Request: " + (request.issue || "");
+
+                const date = document.createElement("p");
+                date.textContent = "Submitted: " + (request.date || "");
+
+                const status = document.createElement("p");
+                status.textContent = "Status: " + (request.status || "");
+
+                item.append(
+                    heading,
+                    area,
+                    category,
+                    issue,
+                    date,
+                    status
+                );
+
+                container.appendChild(item);
+            });
+        }
+
+    </script>
+
+    <script src="JS/auth.js"></script>
+
+    <script src="JS/theme.js"></script>
+</body>
+</html>

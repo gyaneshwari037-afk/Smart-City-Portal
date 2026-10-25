@@ -1,0 +1,333 @@
+/* =========================================
+   SMARTCITY CITIZEN DASHBOARD
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f4f8fd;
+    color: #17213d;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    height: 82px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    border-bottom: 1px solid #e5ebf3;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+    color: #17213d;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #263858;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #2864e8;
+}
+
+.login-btn {
+    border: none;
+    background: #2864e8;
+    color: white;
+    padding: 13px 27px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #1552d4;
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard {
+    width: 86%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 55px 0 80px;
+}
+
+/* Header */
+
+.dashboard-header {
+    background: linear-gradient(135deg, #eaf3ff, #f7fbff);
+    border-radius: 22px;
+    padding: 48px 50px;
+    margin-bottom: 28px;
+    border: 1px solid #e1ebf8;
+}
+
+.dashboard-label {
+    color: #2864e8;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.dashboard-header h1 {
+    font-size: 40px;
+    line-height: 1.2;
+    color: #17213d;
+    margin-bottom: 10px;
+}
+
+.dashboard-header h1 span {
+    color: #2864e8;
+}
+
+.dashboard-header p:last-child {
+    color: #5d7190;
+    font-size: 16px;
+}
+
+/* ================= PROFILE ================= */
+
+.profile-card {
+    background: white;
+    border-radius: 18px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 30px;
+    border: 1px solid #e0e8f2;
+    box-shadow: 0 8px 25px rgba(38, 75, 120, 0.06);
+}
+
+.profile-icon {
+    width: 68px;
+    height: 68px;
+    background: #edf4ff;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.profile-info h2 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: #5b6f8d;
+}
+
+.profile-info strong {
+    color: #263858;
+}
+
+.profile-status {
+    color: #159447;
+    font-weight: 600;
+}
+
+/* ================= COMPLAINTS ================= */
+
+.complaints-summary {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #e0e8f2;
+    box-shadow: 0 8px 25px rgba(38, 75, 120, 0.06);
+}
+
+.complaints-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.complaints-title h2 {
+    font-size: 25px;
+}
+
+.complaints-title a {
+    background: #2864e8;
+    color: white;
+    text-decoration: none;
+    padding: 11px 20px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.complaints-title a:hover {
+    background: #1552d4;
+}
+
+.no-complaints {
+    background: #f6f9fd;
+    border: 1px dashed #cbd8e8;
+    border-radius: 14px;
+    padding: 28px;
+    text-align: center;
+    color: #61738d;
+}
+
+.no-complaints:first-line {
+    font-size: 25px;
+}
+
+.no-complaints p {
+    margin-top: 8px;
+    color: #263858;
+    font-weight: 600;
+}
+
+.no-complaints span {
+    font-size: 14px;
+}
+
+/* ================= DASHBOARD CARDS ================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.dashboard-card {
+    background: #ffffff;
+    border: 1px solid #dfe8f3;
+    border-radius: 18px;
+    padding: 28px;
+    min-height: 220px;
+    box-shadow: 0 8px 25px rgba(38, 75, 120, 0.06);
+    transition: 0.25s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(38, 75, 120, 0.12);
+}
+
+.dashboard-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #edf4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.dashboard-card h3 {
+    font-size: 20px;
+    color: #17213d;
+    margin-bottom: 9px;
+}
+
+.dashboard-card p {
+    color: #637691;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 48px;
+    margin-bottom: 18px;
+}
+
+.dashboard-card a {
+    color: #2864e8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.dashboard-card a:hover {
+    text-decoration: underline;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .dashboard {
+        width: 92%;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+
+    .navbar {
+        height: auto;
+        padding: 18px 5%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .dashboard-header {
+        padding: 30px 25px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 30px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .complaints-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+}

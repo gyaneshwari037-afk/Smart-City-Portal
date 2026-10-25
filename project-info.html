@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartCity Services Portal | Project Introduction</title>
+<style>
+:root{--aqua:#5ff5df;--blue:#60b8ff;--ink:#f4f8ff;--muted:#c2d3e9;--glass:rgba(12,27,53,.78)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:radial-gradient(ellipse at 12% 15%,rgba(24,158,194,.34),transparent 34%),radial-gradient(ellipse at 90% 20%,rgba(88,86,210,.35),transparent 36%),linear-gradient(135deg,#061326 0%,#0a2444 48%,#073d50 100%);overflow-x:hidden;position:relative}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.20;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 90%)}
+.glow{position:fixed;width:380px;height:380px;border-radius:50%;filter:blur(80px);opacity:.2;pointer-events:none}.glow.one{background:#00d9ff;top:22%;left:-180px}.glow.two{background:#766bff;right:-180px;bottom:4%}
+header{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px clamp(20px,6vw,90px);border-bottom:1px solid rgba(255,255,255,.12);background:rgba(5,17,36,.48);backdrop-filter:blur(18px)}
+.logo{font-weight:850;font-size:clamp(20px,2vw,27px);letter-spacing:-.6px}.logo span{color:var(--aqua)}.project-label{font-size:11px;font-weight:800;letter-spacing:2.5px;color:#b9d4ef;text-align:right}
+main{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:clamp(45px,8vh,90px) 22px 65px}.intro{text-align:center;max-width:850px;margin:0 auto}.badge{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border:1px solid rgba(95,245,223,.32);border-radius:999px;background:rgba(95,245,223,.08);color:var(--aqua);font-size:12px;font-weight:800;letter-spacing:2px;margin-bottom:26px}
+h1{font-size:clamp(40px,7vw,76px);line-height:1.04;letter-spacing:-2.7px;margin-bottom:20px}h1 span{display:block;background:linear-gradient(90deg,#63f4df,#6ebcff 55%,#b5a7ff);-webkit-background-clip:text;background-clip:text;color:transparent}.subtitle{font-size:clamp(17px,2.5vw,22px);color:#e2edfc;margin-bottom:16px}.description{max-width:700px;margin:0 auto;color:var(--muted);line-height:1.8;font-size:16px}
+.buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin:32px 0 0}.btn{min-width:220px;padding:16px 23px;border-radius:13px;font-weight:800;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}.btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.25)}.abstract-button{background:linear-gradient(135deg,#62f2db,#71caff);color:#06213a}.website-button{background:rgba(255,255,255,.07);border-color:rgba(191,219,254,.5);color:white}.website-button:hover{background:rgba(255,255,255,.13)}
+.abstract-section{display:none;text-align:left;margin:54px auto 0;padding:clamp(22px,4vw,38px);border:1px solid rgba(176,218,255,.2);border-radius:24px;background:var(--glass);backdrop-filter:blur(20px);box-shadow:0 24px 70px rgba(0,0,0,.24);line-height:1.85}.abstract-section h2{font-size:clamp(26px,4vw,36px);color:var(--aqua);margin-bottom:20px}.abstract-section h3{font-size:21px;color:#83d8ff;margin:26px 0 12px}.abstract-section p{color:#e0eafa;margin-bottom:16px}.abstract-section ul{padding-left:24px;color:#e0eafa}.abstract-section li{margin-bottom:8px}.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;list-style:none!important;padding:0!important;margin-top:15px}.team-grid li{border:1px solid rgba(180,220,255,.15);background:rgba(255,255,255,.045);border-radius:12px;padding:14px}.team-grid strong{display:block;color:#f4f8ff}.team-grid span{font-size:13px;color:#a9c3df}.close-button{margin-top:25px;padding:12px 20px;border:0;border-radius:10px;background:#eaf4ff;color:#0a2340;font-weight:800;cursor:pointer}
+footer{position:relative;z-index:1;text-align:center;border-top:1px solid rgba(255,255,255,.12);padding:23px 15px;color:#a9c0d9;font-size:13px}
+@media(max-width:600px){header{flex-direction:column;align-items:flex-start}.project-label{text-align:left}h1{letter-spacing:-1.5px}.btn{width:100%;min-width:0}.abstract-section{margin-top:36px}}
+</style>
+</head>
+<body>
+<div class="glow one"></div><div class="glow two"></div>
+<header><div class="logo">Smart<span>City</span></div><div class="project-label">PROJECT INTRODUCTION</div></header>
+<main><section class="intro">
+<div class="badge">🏙️ SMART CITY PROJECT</div>
+<h1>SmartCity <span>Services Portal</span></h1>
+<p class="subtitle">Making Your City Smarter &amp; Better</p>
+<p class="description">A centralized web portal designed to help citizens access city services, explore emergency information, discover public transport, report civic issues, and stay informed about city events and news.</p>
+<div class="buttons"><button type="button" class="btn abstract-button" id="abstractButton" aria-expanded="false" aria-controls="abstractSection">📄 View Project Abstract</button><a href="home.html" class="btn website-button">🌐 Visit SmartCity Website ↗</a></div>
+</section>
+<section class="abstract-section" id="abstractSection" aria-labelledby="abstractTitle" tabindex="-1">
+<h2 id="abstractTitle">Project Abstract</h2>
+<p>The Smart City Services Portal is a front-end web application designed to provide citizens with easy access to various city services and important information through a single, user-friendly platform. The main objective of this project is to improve communication between citizens and city service departments, simplify access to public information, and promote the use of digital technology in urban service management.</p>
+<p>The portal consists of several modules, including City Services, Emergency Services, Public Transport, Complaints, Events and News, and Contact Us. These modules help citizens explore available civic facilities, access emergency information, view transportation details, report common civic issues, and stay updated about city announcements and events. The portal provides an organised interface that makes information easy to find and navigate.</p>
+<p>The project is developed using HTML, CSS, and JavaScript. HTML provides the structure of the web pages, CSS enhances the design and responsiveness, and JavaScript adds interactive features to improve the user experience. Since this is a front-end project, sample or static data is used to demonstrate its basic functionality.</p>
+<p>In the future, the portal can be enhanced by integrating a backend, database, user authentication, real-time public transport information, complaint tracking, and mobile application support. Overall, the Smart City Services Portal demonstrates how web technologies can help make city services more accessible, organised, and convenient for citizens.</p>
+<h3>Key Modules</h3><ul><li>City Services</li><li>Emergency Services</li><li>Public Transport</li><li>Complaints</li><li>Events and News</li><li>Contact Us</li></ul>
+<h3>Project Team</h3><ul class="team-grid">
+<li><strong>Y. GYNANESHWARI (Team Leader)</strong><span>Roll No: 24981A42B0</span></li>
+<li><strong>A. PAVAN SURYA</strong><span>Roll No: 24981A4264</span></li>
+<li><strong>A. LAHARI</strong><span>Roll No: 24981A4265</span></li>
+<li><strong>CH. SREENADH</strong><span>Roll No: 24981A426Y</span></li>
+<li><strong>R. PRAVALLIKA</strong><span>Roll No: 24981A4298</span></li>
+</ul>
+<h3>Project Guide</h3><p><strong>Dr. G. Sridevi</strong><br>Associate Professor<br>Department of Computer Science and Engineering (AI/ML)<br>Raghu Engineering College</p>
+<button type="button" class="close-button" id="closeAbstractButton">Close Abstract</button>
+</section></main>
+<footer>SmartCity Services Portal · Making Your City Smarter &amp; Better</footer>
+<script>
+const abstractButton=document.getElementById('abstractButton');const abstractSection=document.getElementById('abstractSection');const closeAbstractButton=document.getElementById('closeAbstractButton');
+abstractButton.addEventListener('click',()=>{abstractSection.style.display='block';abstractButton.setAttribute('aria-expanded','true');abstractSection.scrollIntoView({behavior:'smooth',block:'start'});abstractSection.focus()});
+closeAbstractButton.addEventListener('click',()=>{abstractSection.style.display='none';abstractButton.setAttribute('aria-expanded','false');abstractButton.focus()});
+</script>
+</body></html>

@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Water Services | SmartCity</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+        /* Keep hidden sections hidden */
+        [hidden] {
+            display: none !important;
+        }
+
+        /* Water service panels */
+        .water-panel {
+            max-width: 750px;
+            width: 90%;
+            margin: 25px auto;
+            padding: 28px;
+            background: #fff;
+            color: #243447;
+            border-radius: 16px;
+            box-shadow: 0 5px 24px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+        }
+
+        .water-panel h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .water-panel p {
+            line-height: 1.7;
+        }
+
+        .water-panel label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .water-panel input,
+        .water-panel select,
+        .water-panel textarea {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font: inherit;
+            background: #fff;
+        }
+
+        .water-panel button,
+        #waterDetails .water-back-button,
+        .water-map-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #087f8c;
+            color: white;
+            font: inherit;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .water-panel button:hover,
+        #waterDetails .water-back-button:hover,
+        .water-map-link:hover {
+            background: #056570;
+        }
+
+        #waterDetails {
+            min-height: 65vh;
+            padding-top: 25px;
+            padding-bottom: 45px;
+        }
+
+        #waterDetails .water-back-button {
+            margin-left: 4%;
+        }
+
+        #waterDetails .section-heading {
+            margin-bottom: 25px;
+        }
+
+        .water-result {
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #eefafa;
+            overflow-wrap: anywhere;
+        }
+
+        .water-history-item {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #e1e7eb;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .water-history-item p {
+            margin-bottom: 0;
+        }
+
+        .water-notice {
+            padding: 12px;
+            background: #fff8e6;
+            border-left: 4px solid #e7ad32;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .water-panel {
+                padding: 20px;
+            }
+
+            #waterDetails .water-back-button {
+                margin-left: 5%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+        <div class="logo-icon">🏙️</div>
+
+        <div>
+            <h2>SmartCity</h2>
+            <span>Services Portal</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="index.html#transport">Transport</a>
+        <a href="index.html#complaints">Complaints</a>
+        <a href="index.html#news">News & Events</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <a href="login.html" class="login-btn" id="authNav">
+        Citizen Login
+    </a>
+
+</header>
+
+
+<!-- ================= WATER HERO ================= -->
+
+<section class="services-hero" id="waterHero">
+
+    <div class="hero-overlay">
+
+        <span class="small-title">WATER SERVICES</span>
+
+        <h1>
+            Water Services
+            <span>For Every Citizen.</span>
+        </h1>
+
+        <p>
+            Manage your water services, check supply information,
+            report leakage and access important water-related services
+            from one convenient portal.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WATER SERVICE DASHBOARD ================= -->
+
+<section class="full-section" id="waterDashboard">
+
+    <div class="section-heading">
+
+        <span>WATER SERVICE CENTER</span>
+
+        <h2>
+            Everything You Need
+            <strong>About Water.</strong>
+        </h2>
+
+        <p>
+            Select a service to view information or report
+            a water-related issue.
+        </p>
+
+    </div>
+
+
+    <div class="detail-grid">
+
+        <!-- 1. WATER SUPPLY STATUS -->
+
+        <div class="detail-card">
+
+            <div class="detail-icon">💧</div>
+
+            <h3>Check Water Supply</h3>
+
+            <p>
+                Check sample water supply information
+                for your area.
+            </p>
+
+            <button type="button"
+                    onclick="openWaterService('status')">
+                Check Status →
+            </button>
+
+        </div>
+
+
+        <!-- 2. WATER BILL -->
+
+        <div class="detail-card">
+
+            <div class="detail-icon">💳</div>
+
+            <h3>Water Bill Payment</h3>
+
+            <p>
+                Calculate an illustrative water bill
+                based on sample usage.
+            </p>
+
+            <button type="button"
+                    onclick="openWaterService('bill')">
+                View Bill →
+            </button>
+
+        </div>
+
+
+        <!-- 3. REPORT LEAKAGE -->
+
+        <div class="detail-card">
+
+            <div class="detail-icon">🚰</div>
+
+            <h3>Report Leakage</h3>
+
+            <p>
+                Report water leakage or damaged
+                water pipelines.
+            </p>
+
+            <button type="button"
+                    onclick="openWaterService('leakage')">
+                Report Now →
+            </button>
+
+        </div>
+
+
+        <!-- 4. NEARBY WATER SERVICES -->
+
+        <div class="detail-card">
+
+            <div class="detail-icon">📍</div>
+
+            <h3>Nearby Water Services</h3>
+
+            <p>
+                Explore water-related locations
+                using the SmartCity map.
+            </p>
+
+            <button type="button"
+                    onclick="openWaterService('locations')">
+                Find Locations →
+            </button>
+
+        </div>
+
+
+        <!-- 5. WATER SUPPLY SCHEDULE -->
+
+        <div class="detail-card">
+
+            <div class="detail-icon">📅</div>
+
+            <h3>Water Supply Schedule</h3>
+
+            <p>
+                View an illustrative water supply
+                schedule for your area.
+            </p>
+
+            <button type="button"
+                    onclick="openWaterService('schedule')">
+                View Schedule →
+            </button>
+
+        </div>
+
+
+        <!-- 6. WATER SUPPORT -->
+
+        <div class="detail-card">
+
+            <div class="detail-icon">📞</div>
+
+            <h3>Water Support</h3>
+
+            <p>
+                Submit a support request and
+                review previous demo requests.
+            </p>
+
+            <button type="button"
+                    onclick="openWaterService('support')">
+                Get Help →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WATER SERVICE DETAILS ================= -->
+
+<section id="waterDetails" class="full-section" hidden>
+
+    <button type="button"
+            class="water-back-button"
+            onclick="backToWaterServices()">
+        ← Back to Water Services
+    </button>
+
+    <div class="section-heading">
+
+        <span>SMARTCITY WATER SERVICES</span>
+
+        <h2 id="waterDetailTitle">Water Service</h2>
+
+        <p id="waterDetailDescription"></p>
+
+    </div>
+
+
+    <!-- ================= 1. WATER SUPPLY STATUS ================= -->
+
+    <div id="waterStatusPanel" class="water-panel" hidden>
+
+        <h3>💧 Check Water Supply</h3>
+
+        <p>
+            Select your area to view sample water supply information.
+            Live municipal supply data is not connected to this demo.
+        </p>
+
+        <label for="waterArea">Select Area</label>
+
+        <select id="waterArea">
+            <option value="">Choose your area</option>
+            <option value="Ramnagar">Ramnagar</option>
+            <option value="Madhurawada">Madhurawada</option>
+            <option value="Gajuwaka">Gajuwaka</option>
+            <option value="Arilova">Arilova</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <button type="button" onclick="showWaterStatus()">
+            Check Status
+        </button>
+
+        <div id="waterStatusResult"
+             class="water-result"
+             aria-live="polite"
+             hidden></div>
+
+    </div>
+
+
+    <!-- ================= 2. WATER BILL ================= -->
+
+    <div id="waterBillPanel" class="water-panel" hidden>
+
+        <h3>💳 Water Bill Calculator</h3>
+
+        <p class="water-notice">
+            This is a demonstration calculator.
+            It does not retrieve official bills or process payments.
+        </p>
+
+        <label for="waterUnits">
+            Water Usage (Sample Units)
+        </label>
+
+        <input
+            type="number"
+            id="waterUnits"
+            min="0"
+            step="any"
+            placeholder="Enter water usage">
+
+        <button type="button" onclick="calculateWaterBill()">
+            Calculate Bill
+        </button>
+
+        <div id="waterBillResult"
+             class="water-result"
+             aria-live="polite"
+             hidden></div>
+
+    </div>
+
+
+    <!-- ================= 3. REPORT LEAKAGE ================= -->
+
+    <div id="waterLeakagePanel" class="water-panel" hidden>
+
+        <h3>🚰 Report Water Leakage</h3>
+
+        <p>
+            Fill in the details to create a demonstration
+            leakage report.
+        </p>
+
+        <form id="waterLeakageForm">
+
+            <label for="leakName">Your Name</label>
+
+            <input
+                type="text"
+                id="leakName"
+                required
+                maxlength="100"
+                placeholder="Enter your name">
+
+            <label for="leakArea">Area</label>
+
+            <input
+                type="text"
+                id="leakArea"
+                required
+                maxlength="100"
+                placeholder="Enter your area">
+
+            <label for="leakLocation">Leakage Location</label>
+
+            <input
+                type="text"
+                id="leakLocation"
+                required
+                maxlength="200"
+                placeholder="Street or nearby landmark">
+
+            <label for="leakDescription">Description</label>
+
+            <textarea
+                id="leakDescription"
+                rows="4"
+                required
+                maxlength="1000"
+                placeholder="Describe the leakage"></textarea>
+
+            <button type="submit">
+                Submit Demo Report
+            </button>
+
+        </form>
+
+        <div id="waterLeakageResult"
+             class="water-result"
+             aria-live="polite"
+             hidden></div>
+
+    </div>
+
+
+    <!-- ================= 4. NEARBY WATER SERVICES ================= -->
+
+    <div id="waterLocationsPanel" class="water-panel" hidden>
+
+        <h3>📍 Nearby Water Services</h3>
+
+        <p>
+            Open your existing SmartCity map to explore
+            water-related locations.
+        </p>
+
+        <p class="water-notice">
+            The locations displayed depend on the available
+            map data. Not every water facility may appear.
+        </p>
+
+        <a class="water-map-link" href="map.html?service=water">
+            Open Water Services Map →
+        </a>
+
+    </div>
+
+
+    <!-- ================= 5. WATER SUPPLY SCHEDULE ================= -->
+
+    <div id="waterSchedulePanel" class="water-panel" hidden>
+
+        <h3>📅 Water Supply Schedule</h3>
+
+        <p class="water-notice">
+            The schedule shown here is illustrative sample data,
+            not an official municipal supply timetable.
+        </p>
+
+        <label for="scheduleArea">Select Area</label>
+
+        <select id="scheduleArea">
+
+            <option value="">Choose your area</option>
+            <option value="Ramnagar">Ramnagar</option>
+            <option value="Madhurawada">Madhurawada</option>
+            <option value="Gajuwaka">Gajuwaka</option>
+            <option value="Arilova">Arilova</option>
+
+        </select>
+
+        <button type="button" onclick="showWaterSchedule()">
+            View Schedule
+        </button>
+
+        <div id="waterScheduleResult"
+             class="water-result"
+             aria-live="polite"
+             hidden></div>
+
+    </div>
+
+
+    <!-- ================= 6. WATER SUPPORT ================= -->
+
+    <div id="waterSupportPanel" class="water-panel" hidden>
+
+        <h3>📞 Water Support</h3>
+
+        <p>
+            Submit a demonstration support request
+            and view requests saved in this browser.
+        </p>
+
+        <form id="waterSupportForm">
+
+            <label for="waterSupportName">Your Name</label>
+
+            <input
+                type="text"
+                id="waterSupportName"
+                required
+                maxlength="100"
+                placeholder="Enter your name">
+
+            <label for="waterSupportArea">Area</label>
+
+            <input
+                type="text"
+                id="waterSupportArea"
+                required
+                maxlength="100"
+                placeholder="Enter your area">
+
+            <label for="waterSupportIssue">How Can We Help?</label>
+
+            <textarea
+                id="waterSupportIssue"
+                rows="4"
+                required
+                maxlength="1000"
+                placeholder="Describe your issue"></textarea>
+
+            <button type="submit">
+                Submit Demo Request
+            </button>
+
+        </form>
+
+        <div id="waterSupportResult"
+             class="water-result"
+             aria-live="polite"
+             hidden></div>
+
+        <h3 style="margin-top: 30px;">
+            Previous Demo Requests
+        </h3>
+
+        <div id="waterSupportHistory"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WATER AWARENESS ================= -->
+
+<section class="full-section" id="waterAwareness">
+
+    <div class="section-heading">
+
+        <span>WATER AWARENESS</span>
+
+        <h2>
+            Save Water.
+            <strong>Save Tomorrow.</strong>
+        </h2>
+
+        <p>
+            Responsible water usage helps create a sustainable
+            and better-connected city.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="waterFooter">
+
+    <div class="footer-logo">
+        🏙️ SmartCity
+    </div>
+
+    <p>
+        Smart services for a better connected city.
+    </p>
+
+    <span>
+        © 2026 Smart City Services Portal
+    </span>
+
+</footer>
+
+
+<!-- ================= WATER SERVICES JAVASCRIPT ================= -->
+
+<script>
+"use strict";
+
+/* All service panel IDs */
+
+const waterPanels = {
+    status: "waterStatusPanel",
+    bill: "waterBillPanel",
+    leakage: "waterLeakagePanel",
+    locations: "waterLocationsPanel",
+    schedule: "waterSchedulePanel",
+    support: "waterSupportPanel"
+};
+
+
+/* Service headings */
+
+const waterTitles = {
+    status: "💧 Check Water Supply",
+    bill: "💳 Water Bill Payment",
+    leakage: "🚰 Report Water Leakage",
+    locations: "📍 Nearby Water Services",
+    schedule: "📅 Water Supply Schedule",
+    support: "📞 Water Support"
+};
+
+
+/* Service descriptions */
+
+const waterDescriptions = {
+    status: "View sample water supply information for your area.",
+    bill: "Calculate an illustrative water bill.",
+    leakage: "Create a demonstration water leakage report.",
+    locations: "Explore water-related locations on the SmartCity map.",
+    schedule: "View an illustrative water supply schedule.",
+    support: "Submit and review demonstration support requests."
+};
+
+
+/* Safely read saved data */
+
+function getWaterStorage(key) {
+    try {
+        const data = JSON.parse(localStorage.getItem(key) || "[]");
+        return Array.isArray(data) ? data : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+
+/* Save data in the browser */
+
+function saveWaterStorage(key, data) {
+    try {
+        localStorage.setItem(key, JSON.stringify(data));
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+
+/* Show a selected service as a full-page view */
+
+function openWaterService(service) {
+
+    const panelId = waterPanels[service];
+
+    if (!panelId) {
+        console.error("Unknown water service:", service);
+        return;
+    }
+
+    /* Hide the main dashboard sections */
+
+    document.getElementById("waterHero").hidden = true;
+    document.getElementById("waterDashboard").hidden = true;
+    document.getElementById("waterAwareness").hidden = true;
+    document.getElementById("waterFooter").hidden = true;
+
+    /* Hide every service panel */
+
+    Object.values(waterPanels).forEach(function(id) {
+        document.getElementById(id).hidden = true;
+    });
+
+    /* Update the heading and description */
+
+    document.getElementById("waterDetailTitle").textContent =
+        waterTitles[service];
+
+    document.getElementById("waterDetailDescription").textContent =
+        waterDescriptions[service];
+
+    /* Display the details section and selected panel */
+
+    document.getElementById("waterDetails").hidden = false;
+    document.getElementById(panelId).hidden = false;
+
+    /* Load saved support requests when needed */
+
+    if (service === "support") {
+        displayWaterSupportHistory();
+    }
+
+    window.scrollTo(0, 0);
+}
+
+
+/* Return to the main Water Services dashboard */
+
+function backToWaterServices() {
+
+    document.getElementById("waterDetails").hidden = true;
+
+    /* Restore the dashboard */
+
+    document.getElementById("waterHero").hidden = false;
+    document.getElementById("waterDashboard").hidden = false;
+    document.getElementById("waterAwareness").hidden = false;
+    document.getElementById("waterFooter").hidden = false;
+
+    /* Hide individual service panels */
+
+    Object.values(waterPanels).forEach(function(id) {
+        document.getElementById(id).hidden = true;
+    });
+
+    window.scrollTo(0, 0);
+}
+
+
+/* ================= WATER SUPPLY STATUS ================= */
+
+function showWaterStatus() {
+
+    const area = document.getElementById("waterArea").value;
+    const result = document.getElementById("waterStatusResult");
+
+    result.hidden = false;
+
+    if (!area) {
+        result.textContent = "Please select your area.";
+        return;
+    }
+
+    result.textContent =
+        "Selected Area: " + area +
+        ". Live water supply status is not connected to this demo. " +
+        "Please verify actual supply information with your local water department.";
+}
+
+
+/* ================= WATER BILL CALCULATOR ================= */
+
+function calculateWaterBill() {
+
+    const input = document.getElementById("waterUnits");
+    const result = document.getElementById("waterBillResult");
+
+    result.hidden = false;
+
+    if (
+        input.value.trim() === "" ||
+        !Number.isFinite(Number(input.value)) ||
+        Number(input.value) < 0
+    ) {
+        result.textContent =
+            "Please enter a valid non-negative water usage value.";
+        return;
+    }
+
+    const units = Number(input.value);
+
+    /* Illustrative values only */
+
+    const ratePerUnit = 10;
+    const fixedCharge = 50;
+
+    const energyCharge = units * ratePerUnit;
+    const total = energyCharge + fixedCharge;
+
+    result.textContent =
+        "Illustrative Bill: Water Usage = " + units +
+        " units | Sample Rate = ₹" + ratePerUnit +
+        " per unit | Usage Charge = ₹" + energyCharge.toFixed(2) +
+        " | Fixed Charge = ₹" + fixedCharge.toFixed(2) +
+        " | Total = ₹" + total.toFixed(2) +
+        ". This is not an official bill, and no payment has been made.";
+}
+
+
+/* ================= REPORT WATER LEAKAGE ================= */
+
+document.getElementById("waterLeakageForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const report = {
+            reference: "WTR-" + Date.now().toString().slice(-6),
+
+            name: document.getElementById("leakName").value.trim(),
+
+            area: document.getElementById("leakArea").value.trim(),
+
+            location: document.getElementById("leakLocation").value.trim(),
+
+            description:
+                document.getElementById("leakDescription").value.trim(),
+
+            status: "Demo Report Submitted",
+
+            date: new Date().toLocaleString()
+        };
+
+        const reports = getWaterStorage("smartCityWaterLeakages");
+
+        reports.push(report);
+
+        const result = document.getElementById("waterLeakageResult");
+        result.hidden = false;
+
+        if (!saveWaterStorage("smartCityWaterLeakages", reports)) {
+
+            result.textContent =
+                "Unable to save this demo report in browser storage. Please try again.";
+
+            return;
+        }
+
+        result.textContent =
+            "Your demo leakage report has been saved in this browser. " +
+            "Reference Number: " + report.reference +
+            ". This does not notify the actual water department.";
+
+        this.reset();
+    });
+
+
+/* ================= WATER SUPPLY SCHEDULE ================= */
+
+function showWaterSchedule() {
+
+    const area = document.getElementById("scheduleArea").value;
+    const result = document.getElementById("waterScheduleResult");
+
+    result.hidden = false;
+
+    if (!area) {
+        result.textContent = "Please select your area.";
+        return;
+    }
+
+    /*
+       This is sample data, not a live or official timetable.
+    */
+
+    const sampleSchedule = {
+        Ramnagar: "6:00 AM – 8:00 AM",
+        Madhurawada: "7:00 AM – 9:00 AM",
+        Gajuwaka: "6:30 AM – 8:30 AM",
+        Arilova: "7:30 AM – 9:30 AM"
+    };
+
+    result.textContent =
+        "Sample Schedule for " + area + ": " +
+        sampleSchedule[area] +
+        ". This timetable is illustrative only. Please confirm the actual schedule with your local water department.";
+}
+
+
+/* ================= WATER SUPPORT FORM ================= */
+
+document.getElementById("waterSupportForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const request = {
+            reference: "SUP-" + Date.now().toString().slice(-6),
+
+            name: document.getElementById("waterSupportName").value.trim(),
+
+            area: document.getElementById("waterSupportArea").value.trim(),
+
+            issue: document.getElementById("waterSupportIssue").value.trim(),
+
+            date: new Date().toLocaleString(),
+
+            status: "Demo Request Saved"
+        };
+
+        const requests = getWaterStorage("smartCityWaterSupport");
+
+        requests.push(request);
+
+        const result = document.getElementById("waterSupportResult");
+        result.hidden = false;
+
+        if (!saveWaterStorage("smartCityWaterSupport", requests)) {
+
+            result.textContent =
+                "Unable to save the demo request in browser storage. Please try again.";
+
+            return;
+        }
+
+        result.textContent =
+            "Your demo support request has been saved. Reference Number: " +
+            request.reference +
+            ". This request has not been sent to the actual water department.";
+
+        this.reset();
+
+        displayWaterSupportHistory();
+    });
+
+
+/* ================= DISPLAY SUPPORT HISTORY ================= */
+
+function displayWaterSupportHistory() {
+
+    const container = document.getElementById("waterSupportHistory");
+
+    const requests = getWaterStorage("smartCityWaterSupport");
+
+    /* Clear previous content */
+
+    container.replaceChildren();
+
+    if (requests.length === 0) {
+
+        container.textContent =
+            "No demo support requests have been submitted yet.";
+
+        return;
+    }
+
+    /* Display newest requests first */
+
+    requests.slice().reverse().forEach(function(request) {
+
+        const item = document.createElement("div");
+        item.className = "water-history-item";
+
+        const heading = document.createElement("strong");
+        heading.textContent = request.reference;
+
+        const area = document.createElement("p");
+        area.textContent = "Area: " + request.area;
+
+        const issue = document.createElement("p");
+        issue.textContent = "Issue: " + request.issue;
+
+        const date = document.createElement("p");
+        date.textContent = "Submitted: " + request.date;
+
+        const status = document.createElement("p");
+        status.textContent = "Status: " + request.status;
+
+        item.append(heading, area, issue, date, status);
+
+        container.appendChild(item);
+    });
+}
+</script>
+
+
+<!-- Keep the existing authentication script -->
+
+<script src="JS/auth.js"></script>
+
+    <script src="JS/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News & Events | SmartCity</title>
+
+<link rel="stylesheet" href="CSS/style.css">
+<link rel="stylesheet" href="CSS/news.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+<style>
+    /* ================= NEWS & EVENTS PAGE ================= */
+
+    .news-notice {
+        max-width: 1100px;
+        margin: 30px auto 0;
+        padding: 16px 22px;
+        border-radius: 12px;
+        background: #eef6ff;
+        border-left: 5px solid #2563eb;
+        color: #1e3a8a;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .news-date {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 7px 13px;
+        border-radius: 20px;
+        background: #eaf2ff;
+        color: #1d4ed8;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .news-tag {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 5px 10px;
+        border-radius: 15px;
+        background: #f1f5f9;
+        color: #475569;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .event-info {
+        display: inline-block;
+        margin-top: 10px;
+        color: #334155;
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .event-status {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        background: #fff7ed;
+        color: #9a3412;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .announcement-box {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 25px;
+        border-radius: 16px;
+        background: #f8fafc;
+        text-align: center;
+        line-height: 1.8;
+    }
+
+    .announcement-box a {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 11px 22px;
+        border-radius: 8px;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .announcement-box a:hover {
+        background: #1d4ed8;
+    }
+
+    @media (max-width: 768px) {
+        .news-notice {
+            margin: 20px 15px 0;
+        }
+
+        .announcement-box {
+            margin: 0 15px;
+            padding: 20px;
+        }
+    }
+</style>
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body>
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+        <div class="logo-icon">🏙️</div>
+
+        <div>
+            <h2>SmartCity</h2>
+            <span>Services Portal</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="transport.html">Transport</a>
+        <a href="complaint.html">Complaints</a>
+        <a href="news.html" class="active">News & Events</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <a href="login.html" class="login-btn" id="authNav">
+        Citizen Login
+    </a>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="services-hero">
+
+    <div class="hero-overlay">
+
+        <span class="small-title">SMART CITY UPDATES</span>
+
+        <h1>
+            News & Events
+            <span>In Your City.</span>
+        </h1>
+
+        <p>
+            Stay informed about city development, public services,
+            environmental awareness and community activities.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DEMO NOTICE ================= -->
+
+<div class="news-notice">
+    <strong>📢 Project Demo Notice:</strong>
+    The news items and event schedules on this page are sample
+    content for the SmartCity Portal demonstration. Please confirm
+    actual dates, venues and announcements with the relevant
+    authorities before attending an event.
+</div>
+
+
+<!-- ================= LATEST NEWS ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>LATEST CITY UPDATES</span>
+
+        <h2>
+            What's Happening
+            <strong>In Your City.</strong>
+        </h2>
+
+        <p>
+            Explore important city topics and citizen service updates
+            for October 2026.
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+        <!-- NEWS 1 -->
+
+        <div class="service-card">
+
+            <div class="service-icon water-icon">🏙️</div>
+
+            <span class="news-tag">City Development</span>
+
+            <h3>Smart City Development</h3>
+
+            <p>
+                Smart infrastructure, accessible public facilities
+                and digital citizen services can help improve
+                everyday urban life.
+            </p>
+
+            <span class="news-date">October 2026 · Demo Update</span>
+
+        </div>
+
+
+        <!-- NEWS 2 -->
+
+        <div class="service-card">
+
+            <div class="service-icon electricity-icon">💡</div>
+
+            <span class="news-tag">Energy Awareness</span>
+
+            <h3>Save Energy, Build a Greener City</h3>
+
+            <p>
+                Citizens can support energy conservation by switching
+                off unused lights, using electricity responsibly and
+                choosing energy-efficient appliances.
+            </p>
+
+            <span class="news-date">October 2026 · Awareness Topic</span>
+
+        </div>
+
+
+        <!-- NEWS 3 -->
+
+        <div class="service-card">
+
+            <div class="service-icon waste-icon">♻️</div>
+
+            <span class="news-tag">Clean Environment</span>
+
+            <h3>Responsible Waste Management</h3>
+
+            <p>
+                Separating wet and dry waste, avoiding littering and
+                following local collection guidelines can help
+                maintain cleaner neighbourhoods.
+            </p>
+
+            <span class="news-date">October 2026 · Awareness Topic</span>
+
+        </div>
+
+
+        <!-- NEWS 4 -->
+
+        <div class="service-card">
+
+            <div class="service-icon transport-icon">🚌</div>
+
+            <span class="news-tag">Public Transport</span>
+
+            <h3>Plan Your City Journey</h3>
+
+            <p>
+                Before travelling, check available transport routes,
+                timings and service notices through the relevant
+                transport operator.
+            </p>
+
+            <span class="news-date">October 2026 · Citizen Reminder</span>
+
+        </div>
+
+
+        <!-- NEWS 5 -->
+
+        <div class="service-card">
+
+            <div class="service-icon">💧</div>
+
+            <span class="news-tag">Water Conservation</span>
+
+            <h3>Every Drop Matters</h3>
+
+            <p>
+                Avoid unnecessary water wastage, report leaks to the
+                appropriate authority and follow official water
+                supply notices in your area.
+            </p>
+
+            <span class="news-date">October 2026 · Awareness Topic</span>
+
+        </div>
+
+
+        <!-- NEWS 6 -->
+
+        <div class="service-card">
+
+            <div class="service-icon">🌳</div>
+
+            <span class="news-tag">Green Spaces</span>
+
+            <h3>Keep Public Spaces Clean</h3>
+
+            <p>
+                Help protect parks and public spaces by using waste
+                bins, caring for greenery and respecting shared
+                community facilities.
+            </p>
+
+            <span class="news-date">October 2026 · Community Reminder</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= UPCOMING EVENTS ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>UPCOMING EVENTS</span>
+
+        <h2>
+            Events For
+            <strong>Our Community.</strong>
+        </h2>
+
+        <p>
+            Sample community event listings for November 2026.
+            These dates are proposed for the project demo and are
+            not confirmed official events.
+        </p>
+
+    </div>
+
+
+    <div class="detail-grid">
+
+        <!-- EVENT 1 -->
+
+        <div class="detail-card">
+
+            <div class="detail-icon">🌱</div>
+
+            <h3>Green City Awareness Drive</h3>
+
+            <p>
+                A proposed community activity focused on planting
+                greenery, protecting the environment and encouraging
+                sustainable neighbourhoods.
+            </p>
+
+            <strong class="event-info">
+                📅 Proposed: 07 November 2026
+            </strong>
+
+            <br>
+
+            <strong class="event-info">
+                📍 Suggested venue: Community Park
+            </strong>
+
+            <br>
+
+            <span class="event-status">
+                Demo Event · Not Confirmed
+            </span>
+
+        </div>
+
+
+        <!-- EVENT 2 -->
+
+        <div class="detail-card">
+
+            <div class="detail-icon">🧹</div>
+
+            <h3>Clean Neighbourhood Campaign</h3>
+
+            <p>
+                A proposed cleanliness awareness activity encouraging
+                residents to reduce litter, segregate waste and
+                maintain shared public spaces.
+            </p>
+
+            <strong class="event-info">
+                📅 Proposed: 14 November 2026
+            </strong>
+
+            <br>
+
+            <strong class="event-info">
+                📍 Suggested venue: Community Centre
+            </strong>
+
+            <br>
+
+            <span class="event-status">
+                Demo Event · Not Confirmed
+            </span>
+
+        </div>
+
+
+        <!-- EVENT 3 -->
+
+        <div class="detail-card">
+
+            <div class="detail-icon">👥</div>
+
+            <h3>Digital Citizen Awareness Program</h3>
+
+            <p>
+                A proposed awareness session introducing online
+                citizen services, complaint reporting and
+                responsible use of digital public facilities.
+            </p>
+
+            <strong class="event-info">
+                📅 Proposed: 21 November 2026
+            </strong>
+
+            <br>
+
+            <strong class="event-info">
+                📍 Suggested venue: Community Hall
+            </strong>
+
+            <br>
+
+            <span class="event-status">
+                Demo Event · Not Confirmed
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PUBLIC SERVICE REMINDERS ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>PUBLIC SERVICE REMINDERS</span>
+
+        <h2>
+            Useful Information
+            <strong>For Every Citizen.</strong>
+        </h2>
+
+        <p>
+            Use the SmartCity Portal to explore services and submit
+            concerns through the relevant pages.
+        </p>
+
+    </div>
+
+
+    <div class="detail-grid">
+
+        <div class="detail-card">
+
+            <div class="detail-icon">💧</div>
+
+            <h3>Water Services</h3>
+
+            <p>
+                Check the water services section for the information
+                provided in this portal's demonstration.
+            </p>
+
+            <a href="water.html" class="service-btn">
+                Explore Water Services
+            </a>
+
+        </div>
+
+
+        <div class="detail-card">
+
+            <div class="detail-icon">♻️</div>
+
+            <h3>Waste Management</h3>
+
+            <p>
+                Learn about waste segregation, collection information
+                and responsible disposal practices.
+            </p>
+
+            <a href="waste.html" class="service-btn">
+                Explore Waste Services
+            </a>
+
+        </div>
+
+
+        <div class="detail-card">
+
+            <div class="detail-icon">🚌</div>
+
+            <h3>Transport Services</h3>
+
+            <p>
+                Visit the transport page to explore the transport
+                information included in the SmartCity demo.
+            </p>
+
+            <a href="transport.html" class="service-btn">
+                Explore Transport
+            </a>
+
+        </div>
+
+
+        <div class="detail-card">
+
+            <div class="detail-icon">📝</div>
+
+            <h3>Report a Complaint</h3>
+
+            <p>
+                Use the complaint page to submit a service concern
+                through the portal's demonstration form.
+            </p>
+
+            <a href="complaint.html" class="service-btn">
+                Report a Complaint
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ANNOUNCEMENT ================= -->
+
+<section class="full-section">
+
+    <div class="section-heading">
+
+        <span>IMPORTANT ANNOUNCEMENT</span>
+
+        <h2>
+            Stay Connected.
+            <strong>Stay Informed.</strong>
+        </h2>
+
+        <p>
+            Check official city administration and service-provider
+            announcements for verified schedules, public notices
+            and event details.
+        </p>
+
+    </div>
+
+    <div class="announcement-box">
+
+        <h3>🏙️ Your City, Your Responsibility</h3>
+
+        <p>
+            Keep your neighbourhood clean, conserve water and
+            electricity, use public facilities responsibly and
+            report civic issues through the appropriate channels.
+        </p>
+
+        <a href="services.html">Explore City Services</a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        🏙️ <strong>SmartCity</strong>
+    </div>
+
+    <p>
+        Smart services for a better connected city.
+    </p>
+
+    <span>
+        © 2026 Smart City Services Portal
+    </span>
+
+</footer>
+
+
+<!-- LOGIN STATUS -->
+
+<script src="JS/auth.js"></script>
+
+    <script src="JS/theme.js"></script>
+</body>
+
+</html>

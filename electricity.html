@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Electricity Services | SmartCity</title>
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <style>
+        /* ELECTRICITY SERVICE DETAILS */
+
+        .electricity-details {
+            max-width: 1100px;
+            width: 92%;
+            margin: 35px auto;
+            display: none;
+        }
+
+        .electricity-details.visible {
+            display: block;
+        }
+
+        .electricity-detail-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 5px 22px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .electricity-detail-card h2 {
+            color: #075985;
+            margin-top: 0;
+        }
+
+        .electricity-detail-card h3 {
+            color: #075985;
+        }
+
+        .electricity-detail-card p {
+            line-height: 1.7;
+        }
+
+        .electricity-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .electricity-detail-box {
+            padding: 18px;
+            background: #f0f9ff;
+            border-radius: 12px;
+            border: 1px solid #dbeafe;
+        }
+
+        .electricity-detail-box h3 {
+            margin-top: 0;
+        }
+
+        .electricity-detail-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .electricity-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .electricity-form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .electricity-form-group label {
+            font-weight: 600;
+        }
+
+        .electricity-form-group input,
+        .electricity-form-group select,
+        .electricity-form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font: inherit;
+            background: #ffffff;
+            color: #1e293b;
+        }
+
+        .electricity-form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .electricity-action {
+            display: inline-block;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 19px;
+            margin-top: 15px;
+            background: #075985;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .electricity-action:hover {
+            background: #0c4a6e;
+        }
+
+        .electricity-back {
+            background: #475569;
+            margin-left: 8px;
+        }
+
+        .electricity-notice {
+            background: #fff7df;
+            border-left: 5px solid #eab308;
+            border-radius: 8px;
+            padding: 14px;
+            margin: 18px 0;
+            line-height: 1.7;
+        }
+
+        .electricity-result {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background: #dcfce7;
+            color: #166534;
+            border-radius: 10px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .electricity-result.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .electricity-result h3 {
+            margin-top: 0;
+            color: inherit;
+        }
+
+        .electricity-table-wrap {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .electricity-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 450px;
+        }
+
+        .electricity-table th,
+        .electricity-table td {
+            padding: 13px;
+            border: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        .electricity-table th {
+            background: #075985;
+            color: white;
+        }
+
+        .electricity-table td {
+            background: #ffffff;
+        }
+
+        .electricity-record {
+            padding: 16px;
+            margin-top: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            overflow-wrap: anywhere;
+        }
+
+        .electricity-record h3 {
+            margin-top: 0;
+        }
+
+        .electricity-record p {
+            margin: 7px 0;
+        }
+
+        .electricity-card button {
+            cursor: pointer;
+        }
+
+        .electricity-card button:focus-visible,
+        .electricity-action:focus-visible {
+            outline: 3px solid #38bdf8;
+            outline-offset: 3px;
+        }
+
+        .electricity-section {
+            scroll-margin-top: 20px;
+        }
+
+        .electricity-empty {
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            color: #475569;
+        }
+
+        @media (max-width: 650px) {
+            .electricity-detail-card {
+                padding: 19px;
+            }
+
+            .electricity-detail-form {
+                grid-template-columns: 1fr;
+            }
+
+            .electricity-form-group.full {
+                grid-column: auto;
+            }
+
+            .electricity-back {
+                margin-left: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo-area">
+        <div class="logo-icon">🏙️</div>
+
+        <div>
+            <h2>SmartCity</h2>
+            <span>Services Portal</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="index.html#transport">Transport</a>
+        <a href="index.html#complaints">Complaints</a>
+        <a href="index.html#news">News & Events</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <a href="login.html" class="login-btn">
+        Citizen Login
+    </a>
+
+</header>
+
+
+<!-- ELECTRICITY HERO -->
+
+<section class="electricity-hero">
+
+    <div class="electricity-overlay">
+
+        <span class="electricity-title">
+            ELECTRICITY SERVICES
+        </span>
+
+        <h1>
+            Reliable Power.
+            <span>Connected City.</span>
+        </h1>
+
+        <p>
+            Access electricity services, check power supply,
+            report outages and manage your electricity-related
+            needs from one convenient portal.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ELECTRICITY SERVICES -->
+
+<section class="electricity-section">
+
+    <div class="section-heading">
+
+        <span>ELECTRICITY SERVICE CENTER</span>
+
+        <h2>
+            Power Services
+            <strong>Made Simple.</strong>
+        </h2>
+
+        <p>
+            Choose a service to check information, report problems
+            or manage your electricity services.
+        </p>
+
+    </div>
+
+
+    <div class="electricity-grid">
+
+        <div class="electricity-card">
+            <div class="electricity-icon">⚡</div>
+            <h3>Power Supply Status</h3>
+            <p>
+                Check the demonstration electricity supply
+                status for your area.
+            </p>
+            <button type="button" onclick="openElectricityService('status')">
+                Check Status →
+            </button>
+        </div>
+
+        <div class="electricity-card">
+            <div class="electricity-icon">🔌</div>
+            <h3>Report Power Outage</h3>
+            <p>
+                Submit a report about an unexpected
+                power interruption.
+            </p>
+            <button type="button" onclick="openElectricityService('outage')">
+                Report Outage →
+            </button>
+        </div>
+
+        <div class="electricity-card">
+            <div class="electricity-icon">💳</div>
+            <h3>Electricity Bill</h3>
+            <p>
+                Calculate an illustrative bill and
+                view sample billing information.
+            </p>
+            <button type="button" onclick="openElectricityService('bill')">
+                View Bill →
+            </button>
+        </div>
+
+        <div class="electricity-card">
+            <div class="electricity-icon">🏠</div>
+            <h3>New Connection</h3>
+            <p>
+                Submit a demonstration application
+                for a new electricity connection.
+            </p>
+           <button type="button" onclick="openElectricityService('connection')">
+    Apply Now
+</button>
+        </div>
+
+        <div class="electricity-card">
+            <div class="electricity-icon">📍</div>
+            <h3>Service Centers</h3>
+            <p>
+                Search sample service-centre information
+                and explore mapped electricity locations.
+            </p>
+            <button type="button" onclick="openElectricityService('centers')">
+                Find Centers →
+            </button>
+        </div>
+
+        <div class="electricity-card">
+            <div class="electricity-icon">📞</div>
+            <h3>Electricity Support</h3>
+            <p>
+                Submit a support request and view
+                your saved demonstration requests.
+            </p>
+            <button type="button" onclick="openElectricityService('support')">
+    Get Support
+</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ALL SIX SERVICES OPEN INSIDE THIS PAGE -->
+
+<section id="electricityDetails" class="electricity-details">
+
+    <div class="electricity-detail-card">
+
+        <h2 id="electricityDetailTitle">Electricity Service</h2>
+
+        <p id="electricityDetailDescription"></p>
+
+        <div class="electricity-notice">
+            <strong>Project demonstration:</strong>
+            Power status, bill calculations, applications and complaints
+            on this page use sample data and browser storage.
+            They are not connected to an electricity provider.
+            Do not enter real account numbers or sensitive documents.
+        </div>
+
+
+        <!-- 1. POWER SUPPLY STATUS -->
+
+        <div id="electricityStatusPanel" hidden>
+
+            <h3>⚡ Check Area-wise Power Status</h3>
+
+            <div class="electricity-form-group">
+                <label for="powerArea">Select or enter your area</label>
+
+                <input
+                    type="text"
+                    id="powerArea"
+                    maxlength="100"
+                    list="powerAreaOptions"
+                    placeholder="Example: MVP Colony">
+
+                <datalist id="powerAreaOptions">
+                    <option value="MVP Colony">
+                    <option value="Madhurawada">
+                    <option value="Gajuwaka">
+                    <option value="Dwaraka Nagar">
+                    <option value="Seethammadhara">
+                    <option value="Rushikonda">
+                </datalist>
+            </div>
+
+            <button
+                type="button"
+                class="electricity-action"
+                onclick="checkAreaPowerStatus()">
+                Check Sample Status
+            </button>
+
+            <div id="powerStatusResult" class="electricity-result"></div>
+
+            <p>
+                The displayed status is simulated for the project.
+                It does not verify the real electricity supply.
+            </p>
+
+        </div>
+
+
+        <!-- 2. REPORT OUTAGE -->
+
+        <div id="electricityOutagePanel" hidden>
+
+            <h3>🔌 Report a Power Outage</h3>
+
+            <form id="outageForm">
+
+                <div class="electricity-detail-form">
+
+                    <div class="electricity-form-group">
+                        <label for="outageName">Name *</label>
+                        <input id="outageName" maxlength="60" required>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="outageArea">Area / Locality *</label>
+                        <input id="outageArea" maxlength="100" required>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="outageType">Outage Type *</label>
+                        <select id="outageType" required>
+                            <option value="">Choose type</option>
+                            <option>Complete power outage</option>
+                            <option>Frequent power cuts</option>
+                            <option>Low voltage</option>
+                            <option>Streetlight outage</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="outageDuration">Duration</label>
+                        <select id="outageDuration">
+                            <option>Less than 1 hour</option>
+                            <option>1–3 hours</option>
+                            <option>More than 3 hours</option>
+                            <option>Not sure</option>
+                        </select>
+                    </div>
+
+                    <div class="electricity-form-group full">
+                        <label for="outageDescription">Problem Description *</label>
+                        <textarea
+                            id="outageDescription"
+                            maxlength="1000"
+                            required
+                            placeholder="Describe the power interruption..."></textarea>
+                    </div>
+
+                </div>
+
+                <button class="electricity-action" type="submit">
+                    Submit Demo Report
+                </button>
+
+            </form>
+
+            <div id="outageResult" class="electricity-result" role="status"></div>
+
+        </div>
+
+
+        <!-- 3. ELECTRICITY BILL -->
+
+        <div id="electricityBillPanel" hidden>
+
+            <h3>💳 Electricity Bill Calculator</h3>
+
+            <p>
+                Enter sample consumption to calculate an illustrative bill.
+                This is not an official tariff or an actual bill.
+            </p>
+
+            <form id="billForm">
+
+                <div class="electricity-detail-form">
+
+                    <div class="electricity-form-group">
+                        <label for="billUnits">Units Consumed (kWh) *</label>
+                        <input
+                            type="number"
+                            id="billUnits"
+                            min="0"
+                            max="100000"
+                            step="1"
+                            value="100"
+                            required>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="billRate">Sample Rate per Unit (₹) *</label>
+                        <input
+                            type="number"
+                            id="billRate"
+                            min="0"
+                            max="10000"
+                            step="0.01"
+                            value="5"
+                            required>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="billFixedCharge">Sample Fixed Charge (₹)</label>
+                        <input
+                            type="number"
+                            id="billFixedCharge"
+                            min="0"
+                            max="100000"
+                            step="0.01"
+                            value="50"
+                            required>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="billTax">Sample Additional Charge (%)</label>
+                        <input
+                            type="number"
+                            id="billTax"
+                            min="0"
+                            max="100"
+                            step="0.1"
+                            value="5"
+                            required>
+                    </div>
+
+                </div>
+
+                <button class="electricity-action" type="submit">
+                    Calculate Sample Bill
+                </button>
+
+            </form>
+
+            <div id="billResult" class="electricity-result" role="status"></div>
+
+            <div class="electricity-table-wrap">
+                <table class="electricity-table">
+                    <thead>
+                        <tr>
+                            <th>Bill Information</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Billing period</td>
+                            <td>Sample 30-day period</td>
+                        </tr>
+                        <tr>
+                            <td>Payment status</td>
+                            <td>Demonstration only — no payment processed</td>
+                        </tr>
+                        <tr>
+                            <td>Official tariff</td>
+                            <td>Not connected to a provider</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!-- 4. NEW CONNECTION -->
+
+        <div id="electricityConnectionPanel" hidden>
+
+            <h3>🏠 New Electricity Connection</h3>
+
+            <form id="connectionForm">
+
+                <div class="electricity-detail-form">
+
+                    <div class="electricity-form-group">
+                        <label for="connectionName">Applicant Name *</label>
+                        <input id="connectionName" maxlength="60" required>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="connectionArea">Area / Locality *</label>
+                        <input id="connectionArea" maxlength="100" required>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="connectionType">Connection Type *</label>
+                        <select id="connectionType" required>
+                            <option value="">Choose connection type</option>
+                            <option>Residential</option>
+                            <option>Commercial</option>
+                            <option>Agricultural</option>
+                        </select>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="connectionLoad">Requested Load (kW) *</label>
+                        <input
+                            type="number"
+                            id="connectionLoad"
+                            min="0.1"
+                            max="1000"
+                            step="0.1"
+                            required>
+                    </div>
+
+                    <div class="electricity-form-group full">
+                        <label for="connectionAddress">Installation Address *</label>
+                        <textarea
+                            id="connectionAddress"
+                            maxlength="300"
+                            required
+                            placeholder="Enter a sample installation address"></textarea>
+                    </div>
+
+                </div>
+
+                <button class="electricity-action" type="submit">
+                    Submit Demo Application
+                </button>
+
+            </form>
+
+            <div id="connectionResult" class="electricity-result" role="status"></div>
+
+            <p>
+                This demo does not create an official application or confirm
+                eligibility. Apply through your authorised electricity provider
+                for a real connection.
+            </p>
+
+        </div>
+
+
+        <!-- 5. SERVICE CENTERS -->
+
+        <div id="electricityCentersPanel" hidden>
+
+            <h3>📍 Electricity Service Centers</h3>
+
+            <p>
+                Search the sample directory below. The listed entries are
+                illustrative examples, not verified office locations.
+            </p>
+
+            <div class="electricity-form-group">
+                <label for="centerSearch">Search by area or service</label>
+                <input
+                    id="centerSearch"
+                    type="search"
+                    maxlength="100"
+                    placeholder="Try: Gajuwaka or billing">
+            </div>
+
+            <div id="centerResults"></div>
+
+            <a
+                href="map.html?service=electricity"
+                class="electricity-action">
+                Open Electricity Map →
+            </a>
+
+            <p>
+                The map uses your existing map page. Its electricity category
+                may not contain every real service centre.
+            </p>
+
+        </div>
+
+
+        <!-- 6. ELECTRICITY SUPPORT -->
+
+        <div id="electricitySupportPanel" hidden>
+
+            <h3>📞 Electricity Customer Support</h3>
+
+            <p>
+                Submit a demo request about billing, supply, connections,
+                or another electricity-related concern.
+            </p>
+
+            <form id="supportForm">
+
+                <div class="electricity-detail-form">
+
+                    <div class="electricity-form-group">
+                        <label for="supportName">Name *</label>
+                        <input id="supportName" maxlength="60" required>
+                    </div>
+
+                    <div class="electricity-form-group">
+                        <label for="supportArea">Area / Locality *</label>
+                        <input id="supportArea" maxlength="100" required>
+                    </div>
+
+                    <div class="electricity-form-group full">
+                        <label for="supportCategory">Support Category *</label>
+                        <select id="supportCategory" required>
+                            <option value="">Choose a category</option>
+                            <option>Power Supply</option>
+                            <option>Electricity Bill</option>
+                            <option>New Connection</option>
+                            <option>Meter Issue</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="electricity-form-group full">
+                        <label for="supportDescription">Describe Your Request *</label>
+                        <textarea
+                            id="supportDescription"
+                            maxlength="1000"
+                            required></textarea>
+                    </div>
+
+                </div>
+
+                <button class="electricity-action" type="submit">
+                    Submit Demo Support Request
+                </button>
+
+            </form>
+
+            <div id="supportResult" class="electricity-result" role="status"></div>
+
+            <h3>Saved Demo Requests</h3>
+            <div id="supportHistory"></div>
+
+        </div>
+
+
+        <div>
+            <button
+                type="button"
+                class="electricity-action electricity-back"
+                onclick="closeElectricityService()">
+                ← Back to Electricity Services
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SAFETY SECTION -->
+
+<section class="electricity-info">
+
+    <div class="section-heading">
+
+        <span>ENERGY AWARENESS</span>
+
+        <h2>
+            Use Energy.
+            <strong>Use It Wisely.</strong>
+        </h2>
+
+        <p>
+            Responsible electricity usage helps build
+            a sustainable and energy-efficient city.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer>
+    <div class="footer-logo">🏙️ SmartCity</div>
+    <p>Smart services for a better connected city.</p>
+    <span>© 2026 Smart City Services Portal</span>
+</footer>
+
+
+<script>
+    // ==========================================
+    // ELECTRICITY SERVICE NAVIGATION
+    // ==========================================
+
+    const electricityPanels = {
+        status: "electricityStatusPanel",
+        outage: "electricityOutagePanel",
+        bill: "electricityBillPanel",
+        connection: "electricityConnectionPanel",
+        centers: "electricityCentersPanel",
+        support: "electricitySupportPanel"
+    };
+function openElectricityService(service) {
+    const panelId = electricityPanels[service];
+
+    if (!panelId) return;
+
+    // Hide all service panels.
+    Object.values(electricityPanels).forEach(function (id) {
+        document.getElementById(id).hidden = true;
+    });
+
+    // Hide the main electricity dashboard.
+    document.querySelector(".electricity-section").style.display = "none";
+    document.querySelector(".electricity-hero").style.display = "none";
+    document.querySelector(".electricity-info").style.display = "none";
+    document.querySelector("footer").style.display = "none";
+
+    // Display only the selected service.
+    document.getElementById(panelId).hidden = false;
+
+    const titles = {
+        status: "⚡ Power Supply Status",
+        outage: "🔌 Report Power Outage",
+        bill: "💳 Electricity Bill",
+        connection: "🏠 New Connection",
+        centers: "📍 Electricity Service Centers",
+        support: "📞 Electricity Support"
+    };
+
+    const descriptions = {
+        status: "View area-wise power supply information.",
+        outage: "Report an electricity outage.",
+        bill: "Calculate a sample electricity bill.",
+        connection: "Apply for a demonstration new connection.",
+        centers: "Explore electricity service centres.",
+        support: "Get electricity customer support."
+    };
+
+    document.getElementById("electricityDetailTitle").textContent =
+        titles[service];
+
+    document.getElementById("electricityDetailDescription").textContent =
+        descriptions[service];
+
+    // Show the service container as a separate full-page view.
+    const section = document.getElementById("electricityDetails");
+    section.classList.add("visible");
+    section.style.minHeight = "70vh";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+
+    if (service === "centers") displayCenters();
+    if (service === "support") displaySupportHistory();
+}
+function closeElectricityService() {
+    document.getElementById("electricityDetails").classList.remove("visible");
+
+    document.querySelector(".electricity-section").style.display = "";
+    document.querySelector(".electricity-hero").style.display = "";
+    document.querySelector(".electricity-info").style.display = "";
+    document.querySelector("footer").style.display = "";
+
+    document.getElementById("electricityDetails").style.display = "none";
+
+    Object.values(electricityPanels).forEach(function (id) {
+        document.getElementById(id).hidden = true;
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+}
+
+    // ==========================================
+    // SAFE LOCAL STORAGE HELPERS
+    // ==========================================
+
+    function readRecords(key) {
+        try {
+            const records = JSON.parse(localStorage.getItem(key) || "[]");
+            return Array.isArray(records) ? records : [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    function saveRecord(key, record) {
+        try {
+            const records = readRecords(key);
+            records.push(record);
+            localStorage.setItem(key, JSON.stringify(records));
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function makeReference(prefix) {
+        return prefix + "-" +
+            Date.now().toString(36).toUpperCase() + "-" +
+            Math.random().toString(36).slice(2, 6).toUpperCase();
+    }
+
+    function showResult(elementId, title, lines, isError) {
+        const box = document.getElementById(elementId);
+        box.replaceChildren();
+        box.className = isError
+            ? "electricity-result error"
+            : "electricity-result";
+        box.style.display = "block";
+
+        const heading = document.createElement("h3");
+        heading.textContent = title;
+        box.appendChild(heading);
+
+        lines.forEach(function (line) {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = line;
+            box.appendChild(paragraph);
+        });
+    }
+
+
+    // ==========================================
+    // 1. POWER SUPPLY STATUS
+    // ==========================================
+
+    function checkAreaPowerStatus() {
+        const area = document.getElementById("powerArea").value.trim();
+
+        if (!area) {
+            showResult(
+                "powerStatusResult",
+                "Area Required",
+                ["Please enter an area name."],
+                true
+            );
+            return;
+        }
+
+        // This is illustrative data, not a live power-grid check.
+        const sampleOutageAreas = ["demo outage area", "test outage area"];
+        const isSampleOutage =
+            sampleOutageAreas.includes(area.toLowerCase());
+
+        if (isSampleOutage) {
+            showResult(
+                "powerStatusResult",
+                "⚠️ Sample Outage",
+                [
+                    "Area: " + area,
+                    "Demo status: Power interruption recorded in the sample dataset.",
+                    "Restoration time: Not available in this demonstration.",
+                    "This does not indicate a real outage."
+                ],
+                false
+            );
+        } else {
+            showResult(
+                "powerStatusResult",
+                "⚡ Sample Supply Information",
+                [
+                    "Area: " + area,
+                    "Demo status: No outage recorded in the sample dataset.",
+                    "Actual electricity supply has not been verified.",
+                    "For accurate status, contact your electricity provider."
+                ],
+                false
+            );
+        }
+    }
+
+
+    // ==========================================
+    // 2. REPORT POWER OUTAGE
+    // ==========================================
+
+    document.getElementById("outageForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const record = {
+            id: makeReference("OUT"),
+            name: document.getElementById("outageName").value.trim(),
+            area: document.getElementById("outageArea").value.trim(),
+            type: document.getElementById("outageType").value,
+            duration: document.getElementById("outageDuration").value,
+            description: document.getElementById("outageDescription").value.trim(),
+            date: new Date().toLocaleString()
+        };
+
+        if (!saveRecord("smartCityElectricityOutages", record)) {
+            showResult(
+                "outageResult",
+                "Unable to Save",
+                ["Browser storage is unavailable. Please try again."],
+                true
+            );
+            return;
+        }
+
+        showResult(
+            "outageResult",
+            "✅ Demo Report Saved",
+            [
+                "Reference Number: " + record.id,
+                "Area: " + record.area,
+                "Issue: " + record.type,
+                "This report is stored only in this browser.",
+                "No electricity provider has been notified."
+            ],
+            false
+        );
+
+        this.reset();
+    });
+
+
+    // ==========================================
+    // 3. SAMPLE ELECTRICITY BILL CALCULATOR
+    // ==========================================
+
+    document.getElementById("billForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const units = Number(document.getElementById("billUnits").value);
+        const rate = Number(document.getElementById("billRate").value);
+        const fixed = Number(document.getElementById("billFixedCharge").value);
+        const tax = Number(document.getElementById("billTax").value);
+
+        if (
+            !Number.isFinite(units) ||
+            !Number.isFinite(rate) ||
+            !Number.isFinite(fixed) ||
+            !Number.isFinite(tax) ||
+            units < 0 || rate < 0 || fixed < 0 || tax < 0 ||
+            units > 100000 || rate > 10000 || fixed > 100000 || tax > 100
+        ) {
+            showResult(
+                "billResult",
+                "Invalid Values",
+                ["Please enter valid non-negative numbers within the allowed limits."],
+                true
+            );
+            return;
+        }
+
+        const energyCharge = units * rate;
+        const subtotal = energyCharge + fixed;
+        const extraCharge = subtotal * tax / 100;
+        const total = subtotal + extraCharge;
+
+        showResult(
+            "billResult",
+            "🧾 Illustrative Bill Calculation",
+            [
+                "Units consumed: " + units + " kWh",
+                "Energy charge: ₹" + energyCharge.toFixed(2),
+                "Fixed charge: ₹" + fixed.toFixed(2),
+                "Additional sample charge: ₹" + extraCharge.toFixed(2),
+                "Illustrative total: ₹" + total.toFixed(2),
+                "This is not an official tariff or a payable bill."
+            ],
+            false
+        );
+    });
+
+
+    // ==========================================
+    // 4. NEW CONNECTION APPLICATION
+    // ==========================================
+
+    document.getElementById("connectionForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const load = Number(document.getElementById("connectionLoad").value);
+
+        if (!Number.isFinite(load) || load <= 0 || load > 1000) {
+            showResult(
+                "connectionResult",
+                "Invalid Load",
+                ["Enter a load greater than 0 and no more than 1000 kW."],
+                true
+            );
+            return;
+        }
+
+        const record = {
+            id: makeReference("CON"),
+            applicant: document.getElementById("connectionName").value.trim(),
+            area: document.getElementById("connectionArea").value.trim(),
+            type: document.getElementById("connectionType").value,
+            load: load,
+            address: document.getElementById("connectionAddress").value.trim(),
+            date: new Date().toLocaleString()
+        };
+
+        if (!saveRecord("smartCityElectricityConnections", record)) {
+            showResult(
+                "connectionResult",
+                "Unable to Save",
+                ["Browser storage is unavailable. Please try again."],
+                true
+            );
+            return;
+        }
+
+        showResult(
+            "connectionResult",
+            "✅ Demo Application Saved",
+            [
+                "Application Reference: " + record.id,
+                "Connection type: " + record.type,
+                "Requested load: " + record.load + " kW",
+                "This is not an official application or approval.",
+                "Submit a real application through your authorised provider."
+            ],
+            false
+        );
+
+        this.reset();
+    });
+
+
+    // ==========================================
+    // 5. SERVICE CENTER DIRECTORY
+    // ==========================================
+
+    const sampleCenters = [
+        {
+            name: "Visakhapatnam Electricity Service Directory",
+            area: "Visakhapatnam",
+            services: "General enquiries, billing information and connections",
+            note: "Illustrative directory entry — verify the actual office before visiting."
+        },
+        {
+            name: "North Area Service Directory",
+            area: "Madhurawada",
+            services: "Sample supply enquiries and service requests",
+            note: "Illustrative directory entry — location and contact details are unverified."
+        },
+        {
+            name: "South Area Service Directory",
+            area: "Gajuwaka",
+            services: "Sample billing and connection enquiries",
+            note: "Illustrative directory entry — location and contact details are unverified."
+        }
+    ];
+
+    function displayCenters() {
+        const query = document.getElementById("centerSearch").value.trim().toLowerCase();
+        const container = document.getElementById("centerResults");
+        container.replaceChildren();
+
+        const matches = sampleCenters.filter(function (center) {
+            return (
+                center.name + " " +
+                center.area + " " +
+                center.services
+            ).toLowerCase().includes(query);
+        });
+
+        if (matches.length === 0) {
+            const message = document.createElement("p");
+            message.className = "electricity-empty";
+            message.textContent = "No matching sample entries found.";
+            container.appendChild(message);
+            return;
+        }
+
+        matches.forEach(function (center) {
+            const card = document.createElement("article");
+            card.className = "electricity-record";
+
+            const title = document.createElement("h3");
+            title.textContent = "📍 " + center.name;
+
+            const area = document.createElement("p");
+            area.textContent = "Area: " + center.area;
+
+            const services = document.createElement("p");
+            services.textContent = "Services: " + center.services;
+
+            const note = document.createElement("p");
+            note.textContent = center.note;
+
+            card.append(title, area, services, note);
+            container.appendChild(card);
+        });
+    }
+
+    document.getElementById("centerSearch").addEventListener("input", displayCenters);
+
+
+    // ==========================================
+    // 6. ELECTRICITY SUPPORT
+    // ==========================================
+
+    document.getElementById("supportForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const record = {
+            id: makeReference("SUP"),
+            name: document.getElementById("supportName").value.trim(),
+            area: document.getElementById("supportArea").value.trim(),
+            category: document.getElementById("supportCategory").value,
+            description: document.getElementById("supportDescription").value.trim(),
+            date: new Date().toLocaleString()
+        };
+
+        if (!saveRecord("smartCityElectricitySupport", record)) {
+            showResult(
+                "supportResult",
+                "Unable to Save",
+                ["Browser storage is unavailable. Please try again."],
+                true
+            );
+            return;
+        }
+
+        showResult(
+            "supportResult",
+            "✅ Demo Support Request Saved",
+            [
+                "Reference Number: " + record.id,
+                "Category: " + record.category,
+                "This request is saved in your browser only.",
+                "No electricity provider has been notified."
+            ],
+            false
+        );
+
+        this.reset();
+        displaySupportHistory();
+    });
+
+    function displaySupportHistory() {
+        const container = document.getElementById("supportHistory");
+        container.replaceChildren();
+
+        const records = readRecords("smartCityElectricitySupport");
+
+        if (records.length === 0) {
+            const message = document.createElement("p");
+            message.className = "electricity-empty";
+            message.textContent = "No demo support requests have been submitted yet.";
+            container.appendChild(message);
+            return;
+        }
+
+        records.slice().reverse().forEach(function (record) {
+            const card = document.createElement("article");
+            card.className = "electricity-record";
+
+            const title = document.createElement("h3");
+            title.textContent = record.category;
+
+            const reference = document.createElement("p");
+            reference.textContent = "Reference: " + record.id;
+
+            const area = document.createElement("p");
+            area.textContent = "Area: " + record.area;
+
+            const date = document.createElement("p");
+            date.textContent = "Submitted: " + record.date;
+
+            const status = document.createElement("p");
+            status.textContent = "Demo status: Saved in this browser";
+
+            card.append(title, reference, area, date, status);
+            container.appendChild(card);
+        });
+    }
+</script>
+
+    <script src="JS/theme.js"></script>
+</body>
+</html>
+
