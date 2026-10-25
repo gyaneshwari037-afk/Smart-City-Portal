@@ -1,0 +1,927 @@
+/* =====================================================
+   SMARTCITY — COMPLAINT DASHBOARD
+   Matches the Services and Transport dashboard design
+   File: CSS/complaint.css
+===================================================== */
+
+/* ================= BASIC SETTINGS ================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body:has(.complaints-hero) {
+    margin: 0;
+    background: #f4f8fc;
+    color: #123858;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body:has(.complaints-hero) a {
+    text-decoration: none;
+}
+
+body:has(.complaints-hero) button,
+body:has(.complaints-hero) input,
+body:has(.complaints-hero) select,
+body:has(.complaints-hero) textarea {
+    font-family: inherit;
+}
+
+/* ================= NAVBAR ================= */
+
+body:has(.complaints-hero) .navbar {
+    position: absolute;
+    top: 18px;
+    left: 2.5%;
+    right: 2.5%;
+    z-index: 1000;
+
+    width: 95%;
+    height: 64px;
+    padding: 0 22px;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 28px rgba(20, 70, 100, 0.12);
+
+    backdrop-filter: blur(12px);
+}
+
+body:has(.complaints-hero) .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 180px;
+}
+
+body:has(.complaints-hero) .logo-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    background: transparent;
+    color: #0875bd;
+
+    font-size: 27px;
+    box-shadow: none;
+}
+
+body:has(.complaints-hero) .logo-area h2 {
+    margin: 0;
+    color: #073763;
+    font-size: 17px;
+    line-height: 1.1;
+}
+
+body:has(.complaints-hero) .logo-area span {
+    display: block;
+    margin-top: 3px;
+
+    color: #315b80;
+    font-size: 10px;
+}
+
+body:has(.complaints-hero) nav {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: clamp(10px, 1.35vw, 22px);
+}
+
+body:has(.complaints-hero) nav a {
+    color: #123858;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+body:has(.complaints-hero) nav a:hover,
+body:has(.complaints-hero) nav a.active {
+    color: #0875bd;
+}
+
+body:has(.complaints-hero) .login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 17px;
+    margin-left: 15px;
+
+    border: none;
+    border-radius: 22px;
+
+    background: #0875ed;
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+body:has(.complaints-hero) .login-btn:hover {
+    background: #075d98;
+    transform: translateY(-2px);
+}
+
+/* ================= HERO SECTION ================= */
+
+body:has(.complaints-hero) .complaints-hero {
+    position: relative;
+
+    width: 100%;
+    min-height: 480px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 135px 5.5% 65px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(235, 247, 253, 0.98) 0%,
+            rgba(235, 247, 253, 0.93) 30%,
+            rgba(235, 247, 253, 0.66) 48%,
+            rgba(235, 247, 253, 0.08) 78%
+        ),
+        url("https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2000&q=90")
+        center 52% / cover no-repeat;
+}
+
+body:has(.complaints-hero) .complaints-hero-content {
+    position: relative;
+    z-index: 1;
+
+    width: min(620px, 65%);
+    margin: 0;
+
+    color: #073763;
+}
+
+body:has(.complaints-hero) .eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    color: #0875bd;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+body:has(.complaints-hero) .complaints-hero h1 {
+    margin: 0 0 16px;
+
+    color: #073763;
+
+    font-size: clamp(40px, 4.2vw, 58px);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -1.5px;
+}
+
+body:has(.complaints-hero) .complaints-hero h1 span {
+    color: #0875bd;
+}
+
+body:has(.complaints-hero) .complaints-hero p {
+    max-width: 470px;
+    margin: 0;
+
+    color: #315b68;
+
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+/* ================= MAIN CONTENT ================= */
+
+body:has(.complaints-hero) .complaints-main {
+    width: 100%;
+    min-height: 400px;
+
+    padding: 60px 5.5% 75px;
+
+    background: #f4f8fc;
+}
+
+/* Main section heading */
+
+body:has(.complaints-hero) .complaints-heading {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 0 auto 38px;
+
+    text-align: center;
+}
+
+body:has(.complaints-hero) .complaints-heading > span {
+    display: inline-block;
+    margin-bottom: 10px;
+
+    color: #0875bd;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+body:has(.complaints-hero) .complaints-heading h2 {
+    margin: 8px 0 12px;
+
+    color: #123858;
+
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2;
+}
+
+body:has(.complaints-hero) .complaints-heading p {
+    max-width: 650px;
+    margin: 0 auto;
+
+    color: #617c90;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ================= COMPLAINT CARDS ================= */
+
+body:has(.complaints-hero) .complaint-card {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto 24px;
+    padding: 30px;
+
+    border: 1px solid #deebf4;
+    border-radius: 16px;
+
+    background: #ffffff;
+    box-shadow: 0 7px 22px rgba(20, 70, 100, 0.06);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+body:has(.complaints-hero) .complaint-card:hover {
+    border-color: #c6dfef;
+    box-shadow: 0 12px 30px rgba(20, 70, 100, 0.09);
+}
+
+body:has(.complaints-hero) .complaint-card h3 {
+    margin: 0 0 10px;
+
+    color: #123858;
+
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+body:has(.complaints-hero) .track-description {
+    margin: 0 0 24px;
+
+    color: #647c8d;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ================= FORM LAYOUT ================= */
+
+body:has(.complaints-hero) .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+
+    margin-bottom: 18px;
+}
+
+body:has(.complaints-hero) .form-group {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    margin-bottom: 18px;
+}
+
+body:has(.complaints-hero) .form-row .form-group {
+    margin-bottom: 0;
+}
+
+body:has(.complaints-hero) .form-group label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #263f57;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Input fields */
+
+body:has(.complaints-hero) .form-group input,
+body:has(.complaints-hero) .form-group select,
+body:has(.complaints-hero) .form-group textarea {
+    display: block;
+
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+
+    border: 1px solid #d2deeb;
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #fbfdff;
+    color: #1e293b;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+body:has(.complaints-hero) .form-group textarea {
+    min-height: 130px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+body:has(.complaints-hero) .form-group input::placeholder,
+body:has(.complaints-hero) .form-group textarea::placeholder {
+    color: #93a4b5;
+}
+
+body:has(.complaints-hero) .form-group input:focus,
+body:has(.complaints-hero) .form-group select:focus,
+body:has(.complaints-hero) .form-group textarea:focus {
+    border-color: #0875bd;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(8, 117, 189, 0.12);
+}
+
+/* ================= FORM NOTE ================= */
+
+body:has(.complaints-hero) .form-note {
+    margin: 5px 0 22px;
+    padding: 14px 16px;
+
+    border-left: 4px solid #0875bd;
+    border-radius: 8px;
+
+    background: #edf6ff;
+    color: #315b80;
+
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* ================= BUTTONS ================= */
+
+body:has(.complaints-hero) .primary-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 44px;
+    padding: 12px 22px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: #0875bd;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 14px rgba(0, 80, 140, 0.14);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+body:has(.complaints-hero) .primary-action:hover {
+    background: #075d98;
+    transform: translateY(-2px);
+    box-shadow: 0 9px 20px rgba(0, 80, 140, 0.2);
+}
+
+body:has(.complaints-hero) .primary-action:focus-visible {
+    outline: 3px solid rgba(8, 117, 189, 0.3);
+    outline-offset: 3px;
+}
+
+body:has(.complaints-hero) .full-width-button {
+    width: 100%;
+}
+
+/* ================= SUCCESS MESSAGE ================= */
+
+body:has(.complaints-hero) .success-message {
+    display: none;
+
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto 25px;
+    padding: 25px 28px;
+
+    border: 1px solid #a8e3c0;
+    border-radius: 14px;
+
+    background: #effcf4;
+    color: #17663a;
+
+    box-shadow: 0 7px 20px rgba(20, 100, 60, 0.06);
+}
+
+body:has(.complaints-hero) .success-message h3 {
+    margin: 0 0 10px;
+
+    color: #17663a;
+    font-size: 20px;
+}
+
+body:has(.complaints-hero) .success-message p {
+    margin: 8px 0;
+
+    color: #347452;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+body:has(.complaints-hero) .success-id {
+    display: inline-block;
+
+    margin: 8px 0;
+    padding: 10px 16px;
+
+    border: 1px dashed #65b98a;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #17663a;
+
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    overflow-wrap: anywhere;
+}
+
+/* ================= TRACKING RESULT ================= */
+
+body:has(.complaints-hero) .tracking-result {
+    display: none;
+
+    margin-top: 22px;
+    padding: 20px;
+
+    border: 1px solid #d4e5fb;
+    border-radius: 10px;
+
+    background: #edf6ff;
+    color: #174a7b;
+
+    font-size: 13px;
+    line-height: 1.8;
+
+    overflow-wrap: anywhere;
+}
+
+body:has(.complaints-hero) .tracking-result h3,
+body:has(.complaints-hero) .tracking-result h4 {
+    margin: 0 0 12px;
+    color: #123858;
+}
+
+body:has(.complaints-hero) .tracking-result p {
+    margin: 6px 0;
+}
+
+/* ================= FOOTER ================= */
+
+body:has(.complaints-hero) .complaints-footer {
+    width: 100%;
+    padding: 30px 5.5% 22px;
+
+    background: #073657;
+    color: #ffffff;
+
+    text-align: center;
+}
+
+body:has(.complaints-hero) .complaints-footer h2 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+    font-size: 22px;
+}
+
+body:has(.complaints-hero) .complaints-footer p {
+    margin: 8px 0;
+
+    color: #d2e5f6;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+body:has(.complaints-hero) .footer-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    margin: 22px 0;
+}
+
+body:has(.complaints-hero) .footer-navigation a {
+    color: #d2e5f6;
+    font-size: 12px;
+
+    transition: color 0.2s ease;
+}
+
+body:has(.complaints-hero) .footer-navigation a:hover {
+    color: #ffffff;
+}
+
+body:has(.complaints-hero) .complaints-footer .copyright {
+    margin-top: 20px;
+    padding-top: 16px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    color: #a9c4dc;
+    font-size: 11px;
+}
+
+/* ================= TABLET RESPONSIVE ================= */
+
+@media (max-width: 1050px) {
+    body:has(.complaints-hero) .navbar {
+        padding: 0 14px;
+    }
+
+    body:has(.complaints-hero) .logo-area {
+        min-width: 145px;
+    }
+
+    body:has(.complaints-hero) nav {
+        gap: 9px;
+    }
+
+    body:has(.complaints-hero) nav a {
+        font-size: 10px;
+    }
+
+    body:has(.complaints-hero) .login-btn {
+        margin-left: 8px;
+        padding: 10px 13px;
+    }
+
+    body:has(.complaints-hero) .complaint-card {
+        padding: 25px;
+    }
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 800px) {
+    body:has(.complaints-hero) .navbar {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+
+        width: 100%;
+        height: auto;
+        min-height: 68px;
+
+        flex-wrap: wrap;
+        gap: 10px;
+
+        padding: 12px 4%;
+
+        border-radius: 0;
+    }
+
+    body:has(.complaints-hero) nav {
+        display: none;
+    }
+
+    body:has(.complaints-hero) .login-btn {
+        margin-left: auto;
+    }
+
+    body:has(.complaints-hero) .complaints-hero {
+        min-height: 370px;
+        padding: 55px 6%;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(235, 247, 253, 0.97),
+                rgba(235, 247, 253, 0.80)
+            ),
+            url("https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1400&q=85")
+            center / cover no-repeat;
+    }
+
+    body:has(.complaints-hero) .complaints-hero-content {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    body:has(.complaints-hero) .complaints-main {
+        padding: 45px 5%;
+    }
+
+    body:has(.complaints-hero) .complaints-heading {
+        margin-bottom: 30px;
+    }
+
+    body:has(.complaints-hero) .complaint-card {
+        padding: 22px;
+    }
+
+    body:has(.complaints-hero) .form-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 600px) {
+    body:has(.complaints-hero) .complaints-hero h1 {
+        font-size: 36px;
+        letter-spacing: -0.7px;
+    }
+
+    body:has(.complaints-hero) .complaints-hero p {
+        font-size: 13px;
+    }
+
+    body:has(.complaints-hero) .complaints-main {
+        padding: 38px 5%;
+    }
+
+    body:has(.complaints-hero) .complaints-heading h2 {
+        font-size: 28px;
+    }
+
+    body:has(.complaints-hero) .complaint-card {
+        padding: 19px;
+        border-radius: 12px;
+    }
+
+    body:has(.complaints-hero) .complaint-card h3 {
+        font-size: 19px;
+    }
+
+    body:has(.complaints-hero) .primary-action {
+        width: 100%;
+    }
+
+    body:has(.complaints-hero) .success-message {
+        padding: 20px;
+    }
+
+    body:has(.complaints-hero) .footer-navigation {
+        gap: 14px;
+    }
+}
+
+/* ==========================================
+   COMPLAINTS DASHBOARD
+   COLOUR + WALLPAPER ONLY
+   Keep the existing layout unchanged
+========================================== */
+
+/* Main page colours */
+body {
+    background-color: #f7faf7;
+    color: #24352b;
+}
+
+/* Navbar colours */
+header.navbar {
+    background-color: #ffffff;
+    border-bottom-color: #e0e9e1;
+}
+
+header.navbar .logo-icon {
+    background: #176b4d;
+}
+
+header.navbar .logo-area h2 {
+    color: #173f30;
+}
+
+header.navbar .logo-area span {
+    color: #748579;
+}
+
+header.navbar nav a {
+    color: #526459;
+}
+
+header.navbar nav a:hover,
+header.navbar nav a.active {
+    color: #176b4d;
+}
+
+header.navbar .login-btn {
+    background: #176b4d;
+}
+
+header.navbar .login-btn:hover {
+    background: #105239;
+}
+
+/* NEW WALLPAPER + COLOURS
+   Layout and hero dimensions remain unchanged */
+.complaints-hero {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(10, 48, 34, 0.94) 0%,
+            rgba(20, 83, 57, 0.78) 48%,
+            rgba(22, 58, 42, 0.35) 100%
+        ),
+        url("https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=85");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+/* Hero heading accent */
+.complaints-hero h1 {
+    color: #ffffff;
+}
+
+.complaints-hero h1 span {
+    color: #f3ce75;
+}
+
+.complaints-hero p {
+    color: #e5f0e8;
+}
+
+/* Hero badge */
+.complaints-hero .eyebrow {
+    background: rgba(255, 255, 255, 0.13);
+    border-color: rgba(255, 255, 255, 0.30);
+    color: #fff1c9;
+}
+
+/* Section heading colours */
+.complaints-heading > span {
+    color: #176b4d;
+}
+
+.complaints-heading h2 {
+    color: #173f30;
+}
+
+.complaints-heading p {
+    color: #748579;
+}
+
+/* Complaint cards */
+.complaints-main .complaint-card {
+    background: #ffffff;
+    border-color: #dce8df;
+    box-shadow: 0 8px 25px rgba(23, 63, 48, 0.08);
+}
+
+.complaints-main .complaint-card h3 {
+    color: #173f30;
+}
+
+.complaints-main .track-description {
+    color: #748579;
+}
+
+/* Form labels */
+.complaints-main .form-group label {
+    color: #304b3b;
+}
+
+/* Form fields */
+.complaints-main .form-group input,
+.complaints-main .form-group select,
+.complaints-main .form-group textarea {
+    background: #ffffff;
+    color: #24352b;
+    border-color: #d5e2d8;
+}
+
+/* Focus colour */
+.complaints-main .form-group input:focus,
+.complaints-main .form-group select:focus,
+.complaints-main .form-group textarea:focus {
+    border-color: #21845c;
+    box-shadow: 0 0 0 3px rgba(33, 132, 92, 0.13);
+}
+
+/* Informational note */
+.complaints-main .form-note {
+    background: #edf7ef;
+    border-left-color: #21845c;
+    color: #385b45;
+}
+
+/* Buttons */
+.primary-action,
+.full-width-button {
+    background: linear-gradient(135deg, #21845c, #14583e);
+    color: #ffffff;
+}
+
+.primary-action:hover,
+.full-width-button:hover {
+    background: linear-gradient(135deg, #176b4d, #104831);
+}
+
+/* Successful complaint message */
+.success-message {
+    background: #edf8ef;
+    border-color: #c8e5ce;
+    color: #245b38;
+}
+
+.success-id {
+    background: #d8f0df;
+    color: #185b37;
+}
+
+/* Complaint tracking result */
+.tracking-result {
+    background: #f0f7ef;
+    border-color: #d0e3cd;
+}
+
+.tracking-result h3 {
+    color: #173f30;
+}
+
+/* Footer colours */
+.complaints-footer {
+    background: linear-gradient(135deg, #103b2b, #176b4d, #21845c);
+    color: #f0f7f1;
+}
+
+.complaints-footer h2,
+.complaints-footer h3 {
+    color: #ffffff;
+}
+
+.complaints-footer p {
+    color: #dcebe0;
+}
+
+.complaints-footer a {
+    color: #f3ce75;
+}

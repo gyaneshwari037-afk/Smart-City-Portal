@@ -1,0 +1,384 @@
+/* ==========================================================
+   SMARTCITY — NEWS & EVENTS DASHBOARD
+   CSS-only layout refresh to match the other dashboards.
+   Preserves the existing purple/gold palette, city wallpaper,
+   HTML content, links and functionality.
+========================================================== */
+
+:root {
+    --news-purple: #5141a5;
+    --news-purple-dark: #33256f;
+    --news-gold: #d6a84f;
+    --news-ink: #292443;
+    --news-muted: #6f6a83;
+    --news-pale: #f7f5ff;
+    --news-border: #e8e1fb;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #faf9ff;
+    color: var(--news-ink);
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+/* Floating navbar layout like the other dashboards — same content */
+body > header.navbar {
+    position: absolute;
+    z-index: 1000;
+    top: 18px;
+    left: 2.5%;
+    width: 95%;
+    min-height: 64px;
+    height: auto;
+    padding: 10px 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border: 1px solid rgba(255,255,255,.92);
+    border-radius: 13px;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 8px 28px rgba(45, 31, 95, .13);
+    backdrop-filter: blur(12px);
+}
+
+body > header.navbar .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 175px;
+}
+body > header.navbar .logo-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--news-purple);
+    font-size: 26px;
+    box-shadow: none;
+}
+body > header.navbar .logo-area h2 {
+    margin: 0;
+    color: var(--news-purple-dark);
+    font-size: 17px;
+    line-height: 1.15;
+}
+body > header.navbar .logo-area span {
+    display: block;
+    margin-top: 2px;
+    color: #71698d;
+    font-size: 10px;
+}
+body > header.navbar nav {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(10px, 1.35vw, 22px);
+}
+body > header.navbar nav a {
+    color: #39324f;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color .2s ease;
+}
+body > header.navbar nav a:hover,
+body > header.navbar nav a.active { color: var(--news-purple); }
+body > header.navbar .login-btn {
+    flex-shrink: 0;
+    padding: 10px 17px;
+    border-radius: 22px;
+    background: var(--news-purple) !important;
+    color: #fff !important;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+body > header.navbar .login-btn:hover { background: var(--news-purple-dark) !important; }
+
+/* Hero: keep the exact existing city wallpaper and purple/gold theme */
+body > .services-hero {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    min-height: 480px;
+    padding: 135px 5.5% 65px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-image:
+        linear-gradient(105deg, rgba(24, 20, 58, .82), rgba(58, 43, 117, .58)),
+        url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2000&q=85') !important;
+    background-size: cover !important;
+    background-position: center 48% !important;
+    color: #fff;
+}
+body > .services-hero .hero-overlay {
+    width: min(610px, 68%);
+    max-width: none;
+    margin: 0;
+    color: #fff;
+}
+body > .services-hero .small-title {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #f5d68f !important;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+body > .services-hero .hero-overlay h1 {
+    max-width: 760px;
+    margin: 0 0 16px;
+    color: #fff;
+    font-size: clamp(40px, 4.2vw, 58px);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -1.4px;
+}
+body > .services-hero .hero-overlay h1 span {
+    display: inline;
+    color: #f5d68f !important;
+}
+body > .services-hero .hero-overlay p {
+    max-width: 490px;
+    margin: 0;
+    color: #f0ecff;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Demo notice retains its purple treatment */
+.news-notice {
+    width: min(1100px, 89%);
+    margin: 28px auto 0 !important;
+    padding: 16px 22px;
+    border: 1px solid #e4dcff;
+    border-left: 5px solid var(--news-purple) !important;
+    border-radius: 12px;
+    background: #f4f2ff !important;
+    color: #3e347e !important;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* Shared section rhythm and centered headings like other dashboards */
+.full-section {
+    width: 100%;
+    padding: 62px 5.5% 20px;
+    margin: 0 auto;
+}
+.section-heading {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+.section-heading > span {
+    display: inline-block;
+    color: var(--news-purple) !important;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+.section-heading h2 {
+    margin: 10px 0 12px;
+    color: var(--news-purple-dark) !important;
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 800;
+    line-height: 1.2;
+}
+.section-heading p {
+    max-width: 730px;
+    margin: 0 auto;
+    color: var(--news-muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Latest news cards */
+.service-grid,
+.detail-grid {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+.service-card,
+.detail-card {
+    min-width: 0;
+    padding: 26px 24px;
+    border: 1px solid var(--news-border) !important;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(57, 39, 112, .06);
+    transition: transform .22s ease, box-shadow .22s ease;
+}
+.service-card:hover,
+.detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(57, 39, 112, .11);
+}
+.service-card h3,
+.detail-card h3 {
+    margin: 14px 0 10px;
+    color: var(--news-purple-dark) !important;
+    font-size: 18px;
+    line-height: 1.45;
+}
+.service-card p,
+.detail-card p {
+    margin: 0;
+    color: #6c687b;
+    font-size: 13px;
+    line-height: 1.8;
+}
+.service-icon,
+.detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    background: #f2edff;
+    font-size: 27px;
+}
+.news-tag {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background: #f5f0df !important;
+    color: #7b5b16 !important;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+.news-date {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #eeeaff !important;
+    color: var(--news-purple) !important;
+    font-size: 11px;
+    font-weight: 700;
+}
+.event-info {
+    display: inline-block;
+    margin-top: 10px;
+    color: #41445b !important;
+    font-size: 12px;
+    line-height: 1.8;
+}
+.event-status {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #fff4d9 !important;
+    color: #805a0c !important;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Service links and announcement */
+.service-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    padding: 10px 17px;
+    border-radius: 22px;
+    background: var(--news-purple) !important;
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background .2s ease, transform .2s ease;
+}
+.service-btn:hover { background: var(--news-purple-dark) !important; transform: translateY(-1px); }
+.announcement-box {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    padding: 30px 26px;
+    border: 1px solid #e5e0ff !important;
+    border-radius: 16px;
+    background: #f7f6ff !important;
+    color: var(--news-ink);
+    text-align: center;
+    line-height: 1.8;
+}
+.announcement-box h3 { margin: 0 0 10px; color: var(--news-purple-dark); font-size: 21px; }
+.announcement-box p { margin: 0; color: var(--news-muted); font-size: 14px; }
+.announcement-box a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 11px 22px;
+    border-radius: 24px;
+    background: var(--news-purple) !important;
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+}
+.announcement-box a:hover { background: var(--news-purple-dark) !important; }
+
+/* Footer styling only; footer content stays as it is */
+body > footer {
+    margin-top: 55px;
+    padding: 38px 6% 24px;
+    background: #30245f;
+    color: #eeeaff;
+    text-align: center;
+}
+body > footer .footer-logo { color: #f5d68f; font-weight: 700; }
+body > footer p { margin: 12px auto; color: #e1dcf6; font-size: 12px; line-height: 1.8; }
+
+@media (max-width: 1050px) {
+    body > header.navbar { gap: 10px; padding: 10px 16px; }
+    body > header.navbar .logo-area { min-width: 145px; }
+    body > header.navbar nav { gap: 10px; }
+    body > header.navbar nav a { font-size: 10px; }
+    body > header.navbar .login-btn { padding: 9px 12px; }
+}
+@media (max-width: 820px) {
+    body > header.navbar { position: relative; top: auto; left: auto; width: 100%; border-radius: 0; flex-wrap: wrap; justify-content: space-between; }
+    body > header.navbar nav { order: 3; flex-basis: 100%; justify-content: flex-start; flex-wrap: wrap; padding: 8px 0 3px; }
+    body > header.navbar nav a { font-size: 11px; }
+    body > .services-hero { min-height: 420px; padding: 60px 6%; background-position: center !important; }
+    body > .services-hero .hero-overlay { width: 100%; }
+    .service-grid, .detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .full-section { padding: 48px 5% 12px; }
+}
+@media (max-width: 560px) {
+    body > header.navbar .logo-area { min-width: 0; }
+    body > header.navbar nav { gap: 10px 15px; }
+    body > .services-hero { min-height: 390px; padding: 48px 6%; }
+    body > .services-hero .hero-overlay h1 { font-size: clamp(34px, 10vw, 44px); }
+    .news-notice { width: calc(100% - 30px); margin-top: 20px !important; padding: 14px 16px; }
+    .service-grid, .detail-grid { grid-template-columns: 1fr; gap: 17px; }
+    .service-card, .detail-card { padding: 22px 20px; }
+    .full-section { padding: 42px 15px 8px; }
+    .section-heading { margin-bottom: 25px; }
+    .announcement-box { padding: 24px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

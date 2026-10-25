@@ -1,0 +1,903 @@
+/* SMARTCITY GLOBAL NIGHT MODE — applies across the complete website */
+html.dark-mode { color-scheme: dark; }
+body.dark-mode {
+  background: #0b1120 !important;
+  background-color: #0b1120 !important;
+  color: #e5eaf5 !important;
+  transition: background-color .2s ease, color .2s ease;
+}
+body.dark-mode main,
+body.dark-mode section,
+body.dark-mode article,
+body.dark-mode aside,
+body.dark-mode .full-section,
+body.dark-mode .services-section,
+body.dark-mode .glance,
+body.dark-mode .updates,
+body.dark-mode .services-layout,
+body.dark-mode .complaints-main,
+body.dark-mode .dashboard,
+body.dark-mode .admin-container,
+body.dark-mode .electricity-section,
+body.dark-mode .water-section,
+body.dark-mode .waste-section,
+body.dark-mode .roads-section,
+body.dark-mode .parks-section,
+body.dark-mode .transport-section,
+body.dark-mode .report-section,
+body.dark-mode .contact-section,
+body.dark-mode .news-section,
+body.dark-mode .content-section,
+body.dark-mode .page-content,
+body.dark-mode .container:not(.hero-content):not(.hero-overlay),
+body.dark-mode .content:not(.hero-content):not(.hero-overlay) {
+  color: #e5eaf5;
+}
+body.dark-mode .navbar,
+body.dark-mode header.navbar,
+body.dark-mode nav.navbar,
+body.dark-mode header:not(.hero),
+body.dark-mode .site-header {
+  background-color: #111b30 !important;
+  color: #e5eaf5 !important;
+  border-color: #263653 !important;
+}
+body.dark-mode .navbar a,
+body.dark-mode .navbar nav a,
+body.dark-mode .nav-links a,
+body.dark-mode .logo-area,
+body.dark-mode .logo,
+body.dark-mode .admin-label,
+body.dark-mode nav a { color: #dbeafe; }
+body.dark-mode .navbar a:hover,
+body.dark-mode .navbar nav a:hover,
+body.dark-mode .navbar nav a.active,
+body.dark-mode .nav-links a:hover { color: #7dd3fc !important; }
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
+body.dark-mode h4, body.dark-mode h5, body.dark-mode h6,
+body.dark-mode .section-heading, body.dark-mode .section-heading strong,
+body.dark-mode .section-title, body.dark-mode .complaints-heading,
+body.dark-mode .page-header { color: #f1f5f9 !important; }
+body.dark-mode p, body.dark-mode li, body.dark-mode label,
+body.dark-mode small, body.dark-mode td, body.dark-mode th,
+body.dark-mode .section-heading p { color: #cbd5e1; }
+body.dark-mode .service-card, body.dark-mode .stat-card,
+body.dark-mode .update-item, body.dark-mode .detail-card,
+body.dark-mode .transport-card, body.dark-mode .electricity-card,
+body.dark-mode .water-card, body.dark-mode .waste-card,
+body.dark-mode .roads-card, body.dark-mode .parks-card,
+body.dark-mode .news-card, body.dark-mode .event-card,
+body.dark-mode .emergency-card, body.dark-mode .summary-card,
+body.dark-mode .profile-card, body.dark-mode .complaints-summary,
+body.dark-mode .track-complaint, body.dark-mode .report-form,
+body.dark-mode .success-box, body.dark-mode .route-card,
+body.dark-mode .service-menu, body.dark-mode .tracking-card,
+body.dark-mode .news-notice, body.dark-mode .contact-card,
+body.dark-mode .form-container, body.dark-mode .auth-card,
+body.dark-mode .login-container, body.dark-mode .register-container,
+body.dark-mode .card, body.dark-mode .panel, body.dark-mode .modal-content,
+body.dark-mode .table-container, body.dark-mode .map-info,
+body.dark-mode .map-controls, body.dark-mode .service-box,
+body.dark-mode .info-box, body.dark-mode .notice, body.dark-mode .alert-box {
+  background-color: #17243b !important;
+  color: #e2e8f0 !important;
+  border-color: #30415f !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+body.dark-mode input, body.dark-mode textarea, body.dark-mode select {
+  background-color: #0f172a !important;
+  color: #f1f5f9 !important;
+  border-color: #405477 !important;
+}
+body.dark-mode input::placeholder, body.dark-mode textarea::placeholder { color: #94a3b8 !important; }
+body.dark-mode table, body.dark-mode th, body.dark-mode td {
+  background-color: #17243b;
+  color: #e2e8f0;
+  border-color: #30415f !important;
+}
+body.dark-mode footer { background-color: #080e1b !important; color: #cbd5e1 !important; }
+/* Keep photos and gradient hero wallpapers: only their fallback background color changes. */
+body.dark-mode .hero-content, body.dark-mode .hero-content h1,
+body.dark-mode .hero-content p, body.dark-mode .hero-overlay,
+body.dark-mode .hero-overlay h1, body.dark-mode .hero-overlay p,
+body.dark-mode .electricity-overlay, body.dark-mode .complaints-hero-content,
+body.dark-mode .transport-hero-content { color: #f8fafc !important; }
+/* Floating/theme buttons are injected on pages without an existing navbar button. */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 10px 13px; border: 1px solid #bfdbfe; border-radius: 12px;
+  background: linear-gradient(135deg,#eff6ff,#dbeafe); color: #1d4ed8;
+  font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap;
+  position: relative; z-index: 9999;
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.theme-toggle:hover { transform: translateY(-1px); }
+.theme-toggle-floating { position: fixed; right: 18px; top: 18px; }
+body.dark-mode .theme-toggle { background: #263653 !important; color: #f8fafc !important; border-color: #526786 !important; }
+
+/* Automatically generated page-specific overrides for original light surfaces. */
+body.dark-mode,
+body.dark-mode /* ================= NAVBAR ================= */
+
+.navbar,
+body.dark-mode /* Header */
+
+.dashboard-header,
+body.dark-mode /* ================= PROFILE ================= */
+
+.profile-card,
+body.dark-mode .profile-icon,
+body.dark-mode /* ================= COMPLAINTS ================= */
+
+.complaints-summary,
+body.dark-mode .no-complaints,
+body.dark-mode .dashboard-card,
+body.dark-mode .dashboard-icon,
+body.dark-mode body:has(.complaints-hero),
+body.dark-mode /* ================= NAVBAR ================= */
+
+body:has(.complaints-hero) .navbar,
+body.dark-mode /* ================= MAIN CONTENT ================= */
+
+body:has(.complaints-hero) .complaints-main,
+body.dark-mode /* ================= COMPLAINT CARDS ================= */
+
+body:has(.complaints-hero) .complaint-card,
+body.dark-mode /* ================= FORM NOTE ================= */
+
+body:has(.complaints-hero) .form-note,
+body.dark-mode /* ================= SUCCESS MESSAGE ================= */
+
+body:has(.complaints-hero) .success-message,
+body.dark-mode body:has(.complaints-hero) .success-id,
+body.dark-mode /* ================= TRACKING RESULT ================= */
+
+body:has(.complaints-hero) .tracking-result,
+body.dark-mode /* ==========================================
+   COMPLAINTS DASHBOARD
+   COLOUR + WALLPAPER ONLY
+   Keep the existing layout unchanged
+========================================== */
+
+/* Main page colours */
+body,
+body.dark-mode /* Navbar colours */
+header.navbar,
+body.dark-mode /* Hero badge */
+.complaints-hero .eyebrow,
+body.dark-mode /* Complaint cards */
+.complaints-main .complaint-card,
+body.dark-mode /* Informational note */
+.complaints-main .form-note,
+body.dark-mode /* Successful complaint message */
+.success-message,
+body.dark-mode /* Complaint tracking result */
+.tracking-result,
+body.dark-mode /* =========================
+   NAVBAR
+========================= */
+
+.navbar,
+body.dark-mode .emergency-btn,
+body.dark-mode /* =========================
+   CITY AT GLANCE
+========================= */
+
+.glance,
+body.dark-mode .stat-card,
+body.dark-mode .stat-icon,
+body.dark-mode .service-card,
+body.dark-mode .water,
+body.dark-mode .electricity,
+body.dark-mode .waste,
+body.dark-mode .roads,
+body.dark-mode .parks,
+body.dark-mode .transport,
+body.dark-mode /* =========================
+   LATEST UPDATES
+========================= */
+
+.updates,
+body.dark-mode .update-icon,
+body.dark-mode /* =========================
+   CTA
+========================= */
+
+.cta,
+body.dark-mode /* =========================================
+   SECTION HEADING
+========================================= */
+
+.services-section,
+body.dark-mode /* =========================================
+   CATEGORY MENU
+========================================= */
+
+.service-menu,
+body.dark-mode .category:hover,
+body.dark-mode .service-icon,
+body.dark-mode /* =========================================
+   SERVICES PAGE - FINAL FIX
+========================================= */
+
+.services-section,
+body.dark-mode .service-menu,
+body.dark-mode /* Main sections */
+
+.full-section,
+body.dark-mode .detail-card,
+body.dark-mode .detail-icon,
+body.dark-mode /* =========================================
+   ELECTRICITY SECTION
+========================================= */
+
+.electricity-section,
+body.dark-mode /* =========================================
+   ELECTRICITY CARDS
+========================================= */
+
+.electricity-card,
+body.dark-mode /* =========================================
+   ENERGY INFORMATION
+========================================= */
+
+.electricity-info,
+body.dark-mode /* =========================================
+   WASTE SECTION
+========================================= */
+
+.waste-section,
+body.dark-mode /* =========================================
+   WASTE CARDS
+========================================= */
+
+.waste-card,
+body.dark-mode .waste-icon,
+body.dark-mode /* =========================================
+   ENVIRONMENT SECTION
+========================================= */
+
+.waste-info,
+body.dark-mode /* =========================================
+   ROADS SECTION
+========================================= */
+
+.roads-section,
+body.dark-mode /* =========================================
+   ROADS CARDS
+========================================= */
+
+.roads-card,
+body.dark-mode .roads-icon,
+body.dark-mode /* =========================================
+   INFRASTRUCTURE INFORMATION
+========================================= */
+
+.roads-info,
+body.dark-mode /* =========================================
+   PARKS SECTION
+========================================= */
+
+.parks-section,
+body.dark-mode /* =========================================
+   PARKS CARDS
+========================================= */
+
+.parks-card,
+body.dark-mode .parks-icon,
+body.dark-mode /* =========================================
+   ENVIRONMENT INFORMATION
+========================================= */
+
+.parks-info,
+body.dark-mode /* =========================================
+   TRANSPORT SECTION
+========================================= */
+
+.transport-section,
+body.dark-mode /* =========================================
+   TRANSPORT CARDS
+========================================= */
+
+.transport-card,
+body.dark-mode .transport-icon,
+body.dark-mode /* =========================================
+   TRANSPORT INFORMATION
+========================================= */
+
+.transport-info,
+body.dark-mode /* =========================================
+   REPORT SECTION
+========================================= */
+
+.report-section,
+body.dark-mode /* =========================================
+   FORM
+========================================= */
+
+.report-form,
+body.dark-mode /* =========================================
+   NOTE
+========================================= */
+
+.report-note,
+body.dark-mode .success-box,
+body.dark-mode .complaint-id,
+body.dark-mode /* ================================
+   COMPLAINT TRACKING
+================================ */
+
+.track-complaint,
+body.dark-mode .tracking-card,
+body.dark-mode /* ==================================================
+   SMART CITY PORTAL — COMPLETE THEME REDESIGN
+   DAY MODE: STYLE A
+   NIGHT MODE: STYLE B
+================================================== */
+
+/* ---------- DAY MODE: STYLE A ---------- */
+
+body:not(.dark-mode),
+body.dark-mode /* Navigation */
+body:not(.dark-mode) .navbar,
+body.dark-mode /* Main page sections */
+body:not(.dark-mode) .glance,
+body.dark-mode body:not(.dark-mode) .services-section,
+body.dark-mode body:not(.dark-mode) .roads-section,
+body.dark-mode body:not(.dark-mode) .parks-section,
+body.dark-mode body:not(.dark-mode) .transport-section,
+body.dark-mode body:not(.dark-mode) .electricity-section,
+body.dark-mode body:not(.dark-mode) .waste-section,
+body.dark-mode body:not(.dark-mode) .report-section,
+body.dark-mode body:not(.dark-mode) .full-section,
+body.dark-mode /* Statistics */
+body:not(.dark-mode) .stat-card,
+body.dark-mode /* All major cards */
+body:not(.dark-mode) .service-card,
+body.dark-mode body:not(.dark-mode) .roads-card,
+body.dark-mode body:not(.dark-mode) .parks-card,
+body.dark-mode body:not(.dark-mode) .transport-card,
+body.dark-mode body:not(.dark-mode) .electricity-card,
+body.dark-mode body:not(.dark-mode) .waste-card,
+body.dark-mode body:not(.dark-mode) .detail-card,
+body.dark-mode body:not(.dark-mode) .track-complaint,
+body.dark-mode body:not(.dark-mode) .report-form,
+body.dark-mode body:not(.dark-mode) .success-box,
+body.dark-mode /* Service category menu */
+body:not(.dark-mode) .service-menu,
+body.dark-mode /* Updates and tracking */
+body:not(.dark-mode) .updates,
+body.dark-mode body:not(.dark-mode) .tracking-card,
+body.dark-mode /* Call to action */
+body:not(.dark-mode) .cta,
+body.dark-mode .city-search-results a,
+body.dark-mode .city-search-results a:hover,
+body.dark-mode /* =========================================================
+   HOMEPAGE DESIGN — matched to the supplied SmartCity mockup
+   Homepage only; existing page-specific service styles remain.
+========================================================= */
+
+body.page-home,
+body.dark-mode body.page-home .map-btn,
+body.dark-mode body.page-home .complaint-btn,
+body.dark-mode body.page-home .emergency-btn,
+body.dark-mode body.page-home .glance,
+body.dark-mode body.page-home .services-section,
+body.dark-mode body.page-home .cta,
+body.dark-mode /* =========================================================
+   SERVICES DASHBOARD — reference mockup styling
+========================================================= */
+
+body.page-services,
+body.dark-mode body.page-services .services-section,
+body.dark-mode body.page-services .service-menu,
+body.dark-mode body.page-services .category:hover,
+body.dark-mode body.page-services .service-card,
+body.dark-mode body.page-services .water-icon,
+body.dark-mode body.page-services .electricity-icon,
+body.dark-mode body.page-services .waste-icon,
+body.dark-mode body.page-services .road-icon,
+body.dark-mode body.page-services .park-icon,
+body.dark-mode body.page-services .transport-icon,
+body.dark-mode #themeToggle,
+body.dark-mode #theme-toggle,
+body.dark-mode [data-theme-toggle],
+body.dark-mode /* Keep emergency/high-priority action buttons visible */
+html[data-theme="dark"] .emergency-btn,
+html.dark-mode.dark-mode .emergency-btn,
+body.dark-mode /* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar,
+body.dark-mode .brand-icon,
+body.dark-mode .welcome-badge,
+body.dark-mode .emergency-btn:hover,
+body.dark-mode .city-road::after,
+body.dark-mode /* floating cards */
+
+.floating-card,
+body.dark-mode /* ==========================================
+   QUICK ACCESS
+========================================== */
+
+.quick-access,
+body.dark-mode .quick-card,
+body.dark-mode .card-icon,
+body.dark-mode /* ==========================================
+   CITY SERVICES SECTION
+========================================== */
+
+.city-services,
+body.dark-mode .mini-card,
+body.dark-mode /* ========================================
+   LOGIN & REGISTER
+======================================== */
+
+.auth-page,
+body.dark-mode .auth-card,
+body.dark-mode /* =========================================================
+   SMARTCITY — TRANSPORT DASHBOARD
+   Matches the Services dashboard layout without changing
+   CSS/style.css or affecting any other page.
+========================================================= */
+
+body.page-transport,
+body.dark-mode /* Main dashboard sections */
+body.page-transport .services-section,
+body.dark-mode body.page-transport .transport-section,
+body.dark-mode body.page-transport .service-menu,
+body.dark-mode body.page-transport .category:hover,
+body.dark-mode body.page-transport .service-card,
+body.dark-mode body.page-transport .transport-card,
+body.dark-mode body.page-transport .service-icon,
+body.dark-mode body.page-transport .transport-icon,
+body.dark-mode /* Transport feature panels and dynamic detail forms */
+body.page-transport .transport-panel,
+body.dark-mode body.page-transport .transport-back-button,
+body.dark-mode body.page-transport .transport-back-button:hover,
+body.dark-mode body.page-transport .transport-result,
+body.dark-mode body.page-transport .transport-notice,
+body.dark-mode body.page-transport .transport-info-card,
+body.dark-mode body.page-transport .transport-history-item,
+body.dark-mode /* Demo notice retains its purple treatment */
+.news-notice,
+body.dark-mode .news-tag,
+body.dark-mode .news-date,
+body.dark-mode .event-status,
+body.dark-mode .announcement-box,
+body.dark-mode /* ================= NEWS & EVENTS PAGE ================= */
+
+    .news-notice,
+body.dark-mode /* Water service panels */
+        .water-panel,
+body.dark-mode .water-result,
+body.dark-mode .water-notice,
+body.dark-mode .close-button,
+body.dark-mode /* NAVBAR */
+
+        .navbar,
+body.dark-mode .admin-label,
+body.dark-mode .summary-card,
+body.dark-mode /* TABLE */
+
+        .complaints-box,
+body.dark-mode th,
+body.dark-mode .status-select,
+body.dark-mode /* Service panels */
+
+        .waste-panel,
+body.dark-mode .waste-result,
+body.dark-mode .waste-notice,
+body.dark-mode .waste-guide-item,
+body.dark-mode /* =========================================================
+   SMARTCITY CONTACT DASHBOARD
+   Matching the Services,
+body.dark-mode Transport,
+body.dark-mode Complaints & News pages
+   Theme: Teal | White Navbar | Modern Cards | Responsive
+   ========================================================= */
+
+/* ------------------ GENERAL PAGE ------------------ */
+
+body:has(.emergency-banner),
+body.dark-mode /* ------------------ NAVIGATION BAR ------------------ */
+
+body:has(.emergency-banner) .navbar,
+body.dark-mode /* ------------------ BUTTONS ------------------ */
+
+body:has(.emergency-banner) .call-button,
+body.dark-mode /* ------------------ WARNING BOX ------------------ */
+
+body:has(.emergency-banner) .emergency-warning,
+body.dark-mode body:has(.emergency-banner) .emergency-card,
+body.dark-mode body:has(.emergency-banner) .service-card,
+body.dark-mode body:has(.emergency-banner) .detail-card,
+body.dark-mode .filters,
+body.dark-mode .map-search,
+body.dark-mode .map-search-result,
+body.dark-mode .map-search-result:hover,
+body.dark-mode .my-location-container,
+body.dark-mode .road-panel,
+body.dark-mode .road-result,
+body.dark-mode .road-notice,
+body.dark-mode .road-info-card,
+body.dark-mode .park-panel,
+body.dark-mode .park-result,
+body.dark-mode .park-notice,
+body.dark-mode .park-info-card,
+body.dark-mode .transport-panel,
+body.dark-mode .transport-result,
+body.dark-mode .transport-notice,
+body.dark-mode .transport-info-card,
+body.dark-mode .electricity-detail-card,
+body.dark-mode .electricity-detail-box,
+body.dark-mode .electricity-notice,
+body.dark-mode .electricity-result.error,
+body.dark-mode .electricity-table td,
+body.dark-mode .electricity-empty { background-color: #17243b !important; color: #e2e8f0 !important; border-color: #30415f; }
+
+/* Catch light inline backgrounds in utility pages, admin panels, and map controls. */
+body.dark-mode [style*="background: #fff"],
+body.dark-mode [style*="background:#fff"],
+body.dark-mode [style*="background: white"],
+body.dark-mode [style*="background:white"],
+body.dark-mode [style*="background: #f"],
+body.dark-mode [style*="background:#f"],
+body.dark-mode [style*="background-color: #fff"],
+body.dark-mode [style*="background-color:#fff"],
+body.dark-mode [style*="background-color: white"],
+body.dark-mode [style*="background-color:white"] {
+  background-color: #17243b !important;
+  color: #e2e8f0 !important;
+  border-color: #30415f !important;
+}
+body.dark-mode .leaflet-container { background: #0f172a !important; }
+body.dark-mode .leaflet-popup-content-wrapper,
+body.dark-mode .leaflet-popup-tip { background: #17243b !important; color: #e2e8f0 !important; }
+
+
+/* =========================================================
+   GLOBAL DARK MODE TEXT VISIBILITY FIX
+   Loaded after the existing page styles. Keeps layouts and
+   wallpapers unchanged while making text readable site-wide.
+========================================================= */
+html.dark-mode body,
+body.dark-mode {
+    color: #e5eaf5 !important;
+}
+
+/* Default readable text on dark page sections/cards */
+html.dark-mode body :is(h1,h2,h3,h4,h5,h6,p,li,label,small,td,th,
+    legend,figcaption,blockquote,dd,dt,.section-heading,.section-title,
+    .page-title,.subtitle,.description,.card-title,.card-text,.muted-text),
+body.dark-mode :is(h1,h2,h3,h4,h5,h6,p,li,label,small,td,th,
+    legend,figcaption,blockquote,dd,dt,.section-heading,.section-title,
+    .page-title,.subtitle,.description,.card-title,.card-text,.muted-text) {
+    color: #e5eaf5 !important;
+}
+
+/* Ensure links stay visible on dark surfaces */
+html.dark-mode body a:not(.primary-btn):not(.map-btn):not(.complaint-btn):not(.emergency-btn):not(.login-btn):not(.cta-button),
+body.dark-mode a:not(.primary-btn):not(.map-btn):not(.complaint-btn):not(.emergency-btn):not(.login-btn):not(.cta-button) {
+    color: #93c5fd;
+}
+html.dark-mode body a:hover,
+body.dark-mode a:hover {
+    color: #7dd3fc;
+}
+
+/* Override inline light backgrounds and preserve readable text */
+html.dark-mode body :is(section,main,article,aside,.full-section,.services-section,
+    .glance,.updates,.cta,.content-section,.dashboard-content,.complaints-main),
+body.dark-mode :is(section,main,article,aside,.full-section,.services-section,
+    .glance,.updates,.cta,.content-section,.dashboard-content,.complaints-main) {
+    color: #e5eaf5;
+}
+
+/* Common white/light cards across all dashboards and utility pages */
+html.dark-mode body :is(.service-card,.stat-card,.update-item,.detail-card,
+    .transport-card,.electricity-card,.water-card,.waste-card,.roads-card,
+    .parks-card,.news-card,.event-card,.emergency-card,.summary-card,
+    .profile-card,.complaints-summary,.track-complaint,.report-form,
+    .success-box,.route-card,.service-menu,.tracking-card,.news-notice,
+    .contact-card,.form-container,.auth-card,.login-container,.register-container,
+    .card,.panel,.modal-content,.table-container,.map-info,.map-controls,
+    .service-box,.info-box,.notice,.alert-box,.dashboard-card,.complaint-card,
+    .no-complaints,.form-note,.success-message,.tracking-result),
+body.dark-mode :is(.service-card,.stat-card,.update-item,.detail-card,
+    .transport-card,.electricity-card,.water-card,.waste-card,.roads-card,
+    .parks-card,.news-card,.event-card,.emergency-card,.summary-card,
+    .profile-card,.complaints-summary,.track-complaint,.report-form,
+    .success-box,.route-card,.service-menu,.tracking-card,.news-notice,
+    .contact-card,.form-container,.auth-card,.login-container,.register-container,
+    .card,.panel,.modal-content,.table-container,.map-info,.map-controls,
+    .service-box,.info-box,.notice,.alert-box,.dashboard-card,.complaint-card,
+    .no-complaints,.form-note,.success-message,.tracking-result) {
+    background-color: #17243b !important;
+    color: #e5eaf5 !important;
+    border-color: #344766 !important;
+}
+html.dark-mode body :is(.service-card,.stat-card,.update-item,.detail-card,
+    .transport-card,.electricity-card,.water-card,.waste-card,.roads-card,
+    .parks-card,.news-card,.event-card,.emergency-card,.summary-card,
+    .profile-card,.complaints-summary,.track-complaint,.report-form,
+    .success-box,.route-card,.service-menu,.tracking-card,.news-notice,
+    .contact-card,.form-container,.auth-card,.login-container,.register-container,
+    .card,.panel,.modal-content,.table-container,.map-info,.map-controls,
+    .service-box,.info-box,.notice,.alert-box,.dashboard-card,.complaint-card,
+    .no-complaints,.form-note,.success-message,.tracking-result) :is(h1,h2,h3,h4,h5,h6,p,span,li,label,small,strong,td,th,a),
+body.dark-mode :is(.service-card,.stat-card,.update-item,.detail-card,
+    .transport-card,.electricity-card,.water-card,.waste-card,.roads-card,
+    .parks-card,.news-card,.event-card,.emergency-card,.summary-card,
+    .profile-card,.complaints-summary,.track-complaint,.report-form,
+    .success-box,.route-card,.service-menu,.tracking-card,.news-notice,
+    .contact-card,.form-container,.auth-card,.login-container,.register-container,
+    .card,.panel,.modal-content,.table-container,.map-info,.map-controls,
+    .service-box,.info-box,.notice,.alert-box,.dashboard-card,.complaint-card,
+    .no-complaints,.form-note,.success-message,.tracking-result) :is(h1,h2,h3,h4,h5,h6,p,span,li,label,small,strong,td,th,a) {
+    color: #e5eaf5 !important;
+}
+
+/* Inputs and tables */
+html.dark-mode body :is(input,textarea,select),
+body.dark-mode :is(input,textarea,select) {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+html.dark-mode body :is(input,textarea,select)::placeholder,
+body.dark-mode :is(input,textarea,select)::placeholder {
+    color: #aab8cc !important;
+}
+html.dark-mode body :is(table,thead,tbody,tr,th,td),
+body.dark-mode :is(table,thead,tbody,tr,th,td) {
+    background-color: #17243b !important;
+    color: #e5eaf5 !important;
+    border-color: #344766 !important;
+}
+
+/* Home hero has a bright city image on the left: use dark text there
+   so the heading and description remain visible against the wallpaper. */
+html.dark-mode body.page-home .hero-content h1,
+body.dark-mode.page-home .hero-content h1 {
+    color: #103b63 !important;
+}
+html.dark-mode body.page-home .hero-content h1 span,
+body.dark-mode.page-home .hero-content h1 span {
+    color: #087cf0 !important;
+}
+html.dark-mode body.page-home .hero-content p,
+body.dark-mode.page-home .hero-content p {
+    color: #173b5b !important;
+}
+html.dark-mode body.page-home .welcome-badge,
+body.dark-mode.page-home .welcome-badge {
+    color: #087cf0 !important;
+    background: rgba(255,255,255,.82) !important;
+}
+html.dark-mode body.page-home .city-search input,
+body.dark-mode.page-home .city-search input {
+    color: #172033 !important;
+    background: #ffffff !important;
+}
+
+/* Keep action buttons readable; do not alter their design colors */
+html.dark-mode body :is(button,.primary-btn,.map-btn,.complaint-btn,.emergency-btn,.login-btn,.cta-button),
+body.dark-mode :is(button,.primary-btn,.map-btn,.complaint-btn,.emergency-btn,.login-btn,.cta-button) {
+    text-shadow: none;
+}
+
+
+/* ============================================================
+   TARGETED TEXT CONTRAST FIX
+   Services, Transport and Complaints dashboards only.
+   Preserve all layouts, images, spacing and existing functionality.
+============================================================ */
+
+/* Keep dashboard hero text readable over the existing pale image overlays. */
+body.dark-mode.page-services .services-hero .hero-overlay,
+body.dark-mode.page-transport .services-hero .hero-overlay,
+body.dark-mode.page-transport .transport-hero .hero-overlay,
+body.dark-mode:has(.complaints-hero) .complaints-hero-content {
+  color: #123858 !important;
+}
+body.dark-mode.page-services .services-hero .hero-overlay h1,
+body.dark-mode.page-transport .services-hero .hero-overlay h1,
+body.dark-mode.page-transport .transport-hero .hero-overlay h1,
+body.dark-mode:has(.complaints-hero) .complaints-hero h1 {
+  color: #073763 !important;
+  text-shadow: none !important;
+}
+body.dark-mode.page-services .services-hero .hero-overlay h1 span,
+body.dark-mode.page-transport .services-hero .hero-overlay h1 span,
+body.dark-mode.page-transport .transport-hero .hero-overlay h1 span,
+body.dark-mode:has(.complaints-hero) .complaints-hero h1 span {
+  color: #0875bd !important;
+}
+body.dark-mode.page-services .services-hero .hero-overlay p,
+body.dark-mode.page-transport .services-hero .hero-overlay p,
+body.dark-mode.page-transport .transport-hero .hero-overlay p,
+body.dark-mode:has(.complaints-hero) .complaints-hero p {
+  color: #294b63 !important;
+}
+body.dark-mode.page-services .services-hero .small-title,
+body.dark-mode.page-transport .services-hero .small-title,
+body.dark-mode.page-transport .transport-hero .small-title,
+body.dark-mode:has(.complaints-hero) .complaints-hero .eyebrow {
+  color: #0875bd !important;
+}
+
+/* Services dashboard: headings, explanatory text, category links and cards. */
+body.dark-mode.page-services .services-section,
+body.dark-mode.page-services .services-layout,
+body.dark-mode.page-services #all-services {
+  background-color: #0b1120 !important;
+  color: #e5eaf5 !important;
+}
+body.dark-mode.page-services .section-heading h2,
+body.dark-mode.page-services .section-heading h2 strong,
+body.dark-mode.page-services .service-menu h3,
+body.dark-mode.page-services .service-card h3 {
+  color: #f1f5f9 !important;
+}
+body.dark-mode.page-services .section-heading > span,
+body.dark-mode.page-services .section-heading p,
+body.dark-mode.page-services .service-card p,
+body.dark-mode.page-services .service-menu .category,
+body.dark-mode.page-services .service-card small,
+body.dark-mode.page-services .service-card li {
+  color: #cbd5e1 !important;
+}
+body.dark-mode.page-services .service-menu,
+body.dark-mode.page-services .service-card,
+body.dark-mode.page-services .services-layout .card {
+  background: #17243b !important;
+  color: #e2e8f0 !important;
+  border-color: #30415f !important;
+}
+body.dark-mode.page-services .service-menu .category:hover,
+body.dark-mode.page-services .service-menu .category.active-category {
+  color: #ffffff !important;
+}
+body.dark-mode.page-services .service-card a:not(.services-cta) {
+  color: #7dd3fc !important;
+}
+
+/* Transport dashboard: same explicit contrast fixes, including inline-styled panels. */
+body.dark-mode.page-transport .services-section,
+body.dark-mode.page-transport .transport-section,
+body.dark-mode.page-transport #all-services {
+  background-color: #0b1120 !important;
+  color: #e5eaf5 !important;
+}
+body.dark-mode.page-transport .section-heading h2,
+body.dark-mode.page-transport .section-heading h2 strong,
+body.dark-mode.page-transport .service-menu h3,
+body.dark-mode.page-transport .service-card h3,
+body.dark-mode.page-transport .transport-card h3,
+body.dark-mode.page-transport .transport-panel h2,
+body.dark-mode.page-transport .transport-panel h3,
+body.dark-mode.page-transport .transport-panel h4,
+body.dark-mode.page-transport .transport-history-item strong {
+  color: #f1f5f9 !important;
+}
+body.dark-mode.page-transport .section-heading > span,
+body.dark-mode.page-transport .section-heading p,
+body.dark-mode.page-transport .service-card p,
+body.dark-mode.page-transport .transport-card p,
+body.dark-mode.page-transport .service-menu .category,
+body.dark-mode.page-transport .transport-panel,
+body.dark-mode.page-transport .transport-panel p,
+body.dark-mode.page-transport .transport-panel label,
+body.dark-mode.page-transport .transport-history-item,
+body.dark-mode.page-transport .transport-history-item p {
+  color: #cbd5e1 !important;
+}
+body.dark-mode.page-transport .service-menu,
+body.dark-mode.page-transport .service-card,
+body.dark-mode.page-transport .transport-card,
+body.dark-mode.page-transport .transport-panel,
+body.dark-mode.page-transport .transport-history-item,
+body.dark-mode.page-transport .transport-result,
+body.dark-mode.page-transport .transport-support-history > div {
+  background-color: #17243b !important;
+  color: #e2e8f0 !important;
+  border-color: #30415f !important;
+}
+body.dark-mode.page-transport .service-menu .category:hover,
+body.dark-mode.page-transport .service-menu .category.active-category {
+  color: #ffffff !important;
+}
+body.dark-mode.page-transport .transport-panel input,
+body.dark-mode.page-transport .transport-panel select,
+body.dark-mode.page-transport .transport-panel textarea {
+  background-color: #0f172a !important;
+  color: #f1f5f9 !important;
+  border-color: #405477 !important;
+}
+body.dark-mode.page-transport .transport-panel input::placeholder,
+body.dark-mode.page-transport .transport-panel textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Complaints dashboard: hero, section headings, cards, form labels and tracking results. */
+body.dark-mode:has(.complaints-hero) .complaints-main {
+  background-color: #0b1120 !important;
+  color: #e5eaf5 !important;
+}
+body.dark-mode:has(.complaints-hero) .complaints-heading h2,
+body.dark-mode:has(.complaints-hero) .complaint-card h3,
+body.dark-mode:has(.complaints-hero) .complaint-card h4,
+body.dark-mode:has(.complaints-hero) .track-complaint h3,
+body.dark-mode:has(.complaints-hero) .tracking-result h3 {
+  color: #f1f5f9 !important;
+}
+body.dark-mode:has(.complaints-hero) .complaints-heading > span {
+  color: #7dd3fc !important;
+}
+body.dark-mode:has(.complaints-hero) .complaints-heading p,
+body.dark-mode:has(.complaints-hero) .complaint-card p,
+body.dark-mode:has(.complaints-hero) .complaint-card label,
+body.dark-mode:has(.complaints-hero) .form-note,
+body.dark-mode:has(.complaints-hero) .track-description,
+body.dark-mode:has(.complaints-hero) .complaint-card small,
+body.dark-mode:has(.complaints-hero) .tracking-result,
+body.dark-mode:has(.complaints-hero) .success-message {
+  color: #cbd5e1 !important;
+}
+body.dark-mode:has(.complaints-hero) .complaint-card,
+body.dark-mode:has(.complaints-hero) .tracking-result,
+body.dark-mode:has(.complaints-hero) .success-message,
+body.dark-mode:has(.complaints-hero) .form-note,
+body.dark-mode:has(.complaints-hero) .no-complaints {
+  background-color: #17243b !important;
+  color: #e2e8f0 !important;
+  border-color: #30415f !important;
+}
+body.dark-mode:has(.complaints-hero) .complaint-card input,
+body.dark-mode:has(.complaints-hero) .complaint-card select,
+body.dark-mode:has(.complaints-hero) .complaint-card textarea,
+body.dark-mode:has(.complaints-hero) .complaints-main input,
+body.dark-mode:has(.complaints-hero) .complaints-main select,
+body.dark-mode:has(.complaints-hero) .complaints-main textarea {
+  background-color: #0f172a !important;
+  color: #f1f5f9 !important;
+  border-color: #405477 !important;
+}
+body.dark-mode:has(.complaints-hero) input::placeholder,
+body.dark-mode:has(.complaints-hero) textarea::placeholder {
+  color: #94a3b8 !important;
+}
+body.dark-mode:has(.complaints-hero) .complaint-card button,
+body.dark-mode:has(.complaints-hero) .complaint-card .btn {
+  color: #ffffff !important;
+}
+
+/* FINAL COMPLAINT HERO READABILITY FIX
+   Keep the existing bright photo overlay; use dark text on it so the heading
+   and description remain readable when the site is in dark mode. */
+html.dark-mode body:has(.complaints-hero) .complaints-hero-content,
+body.dark-mode:has(.complaints-hero) .complaints-hero-content {
+  color: #073763 !important;
+}
+html.dark-mode body:has(.complaints-hero) .complaints-hero h1,
+body.dark-mode:has(.complaints-hero) .complaints-hero h1 {
+  color: #073763 !important;
+  text-shadow: none !important;
+}
+html.dark-mode body:has(.complaints-hero) .complaints-hero h1 span,
+body.dark-mode:has(.complaints-hero) .complaints-hero h1 span {
+  color: #0875bd !important;
+}
+html.dark-mode body:has(.complaints-hero) .complaints-hero p,
+body.dark-mode:has(.complaints-hero) .complaints-hero p {
+  color: #234b68 !important;
+}
+html.dark-mode body:has(.complaints-hero) .complaints-hero .eyebrow,
+body.dark-mode:has(.complaints-hero) .complaints-hero .eyebrow {
+  color: #075985 !important;
+  background: rgba(235, 247, 253, 0.88) !important;
+  padding: 4px 7px !important;
+  border-radius: 3px !important;
+}
